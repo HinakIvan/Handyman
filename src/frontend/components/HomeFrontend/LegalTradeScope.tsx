@@ -48,10 +48,12 @@ export default function LegalTradeScope({
   return <section data-controller-name="Legal Trade Scope Notice" className="w-full border-b border-border bg-card text-card-foreground py-14 sm:py-16" data-api-unique-id='legaltradescope-rdad0a6f00fe59c82-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" data-api-unique-id='legaltradescope-r6550e0f038af48ef-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
         <div className="max-w-3xl mb-8" data-api-unique-id='legaltradescope-rbf7378d4d9a01bbf-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
-          <div className="inline-flex items-center gap-1.5 rounded-sm bg-muted text-muted-foreground px-2.5 py-1 text-xs font-semibold border border-border mb-2" data-api-unique-id='legaltradescope-r25d0617d4b063565-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
+          {/* Temporarily hidden: WKO & GewO badge */}
+          {/*           <div className="inline-flex items-center gap-1.5 rounded-sm bg-muted text-muted-foreground px-2.5 py-1 text-xs font-semibold border border-border mb-2" data-api-unique-id='legaltradescope-r25d0617d4b063565-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
             <ShieldCheck className="h-4 w-4 text-primary" data-api-unique-id='legaltradescope-r791a49d45c6ad628-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope' />
             <span data-api-unique-id='legaltradescope-r2f076be1a2db02ba-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>WKO &amp; GewO 1994 Compliance</span>
           </div>
+*/}
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground" data-api-unique-id='legaltradescope-r1929e1815f273355-s2900554314' data-api-unique-page-name='src/frontend/components/HomeFrontend/LegalTradeScope'>
             {t.title}
           </h2>

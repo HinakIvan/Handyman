@@ -85,7 +85,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Customer Portal & Quotes (2 cols) */}
+          {/* Temporarily hidden: Customer Portal & Quotes */}
+          {/*           {/* Customer Portal & Quotes (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
             <h3 className="font-header font-semibold text-sm text-foreground uppercase tracking-wider">
               Customer Hub
@@ -99,6 +100,8 @@ export function Footer() {
                 </li>)}
             </ul>
           </div>
+
+*/}
 
           {/* Vienna Service Coverage (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
@@ -116,7 +119,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Legal Disclaimer & Austrian GewO Trade Regulation Notice */}
+        {/* Temporarily hidden: Legal Disclaimer & Austrian GewO Trade Regulation Notice */}
+        {/*         {/* Legal Disclaimer & Austrian GewO Trade Regulation Notice */}
         <div className="p-4 rounded-lg border border-border bg-muted/60 text-xs text-muted-foreground space-y-2">
           <div className="flex items-center gap-2 font-medium text-foreground">
             <ShieldAlert className="w-4 h-4 text-primary shrink-0" />
@@ -131,6 +135,8 @@ export function Footer() {
           </p>
         </div>
 
+*/}
+
         {/* Bottom Copyright & Footer Links */}
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>
@@ -140,9 +146,8 @@ export function Footer() {
             <Link href="/pricingscope" className="hover:text-foreground transition-colors whitespace-nowrap">
               Trade Terms &amp; Scope
             </Link>
-            <Link href="/serviceareas" className="hover:text-foreground transition-colors whitespace-nowrap">
-              Districts &amp; Logistics
-            </Link>
+            {/* Temporarily hidden: Districts & Logistics */}
+            {/* <Link href="/serviceareas" className="hover:text-foreground transition-colors whitespace-nowrap">Districts &amp; Logistics</Link> */}
             <Link href="/quoterequestform" className="hover:text-foreground transition-colors whitespace-nowrap">
               Online Inquiry
             </Link>

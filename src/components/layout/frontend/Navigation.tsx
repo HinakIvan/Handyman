@@ -36,7 +36,7 @@ export function Navigation() {
   const translations = {
     EN: { services: "All Services Catalog", pricing: "Pricing & Legal Scope", areas: "Vienna Service Areas", tracking: "Quotes Tracking", more: "More", signIn: "Sign In", signUp: "Sign Up", quote: "Request a Quote" },
     DE: { services: "Alle Leistungen", pricing: "Preise & rechtlicher Umfang", areas: "Einsatzgebiete Wien", tracking: "Angebotsstatus", more: "Mehr", signIn: "Anmelden", signUp: "Registrieren", quote: "Angebot anfordern" },
-    RU: { services: "Все услуги", pricing: "Цены и правовые условия", areas: "Районы обслуживания Вены", tracking: "Статус заявок", more: "Ещё", signIn: "Войти", signUp: "Регистрация", quote: "Запросить смету" },
+    RU: { services: "Все услуги", pricing: "Preise", areas: "Районы обслуживания Вены", tracking: "Статус заявок", more: "Ещё", signIn: "Войти", signUp: "Регистрация", quote: "Запросить смету" },
   };
   const t = translations[activeLang];
   const applyLanguage = (code: "DE" | "EN" | "RU") => {
@@ -56,10 +56,6 @@ export function Navigation() {
     id: "services",
     label: t.services,
     href: "/servicescatalog"
-  }, {
-    id: "pricing",
-    label: t.pricing,
-    href: "/pricingscope"
   }, ...(isAuthenticated ? [{
     id: "tracking",
     label: t.tracking,
@@ -240,7 +236,7 @@ export function Navigation() {
                     <span>Sign Out</span>
                   </button>
                 </div>}
-            </div> : <div className="flex items-center gap-1.5">
+            </div> : false && <div className="flex items-center gap-1.5">
               <Link href="/customerlogin" className="h-9 px-3 rounded-md text-xs font-medium text-foreground hover:text-primary transition-colors flex items-center justify-center whitespace-nowrap">
                 {t.signIn}
               </Link>

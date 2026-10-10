@@ -144,7 +144,8 @@ export default function HomeFrontendPage() {
   };
   const baselineRate = services.length > 0 ? Math.min(...services.map((s, index) => s.baselineHourlyRate)) : 15;
   return <div className="w-full min-h-screen bg-background text-foreground flex flex-col">
-      {/* Functional Header / Language Switcher Bar */}
+      {/* Temporarily hidden: Functional Header / Language Switcher Bar */}
+      {/*       {/* Functional Header / Language Switcher Bar * /}
       <div className="sticky top-16 z-30 border-b border-border bg-card text-card-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-3">
@@ -158,7 +159,7 @@ export default function HomeFrontendPage() {
           </div>
 
           <div className="flex items-center gap-3 ml-auto sm:ml-0">
-            {/* Direct Quick Triggers */}
+            {/* Direct Quick Triggers * /}
             <a href="tel:+431234567890" className="hidden sm:inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="h-3 w-3 text-primary" />
               <span>+43 1 234 567 890</span>
@@ -169,7 +170,7 @@ export default function HomeFrontendPage() {
               <span>WhatsApp</span>
             </a>
 
-            {/* Language Selector (DE / EN / RU) */}
+            {/* Language Selector (DE / EN / RU) * /}
             <div className="flex items-center gap-1 border-l border-border pl-2">
               <Globe className="h-3.5 w-3.5 text-muted-foreground" />
               {(["de", "en", "ru"] as Language[]).map((l, index) => <button key={l} type="button" onClick={() => changeLanguage(l)} className={`rounded px-1.5 py-0.5 text-xs font-semibold uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}>
@@ -179,6 +180,8 @@ export default function HomeFrontendPage() {
           </div>
         </div>
       </div>
+
+*/}
 
       {/* Main Page Flow Sections */}
       <main className="flex-1 w-full">
@@ -197,7 +200,8 @@ export default function HomeFrontendPage() {
         }} />
         </div>
 
-        {/* Catalog CTA Strip */}
+        {/* Temporarily hidden: Catalog CTA Strip */}
+        {/*         {/* Catalog CTA Strip * /}
         <div className="w-full bg-card text-card-foreground border-b border-border py-6">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
@@ -218,6 +222,8 @@ export default function HomeFrontendPage() {
             </button>
           </div>
         </div>
+
+*/}
 
         {/* 4. Legal Trade Scope Notice (Austrian GewO compliance) */}
         <LegalTradeScope lang={lang} />

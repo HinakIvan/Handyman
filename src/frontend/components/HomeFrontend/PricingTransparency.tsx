@@ -69,9 +69,10 @@ export default function PricingTransparency({
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground" data-api-unique-id='pricingtransparency-r5ebc8c67ce97fbfd-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency'>
             {t.sectionTitle}
           </h2>
-          <p className="mt-1 text-sm sm:text-base text-muted-foreground" data-api-unique-id='pricingtransparency-rdda633638fd13e9d-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency'>
+          {/* Temporarily hidden: pricing subtitle */}
+          {/*           <p className="mt-1 text-sm sm:text-base text-muted-foreground" data-api-unique-id='pricingtransparency-rdda633638fd13e9d-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency'>
             {t.sectionSubtitle}
-          </p>
+          </p> */}
         </div>
 
         {/* 4 Pillars of Pricing Grid */}
@@ -166,6 +167,8 @@ export default function PricingTransparency({
         </div>
 
         {/* Guarantee Banner */}
+        {/* Temporarily hidden: pricing transparency footer note */}
+        {false && (
         <div className="mt-6 rounded-md bg-muted text-muted-foreground p-4 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border border-border" data-api-unique-id='pricingtransparency-r69bd605ec576c278-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency'>
           <div className="flex items-center gap-2" data-api-unique-id='pricingtransparency-r919df3dcd2bdacd1-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency'>
             <span className="h-2 w-2 rounded-full bg-success shrink-0" data-api-unique-id='pricingtransparency-red999381ab9f1d27-s3425617876' data-api-unique-page-name='src/frontend/components/HomeFrontend/PricingTransparency' />
@@ -175,6 +178,8 @@ export default function PricingTransparency({
             Vienna Handelsgericht &amp; WKO registered
           </span>
         </div>
+        )}
+
       </div>
     </section>;
 }

@@ -61,13 +61,16 @@ export default function Hero({
       {/* Foreground Content Panel */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28" data-api-unique-id='hero-rfc6c96cde790fb54-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
         <div className="max-w-2xl rounded-xl border border-border bg-card text-card-foreground p-6 sm:p-8 md:p-10 shadow-elevated" data-api-unique-id='hero-r894f92694eb44907-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
-          {/* Baseline Rate Anchor Tag */}
+          {/* Temporarily hidden: Baseline Rate Anchor Tag */}
+          {false && (
           <div className="mb-4 inline-flex items-center gap-2 rounded-md bg-muted text-muted-foreground px-3 py-1.5 text-xs sm:text-sm font-medium" data-api-unique-id='hero-r507c8f2ea6703e5b-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
             <span className="inline-block h-2 w-2 rounded-full bg-primary" data-api-unique-id='hero-rb725d4028ea46c9a-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero' />
             <span className="font-semibold text-foreground" data-api-unique-id='hero-rc40a5d8d7c58fce5-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>{t.badgeRate}</span>
             <span className="text-border" data-api-unique-id='hero-r9b03e57d2a58834e-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>|</span>
             <span data-api-unique-id='hero-r6a5524286b1ba6be-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>Vienna &amp; Surroundings</span>
           </div>
+
+)}
 
           {/* Slogan H1 */}
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-card-foreground" data-api-unique-id='hero-rcbc524a27ba6e4f3-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
@@ -99,7 +102,8 @@ export default function Hero({
             </a>
           </div>
 
-          {/* Vienna Compliance Indicators */}
+          {/* Temporarily hidden: Vienna Compliance Indicators */}
+          {false && (
           <div className="mt-6 pt-4 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-muted-foreground" data-api-unique-id='hero-r38541ea076e03096-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
             <div className="flex items-center gap-2" data-api-unique-id='hero-r76157555465ff538-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
               <ShieldCheck className="h-4 w-4 text-primary shrink-0" data-api-unique-id='hero-rc4dc4498d06abc9d-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero' />
@@ -110,6 +114,7 @@ export default function Hero({
               <span data-api-unique-id='hero-rf617c750deb5cced-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>{t.feature2}</span>
             </div>
           </div>
+          )}
         </div>
       </div>
     </section>;
