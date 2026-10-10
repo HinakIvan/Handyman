@@ -16,13 +16,19 @@ function translateTextNode(node: Text, dict: Record<string, string>) {
   const trimmed = original.trim();
   if (!trimmed || trimmed.length < 2) return;
   const translated = dict[trimmed];
+  let nextText = original;
   if (translated && translated !== trimmed) {
     const leading = original.match(/^\s*/)?.[0] ?? '';
     const trailing = original.match(/\s*$/)?.[0] ?? '';
-    node.textContent = `${leading}${translated}${trailing}`;
-  } else if (activeDictionary === null) {
-    node.textContent = original;
+    nextText = `${leading}${translated}${trailing}`;
+  } else if (activeDictionary !== null) {
+    // No matching translation: preserve the original text without rewriting it.
+    return;
   }
+
+  // Important: writing the same text still emits a MutationObserver event in
+  // some browsers. Avoid re-triggering this observer indefinitely.
+  if (node.textContent !== nextText) node.textContent = nextText;
 }
 
 function translateTree(root: Node, dict: Record<string, string>) {
