@@ -14,7 +14,7 @@
     "build:server": "tsc -p scripts/build-server/tsconfig.build.json && node scripts/build-server/dist/index.js",
     "init": "node backend_deal.mjs && pnpm run build:server -- --rebuild-common",
     "lint": "eslint --cache",
-    "build": "prisma generate --schema prisma/schema.prisma && pnpm run build:server && next build",
+    "build": "prisma generate --schema prisma/schema.prisma && pnpm run build:server && next build --webpack",
     "start": "node scripts/start-production.mjs",
     "start:backend": "ts-node -r tsconfig-paths/register --transpile-only --project tsconfig.server.json server/dev-host.ts"
   },
