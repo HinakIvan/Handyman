@@ -1,6 +1,9 @@
 {
   "name": "aigcode-demo",
   "version": "3.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "tcc_version": "1.0.0",
   "private": true,
   "scripts": {
