@@ -10,7 +10,10 @@
     "gen_rpc": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/gen-rpc.ts",
     "build:server": "tsc -p scripts/build-server/tsconfig.build.json && node scripts/build-server/dist/index.js",
     "init": "node backend_deal.mjs && pnpm run build:server -- --rebuild-common",
-    "lint": "eslint --cache"
+    "lint": "eslint --cache",
+    "build": "prisma generate --schema prisma/schema.prisma && pnpm run build:server && next build",
+    "start": "node scripts/start-production.mjs",
+    "start:backend": "ts-node -r tsconfig-paths/register --transpile-only --project tsconfig.server.json server/dev-host.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

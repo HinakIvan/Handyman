@@ -10,10 +10,12 @@ import { useUserSession } from './FrontendSession';
 import { useAppUserSession } from './AppSession';
 import { useAdminSession } from './BackendSession';
 
-// 动态获取 PROJECT_ID 和 API_URL
-// 优先从 window.__dynamic_base__ 获取（生产环境），否则用环境变量
+// Use same-origin requests by default. Next.js rewrites /rpc/* to the private
+// Express RPC service, so browsers never try to contact their own localhost.
 const getApiUrl = () => {
-  return `http://localhost:3100/rpc/PROJ_b23df7b6_snap_20261010_124454_705`;
+  const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || 'PROJ_b23df7b6_snap_20261010_124454_705';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || '').replace(/\/$/, '');
+  return `${apiBaseUrl}/rpc/${projectId}`;
 };
 
 // 请求去重：相同 actionName+args 的并发请求共享同一个 Promise

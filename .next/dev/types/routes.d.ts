@@ -5,7 +5,7 @@ type AppRoutes = "/" | "/admincategoriesrates" | "/admincompliancechecklist" | "
 type PageRoutes = never
 type LayoutRoutes = "/"
 type RedirectRoutes = never
-type RewriteRoutes = "/api/project_pz/getimage" | "/flow-engine/Career/v2/run_flow"
+type RewriteRoutes = "/api/project_pz/getimage" | "/flow-engine/Career/v2/run_flow" | "/rpc/[[...path]]"
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes
 
 
@@ -27,6 +27,7 @@ interface ParamMap {
   "/frontend-layout-test": {}
   "/pricingscope": {}
   "/quoterequestform": {}
+  "/rpc/[[...path]]": { "path"?: string[]; }
   "/serviceareas": {}
   "/servicecategorydetail": {}
   "/servicescatalog": {}

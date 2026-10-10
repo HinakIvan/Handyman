@@ -10,36 +10,24 @@ const monoRoot = path.resolve(__dirname, '../../../../')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. 静态导出
-  output: 'export',
-
-  // 2. 文件追踪相关
-  outputFileTracingRoot: monoRoot,
-  outputFileTracingExcludes: {
-    '*': [
-      '**/.next/**',
-      '**/node_modules/**',
-      '**/generated/**',
-      './code/generated/**'
+  // Production must run as a Next.js server because the app also needs the Express RPC backend.
+  // Keep API rewrites enabled in production; static export cannot proxy these requests.
+  async rewrites() {
+    return [
+      {
+        source: '/rpc/:path*',
+        destination: `http://127.0.0.1:${process.env.RPC_PORT || '3100'}/rpc/:path*`,
+      },
+      {
+        source: '/flow-engine/Career/v2/run_flow',
+        destination: 'https://pztest.koudingvip.com/flow-engine/Career/v2/run_flow',
+      },
+      {
+        source: '/api/project_pz/getimage',
+        destination: 'https://project.autocoder.cc/api/project_pz/getimage',
+      },
     ]
   },
-
-  // 3. 开发环境代理
-  // 注意：rewrites 在静态导出模式下不工作，只在开发环境使用
-  ...(process.env.NODE_ENV !== 'production' && {
-    async rewrites() {
-      return [
-        {
-          source: "/flow-engine/Career/v2/run_flow",
-          destination: "https://pztest.koudingvip.com/flow-engine/Career/v2/run_flow",
-        },
-        {
-          source: '/api/project_pz/getimage',
-          destination: 'https://project.autocoder.cc/api/project_pz/getimage'
-        }
-      ]
-    }
-  }),
 
   experimental: {
     externalDir: true,
@@ -77,7 +65,7 @@ const nextConfig = {
     NEXT_PUBLIC_PROJECT_ID: process.env.NEXT_PUBLIC_PROJECT_ID || 'PROJ_b23df7b6_snap_20261010_124454_705',
     NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
     NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || '',
-    NEXT_PUBLIC_RUNTIME_API: 'https://www.autocoder.cc/rpc',
+    NEXT_PUBLIC_RUNTIME_API: process.env.NEXT_PUBLIC_RUNTIME_API || '/api/v1/proxy',
     NEXT_PUBLIC_SITE_TITLE:
       process.env.NEXT_PUBLIC_SITE_TITLE || "Vienna Handyman & Renovation Services Website"
   },

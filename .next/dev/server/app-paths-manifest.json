@@ -1,3 +1,4 @@
 {
+  "/(backend)/adminlogin/page": "app/(backend)/adminlogin/page.js",
   "/(frontend)/page": "app/(frontend)/page.js"
 }

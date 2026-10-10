@@ -1309,7 +1309,7 @@ try {
   console.log('[DEV] Third-party auth not available:', (e as Error).message)
 }
 
-const PORT = process.env.PORT || 3100
+const PORT = Number.parseInt(String(process.env.RPC_PORT || process.env.PORT || 3100), 10)
 
 app.listen(PORT, () => {
   console.log(`[DEV] RPC Server running at http://localhost:${PORT}`)
