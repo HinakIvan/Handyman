@@ -44,6 +44,7 @@ export function Navigation() {
     const value = code.toLowerCase();
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
+    window.location.reload();
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -59,10 +60,6 @@ export function Navigation() {
     id: "pricing",
     label: t.pricing,
     href: "/pricingscope"
-  }, {
-    id: "areas",
-    label: t.areas,
-    href: "/serviceareas"
   }, ...(isAuthenticated ? [{
     id: "tracking",
     label: t.tracking,

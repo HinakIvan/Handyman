@@ -10,7 +10,7 @@ generator json {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:pzprod@database-prod-lts.cluster-c7wk8uc6itjv.us-west-2.rds.amazonaws.com:3306/proj_b23df7b6_snap_20261010_124454_705"
+  url      = env("DATABASE_URL")
 }
 
 enum AccountUserRole {
