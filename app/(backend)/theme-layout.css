@@ -1,0 +1,96 @@
+/* ========================================
+ * THEME-LAYOUT.CSS - 布局相关变量 (Backend)
+ * ======================================== */
+:root {
+  /* 页面容器 */
+  --layout-container-max: 1600px;
+  --layout-container-padding: 20px;
+  --layout-container-padding-md: 32px;
+  --layout-container-padding-lg: 48px;
+
+  /* 区块间距 */
+  --layout-section-py: 32px;
+  --layout-section-gap: 24px;
+
+  /* 组件间距 */
+  --layout-card-padding: 20px;
+  --layout-card-gap: 16px;
+  --layout-content-gap: 16px;
+
+  /* 间距刻度 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* 圆角设置 */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* 阴影系统 */
+  --shadow-sm: 0 1px 2px 0 rgba(26, 32, 38, 0.04);
+  --shadow-md: 0 1px 3px rgba(26, 32, 38, 0.05), 0 2px 6px rgba(26, 32, 38, 0.04);
+  --shadow-lg: 0 4px 12px rgba(26, 32, 38, 0.08), 0 2px 4px rgba(26, 32, 38, 0.04);
+  --shadow-xl: 0 8px 24px rgba(26, 32, 38, 0.1);
+  --shadow-2xl: 0 16px 36px rgba(26, 32, 38, 0.14);
+
+  /* 组件尺寸 */
+  --size-dialog-sm: 400px;
+  --size-dialog-md: 560px;
+  --size-dialog-lg: 760px;
+  --size-sheet: 420px;
+  --size-input-h: 40px;
+  --size-button-h: 40px;
+
+  /* Card 子组件 */
+  --layout-card-header-p: 20px;
+  --layout-card-content-p: 20px;
+  --layout-card-footer-p: 20px;
+  --layout-card-footer-gap: 12px;
+
+  /* Dialog / Sheet */
+  --layout-dialog-p: 24px;
+  --layout-dialog-header-gap: 8px;
+  --layout-dialog-footer-gap: 12px;
+  --layout-sheet-p: 24px;
+
+  /* 表单 */
+  --size-input-px: 12px;
+  --size-button-px: 16px;
+  --layout-form-gap: 10px;
+  --layout-form-item-mb: 20px;
+
+  /* FieldGroup */
+  --layout-field-label-gap: 4px;
+  --layout-field-gap-y: 20px;
+  --layout-field-gap-x: 20px;
+
+  /* 列表 */
+  --layout-list-gap: 8px;
+  --layout-list-item-p: 10px;
+  --layout-list-item-min-h: 44px;
+
+  /* 表格 */
+  --layout-table-cell-p: 12px;
+  --layout-table-header-h: 44px;
+  --layout-table-row-h: 48px;
+
+  /* 图片比例 */
+  --aspect-card: 4 / 3;
+  --aspect-hero: 16 / 9;
+  --aspect-avatar: 1 / 1;
+
+  /* 过渡动画 */
+  --transition-fast: 150ms;
+  --transition-base: 200ms;
+  --transition-slow: 300ms;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,128 @@
+/* ========================================
+ * THEME-STYLE.CSS - 视觉相关变量 (Frontend)
+ * ======================================== */
+:root {
+  /* 字体字号 */
+  --font-size-display: 60px;
+  --font-size-h1: 48px;
+  --font-size-h2: 36px;
+  --font-size-h3: 28px;
+  --font-size-h4: 22px;
+  --font-size-base: 16px;
+  --font-size-sm-body: 14px;
+  --font-size-caption: 12px;
+
+  /* 字体字重 */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* 行高 */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.35;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.65;
+
+  /* 字间距 */
+  --letter-spacing-tight: -0.015em;
+  --letter-spacing-normal: -0.008em;
+  --letter-spacing-base: 0;
+  --letter-spacing-wide: 0.015em;
+
+  /* 基础色彩 */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* 语义化颜色映射 */
+  --color-background: #fbf9f5;
+  --color-foreground: #1a2026;
+  --color-card: #f4f0e8;
+  --color-card-foreground: #1a2026;
+  --color-popover: #f4f0e8;
+  --color-popover-foreground: #1a2026;
+
+  /* 主色调 (Austrian Artisan Terracotta Brick) */
+  --color-primary: #a84a14;
+  --color-primary-foreground: #ffffff;
+
+  /* 次要色彩 */
+  --color-secondary: #dfd7c9;
+  --color-secondary-foreground: #1a2026;
+
+  /* 静音色彩 */
+  --color-muted: #eae4d8;
+  --color-muted-foreground: #404a53;
+
+  /* 强调色 (Danube Deep Steel Blue) */
+  --color-accent: #1c3545;
+  --color-accent-foreground: #ffffff;
+
+  /* 功能性颜色 */
+  --color-destructive: #b91c1c;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #047857;
+  --color-success-foreground: #ffffff;
+  --color-warning: #b45309;
+  --color-warning-foreground: #ffffff;
+  --color-info: #1d4ed8;
+  --color-info-foreground: #ffffff;
+
+  /* 边框和输入框 */
+  --color-border: #d3cbbe;
+  --color-input: #d3cbbe;
+  --color-ring: #a84a14;
+
+  /* 图表色系 */
+  --color-chart-1: #a84a14;
+  --color-chart-2: #1c3545;
+  --color-chart-3: #047857;
+  --color-chart-4: #b45309;
+  --color-chart-5: #6d5d4d;
+
+  /* 侧边栏相关颜色 */
+  --color-sidebar-background: #f4f0e8;
+  --color-sidebar-foreground: #1a2026;
+  --color-sidebar-primary: #a84a14;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #eae4d8;
+  --color-sidebar-accent-foreground: #1a2026;
+  --color-sidebar-border: #d3cbbe;
+  --color-sidebar-ring: #a84a14;
+
+  /* 交互态颜色 (Hover/Active) */
+  --color-primary-hover: #8f3e10;
+  --color-secondary-hover: #d2c8b8;
+  --color-accent-hover: #152834;
+  --color-destructive-hover: #991b1b;
+
+  /* 链接颜色 */
+  --color-link: #a84a14;
+  --color-link-hover: #8f3e10;
+
+  /* 骨架屏/加载态 */
+  --color-skeleton: #eae4d8;
+
+  /* 代码块 */
+  --color-code-background: #eae4d8;
+  --color-code-foreground: #1a2026;
+
+  /* 引用块 */
+  --color-blockquote-border: #d3cbbe;
+  --color-blockquote-background: #f4f0e8;
+}
+
+/* theme autofill contract:start */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--color-foreground) !important;
+  caret-color: var(--color-foreground);
+}
+
+input:autofill {
+  color: var(--color-foreground) !important;
+  caret-color: var(--color-foreground);
+}
+/* theme autofill contract:end */

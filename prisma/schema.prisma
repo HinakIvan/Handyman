@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../prisma-generated/client"
+}
+
+generator json {
+  provider = "prisma-json-types-generator"
+  allowAny = false
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:pzprod@database-prod-lts.cluster-c7wk8uc6itjv.us-west-2.rds.amazonaws.com:3306/proj_b23df7b6_snap_20261010_124454_705"
+}
+
+enum AccountUserRole {
+  CUSTOMER
+  ADMIN
+}
+
+enum ServiceCategoryKey {
+  ASSEMBLY
+  DEMOLITION
+  FLOORING
+  PAINTING
+  DRYWALL
+  PLUMBING_MINOR
+  BATHROOM_KITCHEN
+  DOORS_WINDOWS
+  OUTDOOR
+  MOVING
+  COMMERCIAL
+}
+
+enum CraftClassification {
+  FREIES_HANDWERK
+  MEISTER_KOOPERATION
+}
+
+enum LogisticsZone {
+  INNER_CITY
+  CENTRAL
+  OUTER_RING
+  GREATER_SUBURB
+}
+
+enum ChecklistItemKey {
+  VAT_UID
+  OFFICIAL_CONTACT
+  REGISTERED_ADDRESS
+  OPERATING_HOURS
+}
+
+enum ChecklistStatus {
+  PENDING
+  IN_REVIEW
+  COMPLETED
+}
+
+enum FaqCategory {
+  PRICING
+  SCOPE
+  SCHEDULING
+  MATERIALS
+}
+
+enum PreferredTimeSlot {
+  MORNING
+  AFTERNOON
+  FLEXIBLE
+}
+
+enum SubmissionLanguage {
+  DE
+  EN
+  RU
+}
+
+enum QuoteStatus {
+  NEW
+  CONTACTED
+  ESTIMATE_SENT
+  QUOTED
+  SCHEDULED
+  COMPLETED
+}
+
+model AccountUser {
+  id           String          @id @default(uuid()) @db.VarChar(72)
+  email        String          @unique @db.VarChar(255)
+  passwordHash String          @db.VarChar(255)
+  role         AccountUserRole @default(CUSTOMER)
+  fullName     String          @db.VarChar(255)
+  phone        String?         @db.VarChar(50)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  quoteRequests QuoteRequest[]
+}
+
+model ServiceCategory {
+  id                 String              @id @default(uuid()) @db.VarChar(72)
+  key                ServiceCategoryKey  @unique
+  titleDe            String              @db.VarChar(255)
+  titleEn            String              @db.VarChar(255)
+  titleRu            String              @db.VarChar(255)
+  baselineHourlyRate Decimal             @db.Decimal(10, 2)
+  typicalRangeEur    String              @db.VarChar(100)
+  craftClassification CraftClassification @default(FREIES_HANDWERK)
+  leadArtisan        String?             @db.VarChar(255)
+  isFeatured         Boolean             @default(false)
+  descriptionDe      String?             @db.Text
+  descriptionEn      String?             @db.Text
+  descriptionRu      String?             @db.Text
+  imageUrl           String?             @db.VarChar(700)
+  iconName           String?             @db.VarChar(100)
+  displayOrder       Int?                @default(0)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  quoteRequests QuoteRequest[]
+}
+
+model ViennaDistrict {
+  id             String        @id @default(uuid()) @db.VarChar(72)
+  districtCode   String        @unique @db.VarChar(10)
+  districtName   String        @db.VarChar(100)
+  districtNumber Int
+  zone           LogisticsZone
+  leadTimeHours  Int
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  quoteRequests QuoteRequest[]
+}
+
+model SetupChecklistItem {
+  id          String           @id @default(uuid()) @db.VarChar(72)
+  itemKey     ChecklistItemKey @unique
+  title       String           @db.VarChar(255)
+  subtitle    String           @db.VarChar(500)
+  status      ChecklistStatus  @default(PENDING)
+  fieldValue  String           @db.VarChar(500)
+  legalRef    String           @db.VarChar(255)
+  lastUpdated String           @db.VarChar(100)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model FaqItem {
+  id           String      @id @default(uuid()) @db.VarChar(72)
+  category     FaqCategory
+  questionDe   String      @db.Text
+  questionEn   String      @db.Text
+  questionRu   String      @db.Text
+  answerDe     String      @db.Text
+  answerEn     String      @db.Text
+  answerRu     String      @db.Text
+  displayOrder Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model QuoteRequest {
+  id                 String             @id @default(uuid()) @db.VarChar(72)
+  trackingCode       String             @unique @db.VarChar(64)
+  customerId         String?            @db.VarChar(72) // FK → AccountUser.id
+  customer           AccountUser?       @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  clientName         String             @db.VarChar(255)
+  clientPhone        String             @db.VarChar(100)
+  clientEmail        String             @db.VarChar(255)
+  serviceCategoryId  String             @db.VarChar(72) // FK → ServiceCategory.id
+  serviceCategory    ServiceCategory    @relation(fields: [serviceCategoryId], references: [id], onDelete: Restrict)
+  districtId         String             @db.VarChar(72) // FK → ViennaDistrict.id
+  district           ViennaDistrict     @relation(fields: [districtId], references: [id], onDelete: Restrict)
+  addressSnippet     String             @db.VarChar(255)
+  taskTitle          String             @db.VarChar(255)
+  taskDescription    String             @db.Text
+  estimatedHours     Int
+  estimatedBudgetEur Decimal            @db.Decimal(10, 2)
+  preferredDate      String             @db.VarChar(50)
+  preferredTimeSlot  PreferredTimeSlot  @default(FLEXIBLE)
+  hasMaterials       Boolean            @default(false)
+  agreedToTerms      Boolean            @default(false)
+  submissionLang     SubmissionLanguage @default(DE)
+  isUrgent           Boolean            @default(false)
+  status             QuoteStatus        @default(NEW)
+  createdAtFormatted String?            @db.VarChar(100)
+  scopeNotes         String?            @db.Text
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@index([customerId])
+  @@index([serviceCategoryId])
+  @@index([districtId])
+  @@index([status])
+}
