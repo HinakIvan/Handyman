@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// monorepo 根：对齐 pnpm-lock.yaml 所在层级
-const monoRoot = path.resolve(__dirname, '../../../../')
+// 项目根目录（独立仓库，非 monorepo）
+const monoRoot = __dirname
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -46,7 +46,6 @@ const nextConfig = {
     cpus: 4
   },
 
-  transpilePackages: ['components'],
 
   // turbopack 配置保留备用，切回时加 --turbopack 并注释掉 webpack
   // turbopack: {
@@ -96,29 +95,15 @@ const nextConfig = {
       '@/app/actions': path.resolve(__dirname, './lib/rpc-generated/src/app/actions'),
     }
 
+    // actions 通过上面的 alias 指向 lib/rpc-generated 中的 RPC 客户端桩，
+    // 因此不再需要 rpc-loader / declare-function-rewrite-loader（仓库中不存在这两个文件）
     config.module.rules.push(
-      // declare-function-rewrite: types 中的 declare function → actions re-export
-      {
-        test: /\/src\/(frontend|backend|app)\/types\/\w+\.ts$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        use: [{
-          loader: path.resolve(__dirname, './src/default/declare-function-rewrite-loader.cjs'),
-          options: { projectRoot: __dirname }
-        }]
-      },
       // source-attributes-loader
       {
         test: /\.(tsx|jsx)$/,
         exclude: /node_modules/,
         enforce: 'pre',
         use: [{ loader: path.resolve(__dirname, './src/default/source-attributes-loader.js') }]
-      },
-      // rpc-loader for actions
-      {
-        test: /[\\/]actions[\\/].+\.ts$|[\\/]app[\\/].+[\\/]actions\.ts$/,
-        exclude: /node_modules/,
-        use: [{ loader: path.resolve(__dirname, 'scripts/rpc-loader.js') }]
       }
     )
     return config
