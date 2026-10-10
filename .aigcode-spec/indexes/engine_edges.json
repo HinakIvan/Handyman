@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "engine_edges": [
+    {
+      "id": "l2:import.B01.to.src.base.BaseActionFun.ts",
+      "level": "L2",
+      "kind": "component_import",
+      "from_ref": "page:B01",
+      "to_ref": "file:src/@base/BaseActionFun.ts",
+      "carries": [
+        "source_file:src/backend/actions/AdminOperationsDashboard.ts",
+        "symbols:withResult"
+      ],
+      "evidence_refs": [
+        "page:B01",
+        "file:src/backend/actions/AdminOperationsDashboard.ts",
+        "file:src/@base/BaseActionFun.ts"
+      ],
+      "description": "page:B01 imports file:src/@base/BaseActionFun.ts via src/backend/actions/AdminOperationsDashboard.ts"
+    },
+    {
+      "id": "l2:import.B02.to.src.base.BaseActionFun.ts",
+      "level": "L2",
+      "kind": "component_import",
+      "from_ref": "page:B02",
+      "to_ref": "file:src/@base/BaseActionFun.ts",
+      "carries": [
+        "source_file:src/backend/actions/AdminQuoteDetail.ts",
+        "symbols:withResult"
+      ],
+      "evidence_refs": [
+        "page:B02",
+        "file:src/backend/actions/AdminQuoteDetail.ts",
+        "file:src/@base/BaseActionFun.ts"
+      ],
+      "description": "page:B02 imports file:src/@base/BaseActionFun.ts via src/backend/actions/AdminQuoteDetail.ts"
+    },
+    {
+      "id": "l2:import.B06.to.src.tools.BackendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:B06",
+      "to_ref": "file:src/tools/BackendSession.tsx",
+      "carries": [
+        "source_file:app/(backend)/adminregister/page.tsx",
+        "symbols:useAdminSession"
+      ],
+      "evidence_refs": [
+        "page:B06",
+        "file:app/(backend)/adminregister/page.tsx",
+        "file:src/tools/BackendSession.tsx"
+      ],
+      "description": "page:B06 imports file:src/tools/BackendSession.tsx via app/(backend)/adminregister/page.tsx"
+    },
+    {
+      "id": "l2:import.F06.to.src.tools.FrontendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:F06",
+      "to_ref": "file:src/tools/FrontendSession.tsx",
+      "carries": [
+        "source_file:app/(frontend)/quoterequestform/page.tsx",
+        "symbols:useUserSession"
+      ],
+      "evidence_refs": [
+        "page:F06",
+        "file:app/(frontend)/quoterequestform/page.tsx",
+        "file:src/tools/FrontendSession.tsx"
+      ],
+      "description": "page:F06 imports file:src/tools/FrontendSession.tsx via app/(frontend)/quoterequestform/page.tsx"
+    },
+    {
+      "id": "l2:import.F09.to.src.tools.FrontendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:F09",
+      "to_ref": "file:src/tools/FrontendSession.tsx",
+      "carries": [
+        "source_file:app/(frontend)/customerregister/page.tsx",
+        "symbols:useUserSession"
+      ],
+      "evidence_refs": [
+        "page:F09",
+        "file:app/(frontend)/customerregister/page.tsx",
+        "file:src/tools/FrontendSession.tsx"
+      ],
+      "description": "page:F09 imports file:src/tools/FrontendSession.tsx via app/(frontend)/customerregister/page.tsx"
+    }
+  ]
+}

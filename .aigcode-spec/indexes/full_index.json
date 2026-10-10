@@ -1,0 +1,3116 @@
+{
+  "schema_version": 2,
+  "project": {
+    "project_id": "PROJ_b23df7b6",
+    "root": "/root/code/generated/PROJ_b23df7b6_snap_20261010_124454_705/aigcode-demo",
+    "platforms": [
+      "backend",
+      "frontend"
+    ],
+    "language": "zh-CN",
+    "generation_chain": null
+  },
+  "payment": {
+    "profile": {
+      "target_markets": {
+        "values": [
+          "AT"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.95,
+        "evidence_refs": [
+          "page:F01",
+          "page:F04",
+          "page:F05",
+          "page:B04"
+        ],
+        "confirmed": false
+      },
+      "product_types": {
+        "values": [
+          "physical"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.9,
+        "evidence_refs": [
+          "page:F01",
+          "page:F02",
+          "page:F04"
+        ],
+        "confirmed": false
+      },
+      "billing_modes": {
+        "values": [
+          "one_time"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.9,
+        "evidence_refs": [
+          "page:F01",
+          "page:F06",
+          "page:B01"
+        ],
+        "confirmed": false
+      },
+      "payment_rails": {
+        "values": [
+          "fiat"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.85,
+        "evidence_refs": [
+          "page:F01",
+          "page:F04",
+          "page:B01"
+        ],
+        "confirmed": false
+      }
+    },
+    "nowpayments_pricing": null,
+    "selected_providers": [],
+    "recommended_providers": [
+      "stripe",
+      "clink"
+    ],
+    "recommendation_notes": [],
+    "implemented_providers": [],
+    "page_refs": [],
+    "interface_refs": [],
+    "order_model_refs": [],
+    "status_field_refs": [],
+    "callback_pages": [],
+    "infrastructure_paths": [
+      "server/thirdparty/payment-definitions.ts",
+      "server/thirdparty/payment/alipay.ts",
+      "server/thirdparty/payment/amount.ts",
+      "server/thirdparty/payment/clink.ts",
+      "server/thirdparty/payment/nowpayments.ts",
+      "server/thirdparty/payment/stripe.ts"
+    ],
+    "warnings": []
+  },
+  "ref_whitelist": {
+    "pages": [
+      "page:F01",
+      "page:F02",
+      "page:F03",
+      "page:F04",
+      "page:F05",
+      "page:F06",
+      "page:F07",
+      "page:F08",
+      "page:F09",
+      "page:B01",
+      "page:B02",
+      "page:B03",
+      "page:B04",
+      "page:B05",
+      "page:B06"
+    ],
+    "ifaces": [],
+    "symbols": [],
+    "models": [
+      "model:AccountUser",
+      "model:FaqItem",
+      "model:QuoteRequest",
+      "model:ServiceCategory",
+      "model:SetupChecklistItem",
+      "model:ViennaDistrict"
+    ],
+    "model_fields": [
+      "model:AccountUser#id",
+      "model:AccountUser#email",
+      "model:AccountUser#passwordHash",
+      "model:AccountUser#role",
+      "model:AccountUser#fullName",
+      "model:AccountUser#phone",
+      "model:AccountUser#createdAt",
+      "model:AccountUser#updatedAt",
+      "model:AccountUser#quoteRequests",
+      "model:FaqItem#id",
+      "model:FaqItem#category",
+      "model:FaqItem#questionDe",
+      "model:FaqItem#questionEn",
+      "model:FaqItem#questionRu",
+      "model:FaqItem#answerDe",
+      "model:FaqItem#answerEn",
+      "model:FaqItem#answerRu",
+      "model:FaqItem#displayOrder",
+      "model:FaqItem#createdAt",
+      "model:FaqItem#updatedAt",
+      "model:QuoteRequest#id",
+      "model:QuoteRequest#trackingCode",
+      "model:QuoteRequest#customerId",
+      "model:QuoteRequest#customer",
+      "model:QuoteRequest#clientName",
+      "model:QuoteRequest#clientPhone",
+      "model:QuoteRequest#clientEmail",
+      "model:QuoteRequest#serviceCategoryId",
+      "model:QuoteRequest#serviceCategory",
+      "model:QuoteRequest#districtId",
+      "model:QuoteRequest#district",
+      "model:QuoteRequest#addressSnippet",
+      "model:QuoteRequest#taskTitle",
+      "model:QuoteRequest#taskDescription",
+      "model:QuoteRequest#estimatedHours",
+      "model:QuoteRequest#estimatedBudgetEur",
+      "model:QuoteRequest#preferredDate",
+      "model:QuoteRequest#preferredTimeSlot",
+      "model:QuoteRequest#hasMaterials",
+      "model:QuoteRequest#agreedToTerms",
+      "model:QuoteRequest#submissionLang",
+      "model:QuoteRequest#isUrgent",
+      "model:QuoteRequest#status",
+      "model:QuoteRequest#createdAtFormatted",
+      "model:QuoteRequest#scopeNotes",
+      "model:QuoteRequest#createdAt",
+      "model:QuoteRequest#updatedAt",
+      "model:ServiceCategory#id",
+      "model:ServiceCategory#key",
+      "model:ServiceCategory#titleDe",
+      "model:ServiceCategory#titleEn",
+      "model:ServiceCategory#titleRu",
+      "model:ServiceCategory#baselineHourlyRate",
+      "model:ServiceCategory#typicalRangeEur",
+      "model:ServiceCategory#craftClassification",
+      "model:ServiceCategory#leadArtisan",
+      "model:ServiceCategory#isFeatured",
+      "model:ServiceCategory#descriptionDe",
+      "model:ServiceCategory#descriptionEn",
+      "model:ServiceCategory#descriptionRu",
+      "model:ServiceCategory#imageUrl",
+      "model:ServiceCategory#iconName",
+      "model:ServiceCategory#displayOrder",
+      "model:ServiceCategory#createdAt",
+      "model:ServiceCategory#updatedAt",
+      "model:ServiceCategory#quoteRequests",
+      "model:SetupChecklistItem#id",
+      "model:SetupChecklistItem#itemKey",
+      "model:SetupChecklistItem#title",
+      "model:SetupChecklistItem#subtitle",
+      "model:SetupChecklistItem#status",
+      "model:SetupChecklistItem#fieldValue",
+      "model:SetupChecklistItem#legalRef",
+      "model:SetupChecklistItem#lastUpdated",
+      "model:SetupChecklistItem#createdAt",
+      "model:SetupChecklistItem#updatedAt",
+      "model:ViennaDistrict#id",
+      "model:ViennaDistrict#districtCode",
+      "model:ViennaDistrict#districtName",
+      "model:ViennaDistrict#districtNumber",
+      "model:ViennaDistrict#zone",
+      "model:ViennaDistrict#leadTimeHours",
+      "model:ViennaDistrict#createdAt",
+      "model:ViennaDistrict#updatedAt",
+      "model:ViennaDistrict#quoteRequests"
+    ],
+    "field_tokens": [
+      "field:AccountUser.id",
+      "field:AccountUser.email",
+      "field:AccountUser.passwordHash",
+      "field:AccountUser.role",
+      "field:AccountUser.fullName",
+      "field:AccountUser.phone",
+      "field:AccountUser.createdAt",
+      "field:AccountUser.updatedAt",
+      "field:AccountUser.quoteRequests",
+      "field:FaqItem.id",
+      "field:FaqItem.category",
+      "field:FaqItem.questionDe",
+      "field:FaqItem.questionEn",
+      "field:FaqItem.questionRu",
+      "field:FaqItem.answerDe",
+      "field:FaqItem.answerEn",
+      "field:FaqItem.answerRu",
+      "field:FaqItem.displayOrder",
+      "field:FaqItem.createdAt",
+      "field:FaqItem.updatedAt",
+      "field:QuoteRequest.id",
+      "field:QuoteRequest.trackingCode",
+      "field:QuoteRequest.customerId",
+      "field:QuoteRequest.customer",
+      "field:QuoteRequest.clientName",
+      "field:QuoteRequest.clientPhone",
+      "field:QuoteRequest.clientEmail",
+      "field:QuoteRequest.serviceCategoryId",
+      "field:QuoteRequest.serviceCategory",
+      "field:QuoteRequest.districtId",
+      "field:QuoteRequest.district",
+      "field:QuoteRequest.addressSnippet",
+      "field:QuoteRequest.taskTitle",
+      "field:QuoteRequest.taskDescription",
+      "field:QuoteRequest.estimatedHours",
+      "field:QuoteRequest.estimatedBudgetEur",
+      "field:QuoteRequest.preferredDate",
+      "field:QuoteRequest.preferredTimeSlot",
+      "field:QuoteRequest.hasMaterials",
+      "field:QuoteRequest.agreedToTerms",
+      "field:QuoteRequest.submissionLang",
+      "field:QuoteRequest.isUrgent",
+      "field:QuoteRequest.status",
+      "field:QuoteRequest.createdAtFormatted",
+      "field:QuoteRequest.scopeNotes",
+      "field:QuoteRequest.createdAt",
+      "field:QuoteRequest.updatedAt",
+      "field:ServiceCategory.id",
+      "field:ServiceCategory.key",
+      "field:ServiceCategory.titleDe",
+      "field:ServiceCategory.titleEn",
+      "field:ServiceCategory.titleRu",
+      "field:ServiceCategory.baselineHourlyRate",
+      "field:ServiceCategory.typicalRangeEur",
+      "field:ServiceCategory.craftClassification",
+      "field:ServiceCategory.leadArtisan",
+      "field:ServiceCategory.isFeatured",
+      "field:ServiceCategory.descriptionDe",
+      "field:ServiceCategory.descriptionEn",
+      "field:ServiceCategory.descriptionRu",
+      "field:ServiceCategory.imageUrl",
+      "field:ServiceCategory.iconName",
+      "field:ServiceCategory.displayOrder",
+      "field:ServiceCategory.createdAt",
+      "field:ServiceCategory.updatedAt",
+      "field:ServiceCategory.quoteRequests",
+      "field:SetupChecklistItem.id",
+      "field:SetupChecklistItem.itemKey",
+      "field:SetupChecklistItem.title",
+      "field:SetupChecklistItem.subtitle",
+      "field:SetupChecklistItem.status",
+      "field:SetupChecklistItem.fieldValue",
+      "field:SetupChecklistItem.legalRef",
+      "field:SetupChecklistItem.lastUpdated",
+      "field:SetupChecklistItem.createdAt",
+      "field:SetupChecklistItem.updatedAt",
+      "field:ViennaDistrict.id",
+      "field:ViennaDistrict.districtCode",
+      "field:ViennaDistrict.districtName",
+      "field:ViennaDistrict.districtNumber",
+      "field:ViennaDistrict.zone",
+      "field:ViennaDistrict.leadTimeHours",
+      "field:ViennaDistrict.createdAt",
+      "field:ViennaDistrict.updatedAt",
+      "field:ViennaDistrict.quoteRequests"
+    ],
+    "routes": [
+      "route:AdminCategoriesRates",
+      "route:AdminComplianceChecklist",
+      "route:AdminLogin",
+      "route:AdminOperationsDashboard",
+      "route:AdminQuoteDetail",
+      "route:AdminRegister",
+      "route:CustomerInquiryTracker",
+      "route:CustomerLogin",
+      "route:CustomerRegister",
+      "route:HomeFrontend",
+      "route:PricingScope",
+      "route:QuoteRequestForm",
+      "route:ServiceAreas",
+      "route:ServiceCategoryDetail",
+      "route:ServicesCatalog"
+    ],
+    "route_params": [
+      "route:AdminQuoteDetail#quoteRequestId",
+      "route:QuoteRequestForm#categoryKey",
+      "route:ServiceCategoryDetail#categoryKey"
+    ],
+    "files": [
+      "file:app/(backend)/admincategoriesrates/page.tsx",
+      "file:app/(backend)/admincompliancechecklist/page.tsx",
+      "file:app/(backend)/adminlogin/page.tsx",
+      "file:app/(backend)/adminoperationsdashboard/page.tsx",
+      "file:app/(backend)/adminquotedetail/page.tsx",
+      "file:app/(backend)/adminregister/page.tsx",
+      "file:app/(frontend)/customerinquirytracker/page.tsx",
+      "file:app/(frontend)/customerlogin/page.tsx",
+      "file:app/(frontend)/customerregister/page.tsx",
+      "file:app/(frontend)/pricingscope/page.tsx",
+      "file:app/(frontend)/quoterequestform/page.tsx",
+      "file:app/(frontend)/serviceareas/page.tsx",
+      "file:app/(frontend)/servicecategorydetail/page.tsx",
+      "file:app/(frontend)/servicescatalog/page.tsx",
+      "file:lib/rpc-generated/src/backend/actions/AdminCategoriesRates.ts",
+      "file:lib/rpc-generated/src/backend/actions/AdminComplianceChecklist.ts",
+      "file:lib/rpc-generated/src/backend/actions/AdminLogin.ts",
+      "file:lib/rpc-generated/src/backend/actions/AdminOperationsDashboard.ts",
+      "file:lib/rpc-generated/src/backend/actions/AdminQuoteDetail.ts",
+      "file:lib/rpc-generated/src/backend/actions/AdminRegister.ts",
+      "file:lib/rpc-generated/src/frontend/actions/CustomerInquiryTracker.ts",
+      "file:lib/rpc-generated/src/frontend/actions/CustomerLogin.ts",
+      "file:lib/rpc-generated/src/frontend/actions/CustomerRegister.ts",
+      "file:lib/rpc-generated/src/frontend/actions/HomeFrontend.ts",
+      "file:lib/rpc-generated/src/frontend/actions/PricingScope.ts",
+      "file:lib/rpc-generated/src/frontend/actions/QuoteRequestForm.ts",
+      "file:lib/rpc-generated/src/frontend/actions/ServiceAreas.ts",
+      "file:lib/rpc-generated/src/frontend/actions/ServiceCategoryDetail.ts",
+      "file:lib/rpc-generated/src/frontend/actions/ServicesCatalog.ts",
+      "file:src/@base/BaseActionFun.ts",
+      "file:src/backend/actions/AdminCategoriesRates.ts",
+      "file:src/backend/actions/AdminComplianceChecklist.ts",
+      "file:src/backend/actions/AdminLogin.ts",
+      "file:src/backend/actions/AdminOperationsDashboard.ts",
+      "file:src/backend/actions/AdminQuoteDetail.ts",
+      "file:src/backend/actions/AdminRegister.ts",
+      "file:src/backend/components/AdminCategoriesRatesView.tsx",
+      "file:src/backend/components/AdminComplianceChecklistView.tsx",
+      "file:src/backend/components/AdminLoginView.tsx",
+      "file:src/backend/components/AdminOperationsDashboardView.tsx",
+      "file:src/backend/components/AdminQuoteDetailView.tsx",
+      "file:src/backend/components/AdminRegisterView.tsx",
+      "file:src/backend/hooks/useAdminCategoriesRates.ts",
+      "file:src/backend/hooks/useAdminComplianceChecklist.ts",
+      "file:src/backend/hooks/useAdminLogin.ts",
+      "file:src/backend/hooks/useAdminOperationsDashboard.ts",
+      "file:src/backend/hooks/useAdminQuoteDetail.ts",
+      "file:src/backend/hooks/useAdminRegister.ts",
+      "file:src/backend/route-params.ts",
+      "file:src/backend/types/AdminCategoriesRates.ts",
+      "file:src/backend/types/AdminComplianceChecklist.ts",
+      "file:src/backend/types/AdminLogin.ts",
+      "file:src/backend/types/AdminOperationsDashboard.ts",
+      "file:src/backend/types/AdminQuoteDetail.ts",
+      "file:src/backend/types/AdminRegister.ts",
+      "file:src/frontend/actions/CustomerInquiryTracker.ts",
+      "file:src/frontend/actions/CustomerLogin.ts",
+      "file:src/frontend/actions/CustomerRegister.ts",
+      "file:src/frontend/actions/HomeFrontend.ts",
+      "file:src/frontend/actions/PricingScope.ts",
+      "file:src/frontend/actions/QuoteRequestForm.ts",
+      "file:src/frontend/actions/ServiceAreas.ts",
+      "file:src/frontend/actions/ServiceCategoryDetail.ts",
+      "file:src/frontend/actions/ServicesCatalog.ts",
+      "file:src/frontend/components/CustomerInquiryTrackerView.tsx",
+      "file:src/frontend/components/CustomerLoginView.tsx",
+      "file:src/frontend/components/CustomerRegisterView.tsx",
+      "file:src/frontend/components/HomeFrontendView.tsx",
+      "file:src/frontend/components/PricingScopeView.tsx",
+      "file:src/frontend/components/QuoteRequestFormView.tsx",
+      "file:src/frontend/components/ServiceAreasView.tsx",
+      "file:src/frontend/components/ServiceCategoryDetailView.tsx",
+      "file:src/frontend/components/ServicesCatalogView.tsx",
+      "file:src/frontend/hooks/useCustomerInquiryTracker.ts",
+      "file:src/frontend/hooks/useCustomerLogin.ts",
+      "file:src/frontend/hooks/useCustomerRegister.ts",
+      "file:src/frontend/hooks/useHomeFrontend.ts",
+      "file:src/frontend/hooks/usePricingScope.ts",
+      "file:src/frontend/hooks/useQuoteRequestForm.ts",
+      "file:src/frontend/hooks/useServiceAreas.ts",
+      "file:src/frontend/hooks/useServiceCategoryDetail.ts",
+      "file:src/frontend/hooks/useServicesCatalog.ts",
+      "file:src/frontend/route-params.ts",
+      "file:src/frontend/types/CustomerInquiryTracker.ts",
+      "file:src/frontend/types/CustomerLogin.ts",
+      "file:src/frontend/types/CustomerRegister.ts",
+      "file:src/frontend/types/HomeFrontend.ts",
+      "file:src/frontend/types/PricingScope.ts",
+      "file:src/frontend/types/QuoteRequestForm.ts",
+      "file:src/frontend/types/ServiceAreas.ts",
+      "file:src/frontend/types/ServiceCategoryDetail.ts",
+      "file:src/frontend/types/ServicesCatalog.ts",
+      "file:src/tools/BackendSession.tsx",
+      "file:src/tools/FrontendSession.tsx"
+    ],
+    "engine_edges": [
+      "l2:import.B01.to.src.base.BaseActionFun.ts",
+      "l2:import.B02.to.src.base.BaseActionFun.ts",
+      "l2:import.B06.to.src.tools.BackendSession.tsx",
+      "l2:import.F06.to.src.tools.FrontendSession.tsx",
+      "l2:import.F09.to.src.tools.FrontendSession.tsx"
+    ],
+    "grounding_aliases": [
+      "evidence:flow.001",
+      "evidence:flow.002.F01.HomeFrontend",
+      "evidence:flow.003.F01.HomeFrontend",
+      "evidence:flow.004.F01.HomeFrontend",
+      "evidence:flow.005.F01.HomeFrontend",
+      "evidence:flow.006.F08.CustomerLogin",
+      "evidence:flow.007.B05.AdminLogin",
+      "evidence:flow.008.F01.HomeFrontend",
+      "evidence:flow.009.F07.CustomerInquiryTracker",
+      "evidence:flow.010.B01.AdminOperationsDashboard",
+      "evidence:flow.011.B01.AdminOperationsDashboard",
+      "evidence:flow.012.B01.AdminOperationsDashboard",
+      "evidence:flow.013.B01.AdminOperationsDashboard",
+      "evidence:rule.001",
+      "evidence:rule.002",
+      "evidence:rule.003",
+      "evidence:rule.004",
+      "evidence:rule.005",
+      "evidence:rule.006",
+      "evidence:rule.007",
+      "evidence:state.001.F01.HomeFrontend"
+    ]
+  },
+  "models": [
+    {
+      "id": "model:AccountUser",
+      "name": "AccountUser",
+      "fields": [
+        {
+          "id": "model:AccountUser#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#email",
+          "name": "email",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#passwordHash",
+          "name": "passwordHash",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#role",
+          "name": "role",
+          "type": "AccountUserRole",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "CUSTOMER",
+            "ADMIN"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#fullName",
+          "name": "fullName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#phone",
+          "name": "phone",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:FaqItem",
+      "name": "FaqItem",
+      "fields": [
+        {
+          "id": "model:FaqItem#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#category",
+          "name": "category",
+          "type": "FaqCategory",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "PRICING",
+            "SCOPE",
+            "SCHEDULING",
+            "MATERIALS"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionDe",
+          "name": "questionDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionEn",
+          "name": "questionEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionRu",
+          "name": "questionRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerDe",
+          "name": "answerDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerEn",
+          "name": "answerEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerRu",
+          "name": "answerRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#displayOrder",
+          "name": "displayOrder",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [],
+      "comment": ""
+    },
+    {
+      "id": "model:QuoteRequest",
+      "name": "QuoteRequest",
+      "fields": [
+        {
+          "id": "model:QuoteRequest#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#trackingCode",
+          "name": "trackingCode",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#customerId",
+          "name": "customerId",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "AccountUser",
+          "enum_values": [],
+          "comment": "FK → AccountUser.id"
+        },
+        {
+          "id": "model:QuoteRequest#customer",
+          "name": "customer",
+          "type": "AccountUser",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "AccountUser",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientName",
+          "name": "clientName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientPhone",
+          "name": "clientPhone",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientEmail",
+          "name": "clientEmail",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#serviceCategoryId",
+          "name": "serviceCategoryId",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "ServiceCategory",
+          "enum_values": [],
+          "comment": "FK → ServiceCategory.id"
+        },
+        {
+          "id": "model:QuoteRequest#serviceCategory",
+          "name": "serviceCategory",
+          "type": "ServiceCategory",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "ServiceCategory",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#districtId",
+          "name": "districtId",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "ViennaDistrict",
+          "enum_values": [],
+          "comment": "FK → ViennaDistrict.id"
+        },
+        {
+          "id": "model:QuoteRequest#district",
+          "name": "district",
+          "type": "ViennaDistrict",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "ViennaDistrict",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#addressSnippet",
+          "name": "addressSnippet",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#taskTitle",
+          "name": "taskTitle",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#taskDescription",
+          "name": "taskDescription",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#estimatedHours",
+          "name": "estimatedHours",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#estimatedBudgetEur",
+          "name": "estimatedBudgetEur",
+          "type": "Decimal",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#preferredDate",
+          "name": "preferredDate",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#preferredTimeSlot",
+          "name": "preferredTimeSlot",
+          "type": "PreferredTimeSlot",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "MORNING",
+            "AFTERNOON",
+            "FLEXIBLE"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#hasMaterials",
+          "name": "hasMaterials",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#agreedToTerms",
+          "name": "agreedToTerms",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#submissionLang",
+          "name": "submissionLang",
+          "type": "SubmissionLanguage",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "DE",
+            "EN",
+            "RU"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#isUrgent",
+          "name": "isUrgent",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#status",
+          "name": "status",
+          "type": "QuoteStatus",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "NEW",
+            "CONTACTED",
+            "ESTIMATE_SENT",
+            "QUOTED",
+            "SCHEDULED",
+            "COMPLETED"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#createdAtFormatted",
+          "name": "createdAtFormatted",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#scopeNotes",
+          "name": "scopeNotes",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:AccountUser",
+        "model:ServiceCategory",
+        "model:ViennaDistrict"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:ServiceCategory",
+      "name": "ServiceCategory",
+      "fields": [
+        {
+          "id": "model:ServiceCategory#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#key",
+          "name": "key",
+          "type": "ServiceCategoryKey",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "ASSEMBLY",
+            "DEMOLITION",
+            "FLOORING",
+            "PAINTING",
+            "DRYWALL",
+            "PLUMBING_MINOR",
+            "BATHROOM_KITCHEN",
+            "DOORS_WINDOWS",
+            "OUTDOOR",
+            "MOVING",
+            "COMMERCIAL"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleDe",
+          "name": "titleDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleEn",
+          "name": "titleEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleRu",
+          "name": "titleRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#baselineHourlyRate",
+          "name": "baselineHourlyRate",
+          "type": "Decimal",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#typicalRangeEur",
+          "name": "typicalRangeEur",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#craftClassification",
+          "name": "craftClassification",
+          "type": "CraftClassification",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "FREIES_HANDWERK",
+            "MEISTER_KOOPERATION"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#leadArtisan",
+          "name": "leadArtisan",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#isFeatured",
+          "name": "isFeatured",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionDe",
+          "name": "descriptionDe",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionEn",
+          "name": "descriptionEn",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionRu",
+          "name": "descriptionRu",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#imageUrl",
+          "name": "imageUrl",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#iconName",
+          "name": "iconName",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#displayOrder",
+          "name": "displayOrder",
+          "type": "Int",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:SetupChecklistItem",
+      "name": "SetupChecklistItem",
+      "fields": [
+        {
+          "id": "model:SetupChecklistItem#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#itemKey",
+          "name": "itemKey",
+          "type": "ChecklistItemKey",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "VAT_UID",
+            "OFFICIAL_CONTACT",
+            "REGISTERED_ADDRESS",
+            "OPERATING_HOURS"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#title",
+          "name": "title",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#subtitle",
+          "name": "subtitle",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#status",
+          "name": "status",
+          "type": "ChecklistStatus",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "PENDING",
+            "IN_REVIEW",
+            "COMPLETED"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#fieldValue",
+          "name": "fieldValue",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#legalRef",
+          "name": "legalRef",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#lastUpdated",
+          "name": "lastUpdated",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [],
+      "comment": ""
+    },
+    {
+      "id": "model:ViennaDistrict",
+      "name": "ViennaDistrict",
+      "fields": [
+        {
+          "id": "model:ViennaDistrict#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtCode",
+          "name": "districtCode",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtName",
+          "name": "districtName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtNumber",
+          "name": "districtNumber",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#zone",
+          "name": "zone",
+          "type": "LogisticsZone",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "INNER_CITY",
+            "CENTRAL",
+            "OUTER_RING",
+            "GREATER_SUBURB"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#leadTimeHours",
+          "name": "leadTimeHours",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "app/(backend)/admincategoriesrates/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/admincompliancechecklist/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminlogin/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminoperationsdashboard/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminquotedetail/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminregister/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerinquirytracker/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerlogin/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerregister/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/pricingscope/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/quoterequestform/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/serviceareas/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/servicecategorydetail/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/servicescatalog/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminCategoriesRates.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminComplianceChecklist.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminLogin.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminOperationsDashboard.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminQuoteDetail.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminRegister.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerInquiryTracker.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerLogin.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerRegister.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/HomeFrontend.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/PricingScope.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/QuoteRequestForm.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServiceAreas.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServiceCategoryDetail.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServicesCatalog.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "src/@base/BaseActionFun.ts",
+      "kind": "component_import",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminCategoriesRates.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminComplianceChecklist.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminLogin.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminOperationsDashboard.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminQuoteDetail.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminRegister.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminCategoriesRatesView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminComplianceChecklistView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminLoginView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminOperationsDashboardView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminQuoteDetailView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminRegisterView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminCategoriesRates.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminComplianceChecklist.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminLogin.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminOperationsDashboard.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminQuoteDetail.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminRegister.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/route-params.ts",
+      "kind": "route_params",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminCategoriesRates.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminComplianceChecklist.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminLogin.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminOperationsDashboard.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminQuoteDetail.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminRegister.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerInquiryTracker.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerLogin.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerRegister.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/HomeFrontend.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/PricingScope.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/QuoteRequestForm.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServiceAreas.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServiceCategoryDetail.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServicesCatalog.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerInquiryTrackerView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerLoginView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerRegisterView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/HomeFrontendView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/PricingScopeView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/QuoteRequestFormView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServiceAreasView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServiceCategoryDetailView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServicesCatalogView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerInquiryTracker.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerLogin.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerRegister.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useHomeFrontend.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/usePricingScope.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useQuoteRequestForm.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServiceAreas.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServiceCategoryDetail.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServicesCatalog.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/route-params.ts",
+      "kind": "route_params",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerInquiryTracker.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerLogin.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerRegister.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/HomeFrontend.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/PricingScope.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/QuoteRequestForm.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServiceAreas.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServiceCategoryDetail.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServicesCatalog.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/tools/BackendSession.tsx",
+      "kind": "shared_import",
+      "exists": true
+    },
+    {
+      "path": "src/tools/FrontendSession.tsx",
+      "kind": "shared_import",
+      "exists": true
+    }
+  ],
+  "infrastructure": [
+    {
+      "capability": "auth-guard-action",
+      "path": "src/backend/action_utils.ts",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-action",
+      "path": "src/frontend/action_utils.ts",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/AppAuthGuard.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/BackendAuthGuard.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/FrontendAuthGuard.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/app/auth/rpc-auth.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/backend/auth/rpc-auth.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/frontend/auth/rpc-auth.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/backend/Sidebar.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/frontend/Footer.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/frontend/Navigation.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "route-registry",
+      "path": "src/backend/route-params.ts",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "route-registry",
+      "path": "src/frontend/route-params.ts",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/AppSession.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/BackendSession.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/FrontendSession.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/ai-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/ai/openai-compat.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/AuthState.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/google.route.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/google.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/index.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/common.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/context.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/index.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/alipay.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/amount.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/clink.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/nowpayments.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/stripe.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/secret-resolver.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-types",
+      "path": "src/types/thirdparty.d.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    }
+  ],
+  "symbols": [],
+  "interfaces": [],
+  "routes": [
+    {
+      "id": "route:AdminCategoriesRates",
+      "name": "AdminCategoriesRates",
+      "page_ref": "page:B03",
+      "platform": "backend",
+      "path": "/admincategoriesrates",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminComplianceChecklist",
+      "name": "AdminComplianceChecklist",
+      "page_ref": "page:B04",
+      "platform": "backend",
+      "path": "/admincompliancechecklist",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminLogin",
+      "name": "AdminLogin",
+      "page_ref": "page:B05",
+      "platform": "backend",
+      "path": "/adminlogin",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminOperationsDashboard",
+      "name": "AdminOperationsDashboard",
+      "page_ref": "page:B01",
+      "platform": "backend",
+      "path": "/adminoperationsdashboard",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminQuoteDetail",
+      "name": "AdminQuoteDetail",
+      "page_ref": "page:B02",
+      "platform": "backend",
+      "path": "/adminquotedetail",
+      "params": [
+        {
+          "id": "route:AdminQuoteDetail#quoteRequestId",
+          "name": "quoteRequestId",
+          "source_table": "QuoteRequest",
+          "source_column": "id",
+          "description": "来自 QuoteRequest 表的主键 id，非 trackingCode 或 customerId",
+          "token": "field:QuoteRequest.id"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [
+            "quoteRequestId"
+          ],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToDetail",
+          "params": [
+            "quoteRequestId"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminRegister",
+      "name": "AdminRegister",
+      "page_ref": "page:B06",
+      "platform": "backend",
+      "path": "/adminregister",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerInquiryTracker",
+      "name": "CustomerInquiryTracker",
+      "page_ref": "page:F07",
+      "platform": "frontend",
+      "path": "/customerinquirytracker",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerLogin",
+      "name": "CustomerLogin",
+      "page_ref": "page:F08",
+      "platform": "frontend",
+      "path": "/customerlogin",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerRegister",
+      "name": "CustomerRegister",
+      "page_ref": "page:F09",
+      "platform": "frontend",
+      "path": "/customerregister",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:HomeFrontend",
+      "name": "HomeFrontend",
+      "page_ref": "page:F01",
+      "platform": "frontend",
+      "path": "/",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:PricingScope",
+      "name": "PricingScope",
+      "page_ref": "page:F04",
+      "platform": "frontend",
+      "path": "/pricingscope",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:QuoteRequestForm",
+      "name": "QuoteRequestForm",
+      "page_ref": "page:F06",
+      "platform": "frontend",
+      "path": "/quoterequestform",
+      "params": [
+        {
+          "id": "route:QuoteRequestForm#categoryKey",
+          "name": "categoryKey",
+          "source_table": "ServiceCategory",
+          "source_column": "key",
+          "description": "来自 ServiceCategory 表的唯一标识 key (ServiceCategoryKey)，非主键 uuid，用于表单预选分类",
+          "token": "field:ServiceCategory.key"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToWithCategory",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServiceAreas",
+      "name": "ServiceAreas",
+      "page_ref": "page:F05",
+      "platform": "frontend",
+      "path": "/serviceareas",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServiceCategoryDetail",
+      "name": "ServiceCategoryDetail",
+      "page_ref": "page:F03",
+      "platform": "frontend",
+      "path": "/servicecategorydetail",
+      "params": [
+        {
+          "id": "route:ServiceCategoryDetail#categoryKey",
+          "name": "categoryKey",
+          "source_table": "ServiceCategory",
+          "source_column": "key",
+          "description": "来自 ServiceCategory 表的唯一标识 key (ServiceCategoryKey)，非主键 uuid，用于分类识别",
+          "token": "field:ServiceCategory.key"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToCategory",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServicesCatalog",
+      "name": "ServicesCatalog",
+      "page_ref": "page:F02",
+      "platform": "frontend",
+      "path": "/servicescatalog",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    }
+  ],
+  "page_files": [
+    {
+      "page": "page:F01",
+      "files": {
+        "source_action": "src/frontend/actions/HomeFrontend.ts",
+        "hook": "src/frontend/hooks/useHomeFrontend.ts",
+        "view": "src/frontend/components/HomeFrontendView.tsx",
+        "types": "src/frontend/types/HomeFrontend.ts",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/HomeFrontend.ts"
+      }
+    },
+    {
+      "page": "page:F02",
+      "files": {
+        "source_action": "src/frontend/actions/ServicesCatalog.ts",
+        "hook": "src/frontend/hooks/useServicesCatalog.ts",
+        "view": "src/frontend/components/ServicesCatalogView.tsx",
+        "types": "src/frontend/types/ServicesCatalog.ts",
+        "page_entry": "app/(frontend)/servicescatalog/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServicesCatalog.ts"
+      }
+    },
+    {
+      "page": "page:F03",
+      "files": {
+        "source_action": "src/frontend/actions/ServiceCategoryDetail.ts",
+        "hook": "src/frontend/hooks/useServiceCategoryDetail.ts",
+        "view": "src/frontend/components/ServiceCategoryDetailView.tsx",
+        "types": "src/frontend/types/ServiceCategoryDetail.ts",
+        "page_entry": "app/(frontend)/servicecategorydetail/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServiceCategoryDetail.ts"
+      }
+    },
+    {
+      "page": "page:F04",
+      "files": {
+        "source_action": "src/frontend/actions/PricingScope.ts",
+        "hook": "src/frontend/hooks/usePricingScope.ts",
+        "view": "src/frontend/components/PricingScopeView.tsx",
+        "types": "src/frontend/types/PricingScope.ts",
+        "page_entry": "app/(frontend)/pricingscope/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/PricingScope.ts"
+      }
+    },
+    {
+      "page": "page:F05",
+      "files": {
+        "source_action": "src/frontend/actions/ServiceAreas.ts",
+        "hook": "src/frontend/hooks/useServiceAreas.ts",
+        "view": "src/frontend/components/ServiceAreasView.tsx",
+        "types": "src/frontend/types/ServiceAreas.ts",
+        "page_entry": "app/(frontend)/serviceareas/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServiceAreas.ts"
+      }
+    },
+    {
+      "page": "page:F06",
+      "files": {
+        "source_action": "src/frontend/actions/QuoteRequestForm.ts",
+        "hook": "src/frontend/hooks/useQuoteRequestForm.ts",
+        "view": "src/frontend/components/QuoteRequestFormView.tsx",
+        "types": "src/frontend/types/QuoteRequestForm.ts",
+        "page_entry": "app/(frontend)/quoterequestform/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/QuoteRequestForm.ts"
+      }
+    },
+    {
+      "page": "page:F07",
+      "files": {
+        "source_action": "src/frontend/actions/CustomerInquiryTracker.ts",
+        "hook": "src/frontend/hooks/useCustomerInquiryTracker.ts",
+        "view": "src/frontend/components/CustomerInquiryTrackerView.tsx",
+        "types": "src/frontend/types/CustomerInquiryTracker.ts",
+        "page_entry": "app/(frontend)/customerinquirytracker/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerInquiryTracker.ts"
+      }
+    },
+    {
+      "page": "page:F08",
+      "files": {
+        "source_action": "src/frontend/actions/CustomerLogin.ts",
+        "hook": "src/frontend/hooks/useCustomerLogin.ts",
+        "view": "src/frontend/components/CustomerLoginView.tsx",
+        "types": "src/frontend/types/CustomerLogin.ts",
+        "page_entry": "app/(frontend)/customerlogin/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerLogin.ts"
+      }
+    },
+    {
+      "page": "page:F09",
+      "files": {
+        "source_action": "src/frontend/actions/CustomerRegister.ts",
+        "hook": "src/frontend/hooks/useCustomerRegister.ts",
+        "view": "src/frontend/components/CustomerRegisterView.tsx",
+        "types": "src/frontend/types/CustomerRegister.ts",
+        "page_entry": "app/(frontend)/customerregister/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerRegister.ts"
+      }
+    },
+    {
+      "page": "page:B01",
+      "files": {
+        "source_action": "src/backend/actions/AdminOperationsDashboard.ts",
+        "hook": "src/backend/hooks/useAdminOperationsDashboard.ts",
+        "view": "src/backend/components/AdminOperationsDashboardView.tsx",
+        "types": "src/backend/types/AdminOperationsDashboard.ts",
+        "page_entry": "app/(backend)/adminoperationsdashboard/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminOperationsDashboard.ts"
+      }
+    },
+    {
+      "page": "page:B02",
+      "files": {
+        "source_action": "src/backend/actions/AdminQuoteDetail.ts",
+        "hook": "src/backend/hooks/useAdminQuoteDetail.ts",
+        "view": "src/backend/components/AdminQuoteDetailView.tsx",
+        "types": "src/backend/types/AdminQuoteDetail.ts",
+        "page_entry": "app/(backend)/adminquotedetail/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminQuoteDetail.ts"
+      }
+    },
+    {
+      "page": "page:B03",
+      "files": {
+        "source_action": "src/backend/actions/AdminCategoriesRates.ts",
+        "hook": "src/backend/hooks/useAdminCategoriesRates.ts",
+        "view": "src/backend/components/AdminCategoriesRatesView.tsx",
+        "types": "src/backend/types/AdminCategoriesRates.ts",
+        "page_entry": "app/(backend)/admincategoriesrates/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminCategoriesRates.ts"
+      }
+    },
+    {
+      "page": "page:B04",
+      "files": {
+        "source_action": "src/backend/actions/AdminComplianceChecklist.ts",
+        "hook": "src/backend/hooks/useAdminComplianceChecklist.ts",
+        "view": "src/backend/components/AdminComplianceChecklistView.tsx",
+        "types": "src/backend/types/AdminComplianceChecklist.ts",
+        "page_entry": "app/(backend)/admincompliancechecklist/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminComplianceChecklist.ts"
+      }
+    },
+    {
+      "page": "page:B05",
+      "files": {
+        "source_action": "src/backend/actions/AdminLogin.ts",
+        "hook": "src/backend/hooks/useAdminLogin.ts",
+        "view": "src/backend/components/AdminLoginView.tsx",
+        "types": "src/backend/types/AdminLogin.ts",
+        "page_entry": "app/(backend)/adminlogin/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminLogin.ts"
+      }
+    },
+    {
+      "page": "page:B06",
+      "files": {
+        "source_action": "src/backend/actions/AdminRegister.ts",
+        "hook": "src/backend/hooks/useAdminRegister.ts",
+        "view": "src/backend/components/AdminRegisterView.tsx",
+        "types": "src/backend/types/AdminRegister.ts",
+        "page_entry": "app/(backend)/adminregister/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminRegister.ts"
+      }
+    }
+  ],
+  "shared_file_usage": [
+    {
+      "file_ref": "file:src/@base/BaseActionFun.ts",
+      "path": "src/@base/BaseActionFun.ts",
+      "kinds": [
+        "component_import"
+      ],
+      "used_by_pages": [
+        "page:B01",
+        "page:B02"
+      ],
+      "source_files": [
+        "src/backend/actions/AdminOperationsDashboard.ts",
+        "src/backend/actions/AdminQuoteDetail.ts"
+      ]
+    },
+    {
+      "file_ref": "file:src/tools/BackendSession.tsx",
+      "path": "src/tools/BackendSession.tsx",
+      "kinds": [
+        "shared_import"
+      ],
+      "used_by_pages": [
+        "page:B06"
+      ],
+      "source_files": [
+        "app/(backend)/adminregister/page.tsx"
+      ]
+    },
+    {
+      "file_ref": "file:src/tools/FrontendSession.tsx",
+      "path": "src/tools/FrontendSession.tsx",
+      "kinds": [
+        "shared_import"
+      ],
+      "used_by_pages": [
+        "page:F06",
+        "page:F09"
+      ],
+      "source_files": [
+        "app/(frontend)/customerregister/page.tsx",
+        "app/(frontend)/quoterequestform/page.tsx"
+      ]
+    }
+  ],
+  "grounding_aliases": [
+    {
+      "alias": "evidence:flow.001",
+      "raw_index": 0,
+      "kind": "core_flow",
+      "title": "核心功能流程",
+      "source_field": "core_flows",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.002.F01.HomeFrontend",
+      "raw_index": 1,
+      "kind": "core_flow",
+      "title": "Browse Service Catalog",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F02",
+        "page:F03"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.003.F01.HomeFrontend",
+      "raw_index": 2,
+      "kind": "core_flow",
+      "title": "View Pricing and Legal Scope",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F04"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.004.F01.HomeFrontend",
+      "raw_index": 3,
+      "kind": "core_flow",
+      "title": "View Service Areas",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F05"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.005.F01.HomeFrontend",
+      "raw_index": 4,
+      "kind": "core_flow",
+      "title": "Browse FAQs and Company Information",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F04"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.006.F08.CustomerLogin",
+      "raw_index": 5,
+      "kind": "core_flow",
+      "title": "Customer Account Authentication",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F08",
+        "page:F09"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.007.B05.AdminLogin",
+      "raw_index": 6,
+      "kind": "core_flow",
+      "title": "Admin Account Authentication",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B05",
+        "page:B06"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.008.F01.HomeFrontend",
+      "raw_index": 7,
+      "kind": "core_flow",
+      "title": "Submit Quote Request",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F03",
+        "page:F06"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.009.F07.CustomerInquiryTracker",
+      "raw_index": 8,
+      "kind": "core_flow",
+      "title": "Track Customer Quotes",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F07"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.010.B01.AdminOperationsDashboard",
+      "raw_index": 9,
+      "kind": "core_flow",
+      "title": "Manage and Process Quote Requests",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B02"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.011.B01.AdminOperationsDashboard",
+      "raw_index": 10,
+      "kind": "core_flow",
+      "title": "Manage Service Categories and Rates",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B03"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.012.B01.AdminOperationsDashboard",
+      "raw_index": 11,
+      "kind": "core_flow",
+      "title": "Manage Business Compliance Checklist",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B04"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:flow.013.B01.AdminOperationsDashboard",
+      "raw_index": 12,
+      "kind": "core_flow",
+      "title": "View Operations Metrics",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01"
+      ],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.001",
+      "raw_index": 13,
+      "kind": "domain_constraint",
+      "title": "领域业务规则（按实体）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.002",
+      "raw_index": 14,
+      "kind": "domain_constraint",
+      "title": "Account User（account_user）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.003",
+      "raw_index": 15,
+      "kind": "domain_constraint",
+      "title": "Service Category（service_category）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.004",
+      "raw_index": 16,
+      "kind": "domain_constraint",
+      "title": "Vienna District（vienna_district）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.005",
+      "raw_index": 17,
+      "kind": "domain_constraint",
+      "title": "Setup Checklist Item（setup_checklist_item）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.006",
+      "raw_index": 18,
+      "kind": "domain_constraint",
+      "title": "FAQ Item（faq_item）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:rule.007",
+      "raw_index": 19,
+      "kind": "domain_constraint",
+      "title": "Quote Request（quote_request）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "alias": "evidence:state.001.F01.HomeFrontend",
+      "raw_index": 20,
+      "kind": "status_transition",
+      "title": "[{\"entity\": \"quote_request\", \"transitions\": [{\"field\": \"status\", \"from\": \"__create__\", \"to\": \"NEW\", \"action\": \"Client su",
+      "source_field": "status_transition",
+      "page_refs": [
+        "page:F01",
+        "page:F06",
+        "page:B01"
+      ],
+      "model_refs": []
+    }
+  ],
+  "brief_stats": {
+    "implementation_map_chars": 3680,
+    "requirements_brief_chars": 16809,
+    "requirements_chunks": 21
+  },
+  "brief_omitted": []
+}

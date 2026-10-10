@@ -1,0 +1,3367 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-10-10T13:03:36.546499Z",
+  "project": {
+    "project_id": "PROJ_b23df7b6",
+    "root": "/root/code/generated/PROJ_b23df7b6_snap_20261010_124454_705/aigcode-demo",
+    "platforms": [
+      "backend",
+      "frontend"
+    ],
+    "language": "zh-CN",
+    "generation_chain": null
+  },
+  "pages": [
+    {
+      "id": "page:F01",
+      "page_id": "F01",
+      "en_name": "HomeFrontend",
+      "name": "Handyman Portal",
+      "platform": "frontend",
+      "route_path": "/",
+      "requirement_ref": "req.page.F01",
+      "content": "复刻代码: Hero banner presenting Vienna craftsman and handyman service value proposition, multi-language highlight (German, English, Russian), and rapid call-to-actions to browse service categories or calculate an instant quote estimate. Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Transparent hourly pricing model breakdown showcasing baseline hourly rates starting at 15 EUR/h, typical pricing range indicators, clear material pass-through policies without hidden markups, and billing increments based on Austrian craft standards. Pulls baseline rates and ranges from service_category. Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Core trade catalog showcase listing active service categories across Assembly, Demolition, Flooring, Painting, Drywall, Minor Plumbing, Bathroom/Kitchen, Doors/Windows, Outdoor, Moving, and Commercial Maintenance. Displays multilingual titles (title_de, title_en, title_ru), baseline hourly rate (baseline_hourly_rate), typical range (typical_range_eur), and craft classification (craft_classification). Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Regulatory compliance overview under Austrian Trade Regulation (GewO 1994), clarifying operational boundaries between unregulated free trades (Freies Handwerk) performed directly and licensed regulated trades (Meister-Kooperation) executed in coordination with certified Austrian master craftsmen. References craft_classification across service categories. Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Step-by-step workflow guide illustrating the 4-step execution journey: 1. Submit online inquiry with task scope; 2. Receive transparent price estimate & consultation within 24h; 3. Punctual on-site arrival and skilled artisan execution in Vienna; 4. Final inspection and itemized invoicing. Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Embedded quick quote request form enabling instant submission. Users select service_category and target vienna_district (1010-1230), input task title, description, address snippet, estimated labor hours, preferred execution date, time slot (MORNING, AFTERNOON, FLEXIBLE), material availability toggle (has_materials), urgency toggle (is_urgent), client name, email, phone, and terms consent (agreed_to_terms). Prototype language selection, category filter state, and urgency toggle operate client-side per deviations; form submission persists into backend quote_request with status NEW. Both guest visitors and registered customers share the same view and submission capability (同视图同权), with logged-in customers having contact fields pre-filled from their account.\n复刻代码: Geographic coverage summary displaying Vienna postal districts (1010 through 1230) grouped by urban logistics zone (INNER_CITY, CENTRAL, OUTER_RING, GREATER_SUBURB) alongside standard dispatch response windows (lead_time_hours). Both guest visitors and logged-in customers share the same view and permissions (同视图同权).\n复刻代码: Interactive accordion of pre-seeded frequently asked questions categorized by PRICING, SCOPE, SCHEDULING, and MATERIALS. Displays localized questions and answers (question_de, question_en, question_ru, answer_de, answer_en, answer_ru) ordered by display_order. Both guest visitors and logged-in customers share the same view and permissions (同视图同权).",
+      "key_interactions": "Submit inquiry form creating a new quote_request record with status NEW, setting client contact information (client_name, client_phone, client_email), selected service_category, vienna_district, address_snippet, task_title, task_description, estimated_hours, calculated estimated_budget_eur, preferred_date, preferred_time_slot, has_materials, agreed_to_terms, submission_lang, and is_urgent flag. Generates tracking_code and links customer account if authenticated.\nClick 'View all handyman services' button to open the full handyman trade catalog. → [F02]\nClick on an individual service category card to inspect specific trade scope and pricing details. → [F03]\nClick 'Request quote for selected job' to open the dedicated quote request form with the selected category pre-filled. → [F06]",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser",
+          "FaqItem",
+          "QuoteRequest",
+          "ServiceCategory",
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/HomeFrontend.ts",
+        "hook": "src/frontend/hooks/useHomeFrontend.ts",
+        "view": "src/frontend/components/HomeFrontendView.tsx",
+        "types": "src/frontend/types/HomeFrontend.ts",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/HomeFrontend.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.002.F01.HomeFrontend",
+        "evidence:flow.003.F01.HomeFrontend",
+        "evidence:flow.004.F01.HomeFrontend",
+        "evidence:flow.005.F01.HomeFrontend",
+        "evidence:flow.008.F01.HomeFrontend",
+        "evidence:state.001.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F02",
+      "page_id": "F02",
+      "en_name": "ServicesCatalog",
+      "name": "All Services Catalog",
+      "platform": "frontend",
+      "route_path": "/servicescatalog",
+      "requirement_ref": "req.page.F02",
+      "content": "Role visibility statement: Guest visitors and Registered Customers share identical catalog viewing rights and search capabilities without role-based restrictions. Filter and search controls allow filtering trades by Austrian craft classification (FREIES_HANDWERK vs MEISTER_KOOPERATION) and keyword searching across German, English, and Russian titles.\nComprehensive catalog presenting all handyman trade categories (Assembly, Demolition, Flooring, Painting, Drywall, Minor Plumbing, Bathroom/Kitchen, Doors/Windows, Outdoor, Moving, Commercial Maintenance). Each entry presents localized titles (title_de, title_en, title_ru), craft classification under Austrian GewO 1994, transparent starting hourly rate (baseline_hourly_rate >= 15 EUR/h), typical hourly range (typical_range_eur), lead artisan assignment, and a featured badge if marked featured.",
+      "key_interactions": "Filter service categories by craft classification (Freies Handwerk / Meister-Kooperation) or search by trade keywords in German, English, or Russian, updating the catalog display in place.\nSelect a specific service category to inspect trade scope, permitted Austrian tasks under GewO 1994, and direct price estimation, navigating to the Category Detail page with categoryKey. → [F03]",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "ServiceCategory"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/ServicesCatalog.ts",
+        "hook": "src/frontend/hooks/useServicesCatalog.ts",
+        "view": "src/frontend/components/ServicesCatalogView.tsx",
+        "types": "src/frontend/types/ServicesCatalog.ts",
+        "page_entry": "app/(frontend)/servicescatalog/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServicesCatalog.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.002.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F03",
+      "page_id": "F03",
+      "en_name": "ServiceCategoryDetail",
+      "name": "Service Category Detail",
+      "platform": "frontend",
+      "route_path": "/servicecategorydetail",
+      "requirement_ref": "req.page.F03",
+      "content": "Multilingual trade header presenting the official trade category title in German (title_de), English (title_en), and Russian (title_ru) for the category specified by route parameter categoryKey. Displays the Austrian trade compliance badge indicating craft_classification (FREIES_HANDWERK for unregulated handyman assembly vs MEISTER_KOOPERATION for licensed master trades) according to GewO 1994, is_featured highlight status, and designated lead_artisan partner team. Both Guest Visitor and Registered Customer share identical view and access permissions.\nTransparent hourly pricing schedule showing baseline_hourly_rate (anchored at or above 15 EUR per hour) and typical_range_eur for standard residential and commercial repair tasks. Details labor billing principles, minimum work unit increments, travel cost calculation within Vienna, and material reimbursement terms. Both Guest Visitor and Registered Customer share identical view and access permissions.\nDetailed trade operational scope defining permitted handyman activities under Austrian trade licensing (GewO 1994). Details the legal boundaries of assembly, furniture mounting, surface refurbishment, minor repairs, and distinguishes tasks subcontracted to certified Meister partner firms. Both Guest Visitor and Registered Customer share identical view and access permissions.\nDirect quote inquiry prompt displaying summary information for the selected service category, expected response SLA, and direct transition to initialize a tailored quote request pre-configured with this category. Both Guest Visitor and Registered Customer share identical view and access permissions.",
+      "key_interactions": "Toggle localized title and trade scope preview between German (title_de), English (title_en), and Russian (title_ru).\nInitiate formal quote request pre-filling the current trade category into the dedicated quote form. → [F06]",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {
+        "categoryKey=xxx": "service_category"
+      },
+      "truth_model_refs": {
+        "page_data_from": [
+          "ServiceCategory"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/ServiceCategoryDetail.ts",
+        "hook": "src/frontend/hooks/useServiceCategoryDetail.ts",
+        "view": "src/frontend/components/ServiceCategoryDetailView.tsx",
+        "types": "src/frontend/types/ServiceCategoryDetail.ts",
+        "page_entry": "app/(frontend)/servicecategorydetail/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServiceCategoryDetail.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.002.F01.HomeFrontend",
+        "evidence:flow.008.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F04",
+      "page_id": "F04",
+      "en_name": "PricingScope",
+      "name": "Pricing and Legal Scope",
+      "platform": "frontend",
+      "route_path": "/pricingscope",
+      "requirement_ref": "req.page.F04",
+      "content": "Comprehensive overview of Vienna Handwerk's transparent hourly pricing model. Articulates the starting baseline threshold of 15 EUR per hour across basic trade categories, minimum initial booking durations, clear travel flat rates across Vienna municipal districts (Bezirke 1-23) and surrounding Lower Austria areas, and strict zero-hidden-fee guarantees. Explains material reimbursement transparency, stating that all construction, plumbing, and electrical materials are passed through at net supplier invoice cost without markups. Both Guest Visitors and Registered Customers share identical visibility and read access to all baseline pricing rules without differential restrictions.\nComplete catalog of all handyman service categories (service_category) showing localized titles (title_de, title_en, title_ru), starting hourly rates (baseline_hourly_rate), typical real-world price ranges (typical_range_eur), and legal trade classification (craft_classification: FREIES_HANDWERK vs MEISTER_KOOPERATION). Supports interactive language toggling among German, English, and Russian, as well as filtering by trade category key (ASSEMBLY, DEMOLITION, FLOORING, PAINTING, DRYWALL, PLUMBING_MINOR, BATHROOM_KITCHEN, DOORS_WINDOWS, OUTDOOR, MOVING, COMMERCIAL). Guest Visitors and Registered Customers view identical category rates and trade classifications.\nStatutory compliance disclosure under the Austrian Trade Act (Gewerbeordnung 1994 - GewO). Clearly demarcates the scope of unrestricted trades (Freies Gewerbe: furniture assembly, minor drywall partitioning, surface demolition, interior painting, minor non-pressurized sanitary fixture swaps) performed directly by in-house craftsmen, versus regulated trades (Reglementiertes Gewerbe / Meister-Kooperation: electrical mains installation, gas piping, structural plumbing, structural wall modifications) executed exclusively through certified Austrian Meisterbetrieb partner firms. Both Guest Visitors and Registered Customers access identical regulatory scope definitions to ensure full legal transparency before ordering.\nFrequently asked questions catalog sourced from pre-seeded master records (faq_item), categorized across PRICING, SCOPE, SCHEDULING, and MATERIALS. Displays localized questions (question_de, question_en, question_ru) and detailed answers (answer_de, answer_en, answer_ru) ordered by display_order. Addresses client inquiries regarding VAT invoicing, weekend emergency surcharges, customer-provided materials vs artisan procurement, parking permits in Vienna short-term parking zones (Kurzparkzonen), and trade liability insurance. Publicly readable by both Guest Visitors and Registered Customers alike.",
+      "key_interactions": "Toggle the active display language between German, English, and Russian to dynamically update category titles (title_de, title_en, title_ru) and FAQ questions/answers (question_de/en/ru, answer_de/en/ru).\nFilter the service category catalog by Austrian craft classification (All Trades, Freies Handwerk, Meister-Kooperation) to compare hourly price ranges and trade compliance conditions.\nFilter the frequently asked questions knowledge base by thematic category (PRICING, SCOPE, SCHEDULING, MATERIALS) to view specific operational answers.",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "FaqItem",
+          "ServiceCategory"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/PricingScope.ts",
+        "hook": "src/frontend/hooks/usePricingScope.ts",
+        "view": "src/frontend/components/PricingScopeView.tsx",
+        "types": "src/frontend/types/PricingScope.ts",
+        "page_entry": "app/(frontend)/pricingscope/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/PricingScope.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.003.F01.HomeFrontend",
+        "evidence:flow.005.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F05",
+      "page_id": "F05",
+      "en_name": "ServiceAreas",
+      "name": "Vienna Service Areas",
+      "platform": "frontend",
+      "route_path": "/serviceareas",
+      "requirement_ref": "req.page.F05",
+      "content": "Role visibility statement: Guest visitors and Registered Customers have identical view and permissions across all Vienna logistics zones and district coverage information. Overview section detailing the four urban logistics zones (Inner City, Central, Outer Ring, Greater Suburb) across Vienna postal districts 1010 through 1230, dispatch response standards, and regional logistics policies.\nDistrict coverage directory listing all 23 Vienna municipal districts from 1010 Innere Stadt to 1230 Liesing. For each district, displays official postal district code (1010-1230), official Vienna district name, district number index (1-23), urban logistics zone classification badge, and guaranteed standard dispatch lead time in hours. Includes zone filtering and district search.",
+      "key_interactions": "Filter district listings by urban logistics zone (INNER_CITY, CENTRAL, OUTER_RING, GREATER_SUBURB) to inspect arrival lead times and response windows across municipal sectors.\nSearch districts by postal district code (1010-1230) or district designation name to verify local coverage and standard response hours in place.",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/ServiceAreas.ts",
+        "hook": "src/frontend/hooks/useServiceAreas.ts",
+        "view": "src/frontend/components/ServiceAreasView.tsx",
+        "types": "src/frontend/types/ServiceAreas.ts",
+        "page_entry": "app/(frontend)/serviceareas/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/ServiceAreas.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.004.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F06",
+      "page_id": "F06",
+      "en_name": "QuoteRequestForm",
+      "name": "Dedicated Quote Request",
+      "platform": "frontend",
+      "route_path": "/quoterequestform",
+      "requirement_ref": "req.page.F06",
+      "content": "Interactive trade category selection showing all available service categories retrieved from service_category. Pre-selects the category corresponding to optional route parameter categoryKey if provided. Displays localized trade titles (title_de, title_en, title_ru), craft_classification (FREIES_HANDWERK / MEISTER_KOOPERATION), baseline_hourly_rate, and typical_range_eur. Visible to both Guest Visitor and Registered Customer.\nVienna district selector displaying official municipal postal districts 1010 through 1230 from vienna_district. Shows district_number, district_name, urban logistics zone (INNER_CITY, CENTRAL, OUTER_RING, GREATER_SUBURB), and standard dispatch lead_time_hours. Captures client address_snippet including street, building, stair, and apartment number. Visible to both Guest Visitor and Registered Customer.\nTask specification and labor calculation panel capturing task_title, comprehensive task_description (including Altbau masonry, ceiling height, and surface condition), estimated_hours, has_materials toggle (whether client purchased materials or requires procurement), and is_urgent inflow indicator. Computes estimated_budget_eur dynamically by multiplying estimated_hours with the selected service_category baseline_hourly_rate. Visible to both Guest Visitor and Registered Customer.\nExecution scheduling and contact information panel capturing preferred_date, preferred_time_slot (MORNING, AFTERNOON, FLEXIBLE), submission_lang (DE, EN, RU), client_name, client_phone, client_email, and agreed_to_terms consent checkbox. For Registered Customer, client contact fields are pre-populated from the active authenticated account and the submitted quote is linked to their account_user reference; for Guest Visitor, contact details are provided manually with no login required.\nSummary review displaying calculated estimated_budget_eur, baseline hourly rate reference, urban logistics dispatch window based on district lead_time_hours, and Austrian GewO compliance acknowledgment. Visible to both Guest Visitor and Registered Customer.",
+      "key_interactions": "Select or change active service_category, dynamically updating baseline hourly rate and updating craft classification compliance notice.\nSelect Vienna postal district from vienna_district, refreshing urban logistics zone and expected lead time hours.\nUpdate estimated_hours labor duration, recalculating estimated_budget_eur dynamically against the selected trade baseline hourly rate.\nSubmit quote inquiry creating a new quote_request record with status NEW, generating unique human-readable tracking_code (e.g. VIE-2025-0841), persisting client contact details (client_name, client_phone, client_email), address_snippet, task_title, task_description, estimated_hours, estimated_budget_eur, preferred_date, preferred_time_slot, has_materials, agreed_to_terms, submission_lang, is_urgent, and linking service_category and district. If submitted by Registered Customer, associates customer account_user reference; if Guest Visitor, customer reference remains unassigned. Displays inline confirmation with tracking code.",
+      "auth_requirements": "GUEST,CUSTOMER",
+      "route_params": [],
+      "page_params": {
+        "categoryKey=xxx": "service_category"
+      },
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser",
+          "QuoteRequest",
+          "ServiceCategory",
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/QuoteRequestForm.ts",
+        "hook": "src/frontend/hooks/useQuoteRequestForm.ts",
+        "view": "src/frontend/components/QuoteRequestFormView.tsx",
+        "types": "src/frontend/types/QuoteRequestForm.ts",
+        "page_entry": "app/(frontend)/quoterequestform/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/QuoteRequestForm.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.008.F01.HomeFrontend",
+        "evidence:state.001.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:F07",
+      "page_id": "F07",
+      "en_name": "CustomerInquiryTracker",
+      "name": "Customer Quotes Tracking",
+      "platform": "frontend",
+      "route_path": "/customerinquirytracker",
+      "requirement_ref": "req.page.F07",
+      "content": "Overview metric cards displaying customer inquiry statistics filtered by the authenticated customer account (customer = current_user): total submitted inquiries, active inquiries in review/estimate phase (status in NEW, CONTACTED, ESTIMATE_SENT), booked and in-progress jobs (status in QUOTED, SCHEDULED), and successfully completed work orders (status = COMPLETED).\nCustomer toolbar providing search by tracking code (tracking_code) or task headline (task_title), and lifecycle status filter tabs (All, New, Contacted, Estimate Sent, Quoted, Scheduled, Completed). Enables sorting by submission date and urgency.\nPrimary tracking list displaying personal quote requests owned by the authenticated customer. Each quote record displays tracking_code, task_title, associated service_category title, vienna_district code and name, execution schedule (preferred_date, preferred_time_slot), estimated_hours, estimated_budget_eur, material status (has_materials), urgency flag (is_urgent), and real-time lifecycle status badge (NEW, CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, COMPLETED).\nDetailed inspection panel displaying full information for a selected quote request: complete task description (task_description), Vienna street address (address_snippet), contact details (client_name, client_phone, client_email), submission language (submission_lang), terms agreement status (agreed_to_terms), and status milestone progress tracking across the full fulfillment cycle.",
+      "key_interactions": "Filter quote inquiries by lifecycle status (NEW, CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, COMPLETED) to inspect active, in-progress, or finalized handyman jobs.\nSearch quote inquiries by tracking code (e.g. VIE-2025-0841) or task keywords to quickly locate a specific inquiry.\nSelect a quote request from the list to display its comprehensive task description, address snippet, estimated budget, and stage progression in the detail inspector panel.",
+      "auth_requirements": "CUSTOMER",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "QuoteRequest",
+          "ServiceCategory",
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/CustomerInquiryTracker.ts",
+        "hook": "src/frontend/hooks/useCustomerInquiryTracker.ts",
+        "view": "src/frontend/components/CustomerInquiryTrackerView.tsx",
+        "types": "src/frontend/types/CustomerInquiryTracker.ts",
+        "page_entry": "app/(frontend)/customerinquirytracker/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerInquiryTracker.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.009.F07.CustomerInquiryTracker"
+      ]
+    },
+    {
+      "id": "page:F08",
+      "page_id": "F08",
+      "en_name": "CustomerLogin",
+      "name": "Customer Login",
+      "platform": "frontend",
+      "route_path": "/customerlogin",
+      "requirement_ref": "req.page.F08",
+      "content": "Introductory brand and access guidance section for Vienna Handwerk customer account holders. Explains that registered homeowners, tenants, and business clients can authenticate to review their active quote inquiries, inspect incoming estimates, and track scheduled handyman visits across all Vienna postal districts (1010-1230).\nSecure authentication credential form for registered customer accounts. Contains input fields for primary login identifier (email) and password (verified against password_hash on account_user). Displays inline validation notices and credential failure feedback. Because this frontend portal authentication exclusively serves the Registered Customer role, no role selector dropdown is shown (role is fixed to CUSTOMER; operations administrators authenticate through the backoffice operations portal).\nRegistration call-to-action panel for first-time Vienna clients. Highlights benefits of creating a customer account, including consolidated tracking for multiple apartment repairs, instant estimate notifications, and direct inquiry history. Provides navigation link to the Customer Registration page.",
+      "key_interactions": "Customer inputs registered email and password credentials and submits the login form. Upon successful stateless JWT verification against account_user, the platform initializes the customer session and navigates to the Handyman Portal (F01) to access personalized quote tracking. → [F01]\nCustomer clicks the registration link to navigate to the customer registration page (F09) to set up a new customer account. → [F09]",
+      "auth_requirements": "",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/CustomerLogin.ts",
+        "hook": "src/frontend/hooks/useCustomerLogin.ts",
+        "view": "src/frontend/components/CustomerLoginView.tsx",
+        "types": "src/frontend/types/CustomerLogin.ts",
+        "page_entry": "app/(frontend)/customerlogin/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerLogin.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.006.F08.CustomerLogin"
+      ]
+    },
+    {
+      "id": "page:F09",
+      "page_id": "F09",
+      "en_name": "CustomerRegister",
+      "name": "Customer Registration",
+      "platform": "frontend",
+      "route_path": "/customerregister",
+      "requirement_ref": "req.page.F09",
+      "content": "Customer account onboarding banner explaining that registration is exclusively for client accounts (CUSTOMER role is assigned automatically; no role selection is displayed). Explains member benefits including personal quote request tracking, inspection estimate review, and execution scheduling. Provides direct navigation link to Customer Login (F08) for existing accounts.\nCredential input form capturing primary login email, password (hashed as password_hash), full_name, and optional contact phone. Enforces unique email validation and credential security standards before account creation. Accessible to unauthenticated visitors.",
+      "key_interactions": "Submit customer registration, validating email uniqueness and password rules, creating a new account_user record with role CUSTOMER, email, password_hash, full_name, and optional phone, establishing authenticated session, and redirecting to the Vienna Handyman Portal home page. → [F01]\nNavigate to customer login page for existing registered clients. → [F08]",
+      "auth_requirements": "",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/frontend/actions/CustomerRegister.ts",
+        "hook": "src/frontend/hooks/useCustomerRegister.ts",
+        "view": "src/frontend/components/CustomerRegisterView.tsx",
+        "types": "src/frontend/types/CustomerRegister.ts",
+        "page_entry": "app/(frontend)/customerregister/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/frontend/actions/CustomerRegister.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.006.F08.CustomerLogin"
+      ]
+    },
+    {
+      "id": "page:B01",
+      "page_id": "B01",
+      "en_name": "AdminOperationsDashboard",
+      "name": "Admin Operations Dashboard",
+      "platform": "backend",
+      "route_path": "/",
+      "requirement_ref": "req.page.B01",
+      "content": "复刻代码. Operational header controls and filter bar for the admin operations dashboard. Displays real-time operational status, quick filter toggles by lead urgency (all vs. urgent-only), quote lifecycle stage (NEW, CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, COMPLETED), submission language (DE, EN, RU), and dashboard synchronization timestamp.\n复刻代码. Real-time operational key metrics rail computing 24-hour quote inquiry inflow count, pending urgent estimates count requiring rapid dispatch (is_urgent=true), active trade categories count from service_category with baseline hourly rate compliance (>= 15 EUR/h), pending Austrian statutory compliance items from setup_checklist_item (status!=COMPLETED), and response SLA fulfillment percentage based on quote_request transition time from NEW to CONTACTED.\n复刻代码. Primary quote requests workflow management table. Displays quote_request records sorted by urgency (is_urgent descending) and submission date. Shows tracking_code, client_name, client_phone, client_email, linked service_category title (DE/EN/RU), target vienna_district (postal code 1010-1230, district name, urban logistics zone), address_snippet, task_title, estimated_hours, estimated_budget_eur, preferred_date, preferred_time_slot, has_materials flag, submission_lang, and current status (NEW, CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, COMPLETED). Provides row actions to execute status machine transitions and inspect detailed lead records.\n复刻代码. Service categories and trade rate management panel. Displays all 11 trade categories with unique key, multilingual titles in DE, EN, and RU, baseline_hourly_rate (validated >= 15.00 EUR/h), typical_range_eur, Austrian GewO craft_classification (FREIES_HANDWERK vs MEISTER_KOOPERATION), assigned lead_artisan partner team, and is_featured status. Enables inline adjustments of baseline hourly rates and artisan assignments.\n复刻代码. Austrian statutory compliance and business setup checklist panel. Displays statutory items for item_key (VAT_UID, OFFICIAL_CONTACT, REGISTERED_ADDRESS, OPERATING_HOURS) with requirement title, subtitle, Austrian legal basis citation legal_ref (Section 27 UStG, GewO 1994), configured field_value (e.g. verified ATU VAT number, registered office address), verification status (PENDING, IN_REVIEW, COMPLETED), and last_updated timestamp. Supports updating verification status and recorded compliance values.",
+      "key_interactions": "Select a quote request record from the table to navigate to page B02 for in-depth job scope review, client communication logs, and full inquiry details. → [B02]\nAdministrator logs initial consultation callback with the client, advancing quote_request status from NEW to CONTACTED.\nAdministrator transmits formal binding estimate via email to the client, advancing quote_request status from CONTACTED to ESTIMATE_SENT.\nAdministrator records client acceptance of the binding estimate, advancing quote_request status from ESTIMATE_SENT to QUOTED.\nAdministrator schedules artisan team on operations calendar, advancing quote_request status from QUOTED to SCHEDULED.\nAdministrator records completion of on-site assembly and invoice issuance, advancing quote_request status from SCHEDULED to COMPLETED, locking the record against further edits.\nAdministrator updates baseline hourly rate (minimum 15.00 EUR/h), typical range, or assigned lead artisan team for a service_category.\nAdministrator updates verification status (PENDING, IN_REVIEW, COMPLETED), configured business value, or legal confirmation timestamp for a setup_checklist_item.",
+      "auth_requirements": "ADMIN",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "QuoteRequest",
+          "ServiceCategory",
+          "SetupChecklistItem",
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminOperationsDashboard.ts",
+        "hook": "src/backend/hooks/useAdminOperationsDashboard.ts",
+        "view": "src/backend/components/AdminOperationsDashboardView.tsx",
+        "types": "src/backend/types/AdminOperationsDashboard.ts",
+        "page_entry": "app/(backend)/adminoperationsdashboard/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminOperationsDashboard.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.010.B01.AdminOperationsDashboard",
+        "evidence:flow.011.B01.AdminOperationsDashboard",
+        "evidence:flow.012.B01.AdminOperationsDashboard",
+        "evidence:flow.013.B01.AdminOperationsDashboard",
+        "evidence:state.001.F01.HomeFrontend"
+      ]
+    },
+    {
+      "id": "page:B02",
+      "page_id": "B02",
+      "en_name": "AdminQuoteDetail",
+      "name": "Admin Quote Request Detail",
+      "platform": "backend",
+      "route_path": "/adminquotedetail",
+      "requirement_ref": "req.page.B02",
+      "content": "Overview header displaying quote inquiry tracking code (tracking_code), current lifecycle badge (status: NEW, CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, COMPLETED), inflow urgency flag (is_urgent), submission language indicator (submission_lang: DE, EN, RU), and read-only lock notification reflecting the business rule that COMPLETED records cannot be modified.\nClient contact profile and urban dispatch dossier. Presents client_name, client_phone, client_email, registered customer user linkage (customer reference to account_user), postal district details (district referencing vienna_district, showing district_code, district_name, district_number, zone, and standard dispatch lead_time_hours), local address snippet (address_snippet), and compliance consent verification (agreed_to_terms).\nJob scope and trade compliance specification panel. Displays task_title, comprehensive task_description (detailing Altbau conditions, ceiling/wall types, or custom installation specs), customer requested preferred_date, preferred_time_slot (MORNING, AFTERNOON, FLEXIBLE), client materials provision status (has_materials), and referenced service_category details including multilingual titles (title_de, title_en, title_ru), craft classification under Austrian GewO 1994 (craft_classification: FREIES_HANDWERK or MEISTER_KOOPERATION), and lead_artisan designation.\nLabor hours and budget estimation management panel. Compares trade baseline hourly rate (baseline_hourly_rate at minimum 15 EUR/h and typical_range_eur from service_category) with planned labor scope. Displays editable labor hours (estimated_hours) and calculated total budget (estimated_budget_eur). Administrative modifications dynamically refresh estimated budget totals; panel transitions to read-only lock mode once status reaches COMPLETED.\nWorkflow stage transition and operational decision panel. Illustrates the sequential lifecycle progression pipeline (NEW -> CONTACTED -> ESTIMATE_SENT -> QUOTED -> SCHEDULED -> COMPLETED), dispatch urgency switch (is_urgent), and transition controls allowing administrators to log consultation calls, transmit binding estimates, confirm client rate acceptance, assign artisan schedules, and finalize completed assembly records.",
+      "key_interactions": "Operations administrator updates estimated labor hours (estimated_hours) and total estimated budget (estimated_budget_eur), as well as fine-tuning task_description or address_snippet based on direct client phone consultation. Revisions immediately refresh the labor and pricing calculator block and header totals. Action is disabled when quote status is COMPLETED.\nOperations administrator advances the quote request lifecycle status (transitioning from NEW to CONTACTED, ESTIMATE_SENT, QUOTED, SCHEDULED, or COMPLETED) and updates the is_urgent flag. The header status badge, lifecycle progression timeline, and edit lock state instantly update in the view. Transitioning to COMPLETED permanently locks the quote record against subsequent edits.",
+      "auth_requirements": "ADMIN",
+      "route_params": [],
+      "page_params": {
+        "quoteRequestId=xxx": "quote_request"
+      },
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser",
+          "QuoteRequest",
+          "ServiceCategory",
+          "ViennaDistrict"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminQuoteDetail.ts",
+        "hook": "src/backend/hooks/useAdminQuoteDetail.ts",
+        "view": "src/backend/components/AdminQuoteDetailView.tsx",
+        "types": "src/backend/types/AdminQuoteDetail.ts",
+        "page_entry": "app/(backend)/adminquotedetail/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminQuoteDetail.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.010.B01.AdminOperationsDashboard"
+      ]
+    },
+    {
+      "id": "page:B03",
+      "page_id": "B03",
+      "en_name": "AdminCategoriesRates",
+      "name": "Admin Categories and Rates",
+      "platform": "backend",
+      "route_path": "/admincategoriesrates",
+      "requirement_ref": "req.page.B03",
+      "content": "Summary statistics showing overall craft trade portfolio metrics, including total active trade categories count, breakdown between Freies Handwerk (unrestricted trades) and Meister-Kooperation (master craft partnerships) under Austrian GewO 1994, and platform-wide baseline rate minimums (enforcing at least 15 EUR/h).\nOperations management table listing all configured service categories with category key, multilingual titles (DE, EN, RU), Austrian craft classification badge (Freies Handwerk vs Meister-Kooperation), baseline hourly rate (EUR/h), typical pricing range string, assigned lead artisan team/company, and featured showcase status indicator. Offers inline sorting and filter by craft classification.\nDetailed configuration drawer/modal for editing a selected category. Allows the administrator to update the baseline hourly rate (validated to be at least 15 EUR/h as mandated by platform rules), typical hourly range representation (e.g., '15 to 25 EUR/h'), craft classification enum (FREIES_HANDWERK or MEISTER_KOOPERATION), designated lead artisan team/partner, and featured showcase visibility flag.",
+      "key_interactions": "Update category rate configuration and operational settings: modifies baseline_hourly_rate (>= 15 EUR/h), typical_range_eur, craft_classification, lead_artisan, and is_featured, immediately persisting to backend database and refreshing the management table.\nQuickly toggle the featured showcase status (is_featured) of a service category directly from the management table.\nReturn to the administrative operations dashboard via the back navigation action. → [B01]",
+      "auth_requirements": "ADMIN",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "ServiceCategory"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminCategoriesRates.ts",
+        "hook": "src/backend/hooks/useAdminCategoriesRates.ts",
+        "view": "src/backend/components/AdminCategoriesRatesView.tsx",
+        "types": "src/backend/types/AdminCategoriesRates.ts",
+        "page_entry": "app/(backend)/admincategoriesrates/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminCategoriesRates.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.011.B01.AdminOperationsDashboard"
+      ]
+    },
+    {
+      "id": "page:B04",
+      "page_id": "B04",
+      "en_name": "AdminComplianceChecklist",
+      "name": "Admin Compliance Checklist",
+      "platform": "backend",
+      "route_path": "/admincompliancechecklist",
+      "requirement_ref": "req.page.B04",
+      "content": "Operational overview metric summary of statutory Austrian commercial compliance items (setup_checklist_item). Displays total compliance requirements count, verified status distribution (COMPLETED, IN_REVIEW, PENDING), and current statutory readiness score under Austrian Gewerbeordnung 1994, Umsatzsteuergesetz (UStG), and corporate registration standards. Visible exclusively to Operations Administrators.\nInteractive management table displaying all Austrian statutory compliance checklist items (setup_checklist_item). For each record, displays the checklist identifier key (item_key: VAT_UID, OFFICIAL_CONTACT, REGISTERED_ADDRESS, OPERATING_HOURS), headline requirement title (title), detailed regulatory subtitle (subtitle), applicable Austrian legal citation (legal_ref, e.g., Section 27 UStG, Section 63 GewO), configured verified value (field_value), verification status badge (status: PENDING, IN_REVIEW, COMPLETED), and last verification timestamp (last_updated). Provides filtering by verification status and allows selecting an item for detailed auditing.\nVerification audit and configuration form for a selected compliance checklist item (setup_checklist_item). Allows the Operations Administrator to inspect the statutory legal citation (legal_ref), input or update the official verified company record (field_value, such as Austrian VAT UID number ATU..., official commercial register court address in Vienna, primary emergency contact phone, or registered operating schedule), and adjust the verification progress status (status: PENDING, IN_REVIEW, COMPLETED) with an automatic review timestamp update (last_updated).",
+      "key_interactions": "Update the verification status (PENDING, IN_REVIEW, COMPLETED), configured business value (field_value), and audit timestamp (last_updated) for a specific statutory compliance requirement (setup_checklist_item), persisting changes to the database and immediately updating the compliance status summary and management table.\nFilter the checklist management table by compliance status (PENDING, IN_REVIEW, COMPLETED) to isolate items requiring regulatory review or documentation.\nNavigate back to the main Admin Operations Dashboard. → [B01]",
+      "auth_requirements": "ADMIN",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "SetupChecklistItem"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminComplianceChecklist.ts",
+        "hook": "src/backend/hooks/useAdminComplianceChecklist.ts",
+        "view": "src/backend/components/AdminComplianceChecklistView.tsx",
+        "types": "src/backend/types/AdminComplianceChecklist.ts",
+        "page_entry": "app/(backend)/admincompliancechecklist/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminComplianceChecklist.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.012.B01.AdminOperationsDashboard"
+      ]
+    },
+    {
+      "id": "page:B05",
+      "page_id": "B05",
+      "en_name": "AdminLogin",
+      "name": "Admin Login",
+      "platform": "backend",
+      "route_path": "/adminlogin",
+      "requirement_ref": "req.page.B05",
+      "content": "Administrator authentication form for backend operations personnel. Contains standard login credential fields: Email Address (email) as primary login identifier and Password (password_hash). Because the backend zone exclusively serves the single Operations Administrator role (admin), no role selection input is presented, and the form explicitly indicates sign-in for administrative staff. Includes a primary submission action to authenticate and a prominent navigation link to Admin Registration (B06) for initial administrator onboarding.\nStatutory administrative compliance and security notice specifying authorized access restrictions for the Vienna Handwerk operational portal. Highlights Austrian data protection compliance (DSGVO), audit logging of operational status changes, and restricted access terms.",
+      "key_interactions": "Submit administrator login credentials (email and password); verifies identity against account_user records with ADMIN role, establishing an authenticated session and navigating to the Admin Operations Dashboard upon successful authentication. → [B01]\nNavigate to the Administrator Registration page (B06) for initial account onboarding. → [B06]",
+      "auth_requirements": "",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminLogin.ts",
+        "hook": "src/backend/hooks/useAdminLogin.ts",
+        "view": "src/backend/components/AdminLoginView.tsx",
+        "types": "src/backend/types/AdminLogin.ts",
+        "page_entry": "app/(backend)/adminlogin/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminLogin.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.007.B05.AdminLogin"
+      ]
+    },
+    {
+      "id": "page:B06",
+      "page_id": "B06",
+      "en_name": "AdminRegister",
+      "name": "Admin Registration",
+      "platform": "backend",
+      "route_path": "/adminregister",
+      "requirement_ref": "req.page.B06",
+      "content": "Administrative onboarding header presenting the Vienna Handwerk operational portal context, platform security compliance, and staff account creation guidelines.\nAdministrative registration form collecting essential credentials: email address (email) and password (password_hash), alongside administrator full name (full_name). As the backend only supports administrative access, there is no role selection field; registration strictly creates an account with the ADMIN role. Includes inline validation for valid email syntax and password complexity, as well as a direct navigation link to the existing Admin Login page.",
+      "key_interactions": "Submit admin registration credentials (email, password, and full name). Persists a new account_user entity with role ADMIN in backend database and redirects to the operations dashboard upon success. → [B01]\nNavigate to the Admin Login page for administrators who already hold registered platform credentials. → [B05]",
+      "auth_requirements": "",
+      "route_params": [],
+      "page_params": {},
+      "truth_model_refs": {
+        "page_data_from": [
+          "AccountUser"
+        ],
+        "page_data_write": []
+      },
+      "implementation_model_refs": {
+        "reads": [],
+        "writes": []
+      },
+      "thirdparty_api_types": [],
+      "files": {
+        "source_action": "src/backend/actions/AdminRegister.ts",
+        "hook": "src/backend/hooks/useAdminRegister.ts",
+        "view": "src/backend/components/AdminRegisterView.tsx",
+        "types": "src/backend/types/AdminRegister.ts",
+        "page_entry": "app/(backend)/adminregister/page.tsx",
+        "rpc_stub": "lib/rpc-generated/src/backend/actions/AdminRegister.ts"
+      },
+      "symbols": [],
+      "interfaces": [],
+      "domain_refs": [
+        "evidence:flow.007.B05.AdminLogin"
+      ]
+    }
+  ],
+  "ifaces": [],
+  "models": [
+    {
+      "id": "model:AccountUser",
+      "name": "AccountUser",
+      "fields": [
+        {
+          "id": "model:AccountUser#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#email",
+          "name": "email",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#passwordHash",
+          "name": "passwordHash",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#role",
+          "name": "role",
+          "type": "AccountUserRole",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "CUSTOMER",
+            "ADMIN"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#fullName",
+          "name": "fullName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#phone",
+          "name": "phone",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:AccountUser#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:FaqItem",
+      "name": "FaqItem",
+      "fields": [
+        {
+          "id": "model:FaqItem#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#category",
+          "name": "category",
+          "type": "FaqCategory",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "PRICING",
+            "SCOPE",
+            "SCHEDULING",
+            "MATERIALS"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionDe",
+          "name": "questionDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionEn",
+          "name": "questionEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#questionRu",
+          "name": "questionRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerDe",
+          "name": "answerDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerEn",
+          "name": "answerEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#answerRu",
+          "name": "answerRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#displayOrder",
+          "name": "displayOrder",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:FaqItem#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [],
+      "comment": ""
+    },
+    {
+      "id": "model:QuoteRequest",
+      "name": "QuoteRequest",
+      "fields": [
+        {
+          "id": "model:QuoteRequest#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#trackingCode",
+          "name": "trackingCode",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#customerId",
+          "name": "customerId",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "AccountUser",
+          "enum_values": [],
+          "comment": "FK → AccountUser.id"
+        },
+        {
+          "id": "model:QuoteRequest#customer",
+          "name": "customer",
+          "type": "AccountUser",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "AccountUser",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientName",
+          "name": "clientName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientPhone",
+          "name": "clientPhone",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#clientEmail",
+          "name": "clientEmail",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#serviceCategoryId",
+          "name": "serviceCategoryId",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "ServiceCategory",
+          "enum_values": [],
+          "comment": "FK → ServiceCategory.id"
+        },
+        {
+          "id": "model:QuoteRequest#serviceCategory",
+          "name": "serviceCategory",
+          "type": "ServiceCategory",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "ServiceCategory",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#districtId",
+          "name": "districtId",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": true,
+          "related_model": "ViennaDistrict",
+          "enum_values": [],
+          "comment": "FK → ViennaDistrict.id"
+        },
+        {
+          "id": "model:QuoteRequest#district",
+          "name": "district",
+          "type": "ViennaDistrict",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "ViennaDistrict",
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#addressSnippet",
+          "name": "addressSnippet",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#taskTitle",
+          "name": "taskTitle",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#taskDescription",
+          "name": "taskDescription",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#estimatedHours",
+          "name": "estimatedHours",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#estimatedBudgetEur",
+          "name": "estimatedBudgetEur",
+          "type": "Decimal",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#preferredDate",
+          "name": "preferredDate",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#preferredTimeSlot",
+          "name": "preferredTimeSlot",
+          "type": "PreferredTimeSlot",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "MORNING",
+            "AFTERNOON",
+            "FLEXIBLE"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#hasMaterials",
+          "name": "hasMaterials",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#agreedToTerms",
+          "name": "agreedToTerms",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#submissionLang",
+          "name": "submissionLang",
+          "type": "SubmissionLanguage",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "DE",
+            "EN",
+            "RU"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#isUrgent",
+          "name": "isUrgent",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#status",
+          "name": "status",
+          "type": "QuoteStatus",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "NEW",
+            "CONTACTED",
+            "ESTIMATE_SENT",
+            "QUOTED",
+            "SCHEDULED",
+            "COMPLETED"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#createdAtFormatted",
+          "name": "createdAtFormatted",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#scopeNotes",
+          "name": "scopeNotes",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:QuoteRequest#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:AccountUser",
+        "model:ServiceCategory",
+        "model:ViennaDistrict"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:ServiceCategory",
+      "name": "ServiceCategory",
+      "fields": [
+        {
+          "id": "model:ServiceCategory#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#key",
+          "name": "key",
+          "type": "ServiceCategoryKey",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "ASSEMBLY",
+            "DEMOLITION",
+            "FLOORING",
+            "PAINTING",
+            "DRYWALL",
+            "PLUMBING_MINOR",
+            "BATHROOM_KITCHEN",
+            "DOORS_WINDOWS",
+            "OUTDOOR",
+            "MOVING",
+            "COMMERCIAL"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleDe",
+          "name": "titleDe",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleEn",
+          "name": "titleEn",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#titleRu",
+          "name": "titleRu",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#baselineHourlyRate",
+          "name": "baselineHourlyRate",
+          "type": "Decimal",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#typicalRangeEur",
+          "name": "typicalRangeEur",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#craftClassification",
+          "name": "craftClassification",
+          "type": "CraftClassification",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "FREIES_HANDWERK",
+            "MEISTER_KOOPERATION"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#leadArtisan",
+          "name": "leadArtisan",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#isFeatured",
+          "name": "isFeatured",
+          "type": "Boolean",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionDe",
+          "name": "descriptionDe",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionEn",
+          "name": "descriptionEn",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#descriptionRu",
+          "name": "descriptionRu",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#imageUrl",
+          "name": "imageUrl",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#iconName",
+          "name": "iconName",
+          "type": "String",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#displayOrder",
+          "name": "displayOrder",
+          "type": "Int",
+          "is_optional": true,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ServiceCategory#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    },
+    {
+      "id": "model:SetupChecklistItem",
+      "name": "SetupChecklistItem",
+      "fields": [
+        {
+          "id": "model:SetupChecklistItem#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#itemKey",
+          "name": "itemKey",
+          "type": "ChecklistItemKey",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "VAT_UID",
+            "OFFICIAL_CONTACT",
+            "REGISTERED_ADDRESS",
+            "OPERATING_HOURS"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#title",
+          "name": "title",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#subtitle",
+          "name": "subtitle",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#status",
+          "name": "status",
+          "type": "ChecklistStatus",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "PENDING",
+            "IN_REVIEW",
+            "COMPLETED"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#fieldValue",
+          "name": "fieldValue",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#legalRef",
+          "name": "legalRef",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#lastUpdated",
+          "name": "lastUpdated",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:SetupChecklistItem#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [],
+      "comment": ""
+    },
+    {
+      "id": "model:ViennaDistrict",
+      "name": "ViennaDistrict",
+      "fields": [
+        {
+          "id": "model:ViennaDistrict#id",
+          "name": "id",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": true,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtCode",
+          "name": "districtCode",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": true,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtName",
+          "name": "districtName",
+          "type": "String",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#districtNumber",
+          "name": "districtNumber",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#zone",
+          "name": "zone",
+          "type": "LogisticsZone",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [
+            "INNER_CITY",
+            "CENTRAL",
+            "OUTER_RING",
+            "GREATER_SUBURB"
+          ],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#leadTimeHours",
+          "name": "leadTimeHours",
+          "type": "Int",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#createdAt",
+          "name": "createdAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#updatedAt",
+          "name": "updatedAt",
+          "type": "DateTime",
+          "is_optional": false,
+          "is_list": false,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": null,
+          "enum_values": [],
+          "comment": ""
+        },
+        {
+          "id": "model:ViennaDistrict#quoteRequests",
+          "name": "quoteRequests",
+          "type": "QuoteRequest",
+          "is_optional": false,
+          "is_list": true,
+          "is_id": false,
+          "is_unique": false,
+          "is_foreign_key": false,
+          "related_model": "QuoteRequest",
+          "enum_values": [],
+          "comment": ""
+        }
+      ],
+      "relation_refs": [
+        "model:QuoteRequest"
+      ],
+      "comment": ""
+    }
+  ],
+  "enums": [
+    {
+      "id": "enum:AccountUserRole",
+      "name": "AccountUserRole",
+      "values": [
+        "CUSTOMER",
+        "ADMIN"
+      ]
+    },
+    {
+      "id": "enum:ChecklistItemKey",
+      "name": "ChecklistItemKey",
+      "values": [
+        "VAT_UID",
+        "OFFICIAL_CONTACT",
+        "REGISTERED_ADDRESS",
+        "OPERATING_HOURS"
+      ]
+    },
+    {
+      "id": "enum:ChecklistStatus",
+      "name": "ChecklistStatus",
+      "values": [
+        "PENDING",
+        "IN_REVIEW",
+        "COMPLETED"
+      ]
+    },
+    {
+      "id": "enum:CraftClassification",
+      "name": "CraftClassification",
+      "values": [
+        "FREIES_HANDWERK",
+        "MEISTER_KOOPERATION"
+      ]
+    },
+    {
+      "id": "enum:FaqCategory",
+      "name": "FaqCategory",
+      "values": [
+        "PRICING",
+        "SCOPE",
+        "SCHEDULING",
+        "MATERIALS"
+      ]
+    },
+    {
+      "id": "enum:LogisticsZone",
+      "name": "LogisticsZone",
+      "values": [
+        "INNER_CITY",
+        "CENTRAL",
+        "OUTER_RING",
+        "GREATER_SUBURB"
+      ]
+    },
+    {
+      "id": "enum:PreferredTimeSlot",
+      "name": "PreferredTimeSlot",
+      "values": [
+        "MORNING",
+        "AFTERNOON",
+        "FLEXIBLE"
+      ]
+    },
+    {
+      "id": "enum:QuoteStatus",
+      "name": "QuoteStatus",
+      "values": [
+        "NEW",
+        "CONTACTED",
+        "ESTIMATE_SENT",
+        "QUOTED",
+        "SCHEDULED",
+        "COMPLETED"
+      ]
+    },
+    {
+      "id": "enum:ServiceCategoryKey",
+      "name": "ServiceCategoryKey",
+      "values": [
+        "ASSEMBLY",
+        "DEMOLITION",
+        "FLOORING",
+        "PAINTING",
+        "DRYWALL",
+        "PLUMBING_MINOR",
+        "BATHROOM_KITCHEN",
+        "DOORS_WINDOWS",
+        "OUTDOOR",
+        "MOVING",
+        "COMMERCIAL"
+      ]
+    },
+    {
+      "id": "enum:SubmissionLanguage",
+      "name": "SubmissionLanguage",
+      "values": [
+        "DE",
+        "EN",
+        "RU"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "route:AdminCategoriesRates",
+      "name": "AdminCategoriesRates",
+      "page_ref": "page:B03",
+      "platform": "backend",
+      "path": "/admincategoriesrates",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminComplianceChecklist",
+      "name": "AdminComplianceChecklist",
+      "page_ref": "page:B04",
+      "platform": "backend",
+      "path": "/admincompliancechecklist",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminLogin",
+      "name": "AdminLogin",
+      "page_ref": "page:B05",
+      "platform": "backend",
+      "path": "/adminlogin",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminOperationsDashboard",
+      "name": "AdminOperationsDashboard",
+      "page_ref": "page:B01",
+      "platform": "backend",
+      "path": "/adminoperationsdashboard",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminQuoteDetail",
+      "name": "AdminQuoteDetail",
+      "page_ref": "page:B02",
+      "platform": "backend",
+      "path": "/adminquotedetail",
+      "params": [
+        {
+          "id": "route:AdminQuoteDetail#quoteRequestId",
+          "name": "quoteRequestId",
+          "source_table": "QuoteRequest",
+          "source_column": "id",
+          "description": "来自 QuoteRequest 表的主键 id，非 trackingCode 或 customerId",
+          "token": "field:QuoteRequest.id"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [
+            "quoteRequestId"
+          ],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToDetail",
+          "params": [
+            "quoteRequestId"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:AdminRegister",
+      "name": "AdminRegister",
+      "page_ref": "page:B06",
+      "platform": "backend",
+      "path": "/adminregister",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/backend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerInquiryTracker",
+      "name": "CustomerInquiryTracker",
+      "page_ref": "page:F07",
+      "platform": "frontend",
+      "path": "/customerinquirytracker",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerLogin",
+      "name": "CustomerLogin",
+      "page_ref": "page:F08",
+      "platform": "frontend",
+      "path": "/customerlogin",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:CustomerRegister",
+      "name": "CustomerRegister",
+      "page_ref": "page:F09",
+      "platform": "frontend",
+      "path": "/customerregister",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:HomeFrontend",
+      "name": "HomeFrontend",
+      "page_ref": "page:F01",
+      "platform": "frontend",
+      "path": "/",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:PricingScope",
+      "name": "PricingScope",
+      "page_ref": "page:F04",
+      "platform": "frontend",
+      "path": "/pricingscope",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:QuoteRequestForm",
+      "name": "QuoteRequestForm",
+      "page_ref": "page:F06",
+      "platform": "frontend",
+      "path": "/quoterequestform",
+      "params": [
+        {
+          "id": "route:QuoteRequestForm#categoryKey",
+          "name": "categoryKey",
+          "source_table": "ServiceCategory",
+          "source_column": "key",
+          "description": "来自 ServiceCategory 表的唯一标识 key (ServiceCategoryKey)，非主键 uuid，用于表单预选分类",
+          "token": "field:ServiceCategory.key"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToWithCategory",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServiceAreas",
+      "name": "ServiceAreas",
+      "page_ref": "page:F05",
+      "platform": "frontend",
+      "path": "/serviceareas",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServiceCategoryDetail",
+      "name": "ServiceCategoryDetail",
+      "page_ref": "page:F03",
+      "platform": "frontend",
+      "path": "/servicecategorydetail",
+      "params": [
+        {
+          "id": "route:ServiceCategoryDetail#categoryKey",
+          "name": "categoryKey",
+          "source_table": "ServiceCategory",
+          "source_column": "key",
+          "description": "来自 ServiceCategory 表的唯一标识 key (ServiceCategoryKey)，非主键 uuid，用于分类识别",
+          "token": "field:ServiceCategory.key"
+        }
+      ],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        },
+        {
+          "name": "navigateToCategory",
+          "params": [
+            "categoryKey"
+          ],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    },
+    {
+      "id": "route:ServicesCatalog",
+      "name": "ServicesCatalog",
+      "page_ref": "page:F02",
+      "platform": "frontend",
+      "path": "/servicescatalog",
+      "params": [],
+      "navigate_methods": [
+        {
+          "name": "navigateTo",
+          "params": [],
+          "path_literal": null
+        }
+      ],
+      "file": "src/frontend/route-params.ts"
+    }
+  ],
+  "symbols": [],
+  "engine_edges": [
+    {
+      "id": "l2:import.B01.to.src.base.BaseActionFun.ts",
+      "level": "L2",
+      "kind": "component_import",
+      "from_ref": "page:B01",
+      "to_ref": "file:src/@base/BaseActionFun.ts",
+      "carries": [
+        "source_file:src/backend/actions/AdminOperationsDashboard.ts",
+        "symbols:withResult"
+      ],
+      "evidence_refs": [
+        "page:B01",
+        "file:src/backend/actions/AdminOperationsDashboard.ts",
+        "file:src/@base/BaseActionFun.ts"
+      ],
+      "description": "page:B01 imports file:src/@base/BaseActionFun.ts via src/backend/actions/AdminOperationsDashboard.ts"
+    },
+    {
+      "id": "l2:import.B02.to.src.base.BaseActionFun.ts",
+      "level": "L2",
+      "kind": "component_import",
+      "from_ref": "page:B02",
+      "to_ref": "file:src/@base/BaseActionFun.ts",
+      "carries": [
+        "source_file:src/backend/actions/AdminQuoteDetail.ts",
+        "symbols:withResult"
+      ],
+      "evidence_refs": [
+        "page:B02",
+        "file:src/backend/actions/AdminQuoteDetail.ts",
+        "file:src/@base/BaseActionFun.ts"
+      ],
+      "description": "page:B02 imports file:src/@base/BaseActionFun.ts via src/backend/actions/AdminQuoteDetail.ts"
+    },
+    {
+      "id": "l2:import.B06.to.src.tools.BackendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:B06",
+      "to_ref": "file:src/tools/BackendSession.tsx",
+      "carries": [
+        "source_file:app/(backend)/adminregister/page.tsx",
+        "symbols:useAdminSession"
+      ],
+      "evidence_refs": [
+        "page:B06",
+        "file:app/(backend)/adminregister/page.tsx",
+        "file:src/tools/BackendSession.tsx"
+      ],
+      "description": "page:B06 imports file:src/tools/BackendSession.tsx via app/(backend)/adminregister/page.tsx"
+    },
+    {
+      "id": "l2:import.F06.to.src.tools.FrontendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:F06",
+      "to_ref": "file:src/tools/FrontendSession.tsx",
+      "carries": [
+        "source_file:app/(frontend)/quoterequestform/page.tsx",
+        "symbols:useUserSession"
+      ],
+      "evidence_refs": [
+        "page:F06",
+        "file:app/(frontend)/quoterequestform/page.tsx",
+        "file:src/tools/FrontendSession.tsx"
+      ],
+      "description": "page:F06 imports file:src/tools/FrontendSession.tsx via app/(frontend)/quoterequestform/page.tsx"
+    },
+    {
+      "id": "l2:import.F09.to.src.tools.FrontendSession.tsx",
+      "level": "L2",
+      "kind": "shared_import",
+      "from_ref": "page:F09",
+      "to_ref": "file:src/tools/FrontendSession.tsx",
+      "carries": [
+        "source_file:app/(frontend)/customerregister/page.tsx",
+        "symbols:useUserSession"
+      ],
+      "evidence_refs": [
+        "page:F09",
+        "file:app/(frontend)/customerregister/page.tsx",
+        "file:src/tools/FrontendSession.tsx"
+      ],
+      "description": "page:F09 imports file:src/tools/FrontendSession.tsx via app/(frontend)/customerregister/page.tsx"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "evidence:flow.001",
+      "alias": "evidence:flow.001",
+      "kind": "core_flow",
+      "title": "核心功能流程",
+      "text": "# 核心功能流程\n\nA professional, multilingual handyman and property renovation platform for Vienna and surrounding areas, delivering transparent hourly pricing, trade compliance, online quote request conversion, customer tracking, and complete administrative quote workflow management.",
+      "source_field": "core_flows",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.002.F01.HomeFrontend",
+      "alias": "evidence:flow.002.F01.HomeFrontend",
+      "kind": "core_flow",
+      "title": "Browse Service Catalog",
+      "text": "## Browse Service Catalog\nBrowse comprehensive handyman services catalog across assembly, demolition, flooring, painting, drywall, bathroom, doors, outdoor, moving, and commercial maintenance with multilingual details in German, English, and Russian.\n参与角色：Guest Visitor、Registered Customer。\n- F01 Handyman Portal：Vienna handyman services showcase, transparent pricing, and instant quote calculation（写入：quote_request）\n- F02 All Services Catalog：Comprehensive catalog of handyman trades with keywords, descriptions, and baseline rates\n- F03 Service Category Detail：Specific trade scope, pricing examples, permitted Austrian tasks, and direct booking\n\n- 状态口径 `quote_request.preferred_time_slot` (enum(MORNING,AFTERNOON,FLEXIBLE)): Customer requested time window\n\n- 状态口径 `quote_request.submission_lang` (enum(DE,EN,RU)): Language in which client submitted the inquiry\n\n- 状态口径 `quote_request.status` (enum(NEW,CONTACTED,ESTIMATE_SENT,QUOTED,SCHEDULED,COMPLETED)): Current processing phase of quote request",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F02",
+        "page:F03"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.003.F01.HomeFrontend",
+      "alias": "evidence:flow.003.F01.HomeFrontend",
+      "kind": "core_flow",
+      "title": "View Pricing and Legal Scope",
+      "text": "## View Pricing and Legal Scope\nReview transparent baseline pricing starting from 15 EUR per hour, hourly trade calculation principles, material reimbursement terms, and Austrian GewO legal scope boundaries distinguishing Freies Gewerbe from licensed Meister trade operations.\n参与角色：Guest Visitor、Registered Customer。\n- F01 Handyman Portal：Vienna handyman services showcase, transparent pricing, and instant quote calculation（写入：quote_request）\n- F04 Pricing and Legal Scope：Transparent pricing breakdown from 15 EUR/h and Austrian GewO trade compliance boundaries\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F04"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.004.F01.HomeFrontend",
+      "alias": "evidence:flow.004.F01.HomeFrontend",
+      "kind": "core_flow",
+      "title": "View Service Areas",
+      "text": "## View Service Areas\nExplore Vienna postal districts 1010 through 1230 and surrounding Lower Austria service areas with arrival lead times and local logistics coverage details.\n参与角色：Guest Visitor、Registered Customer。\n- F01 Handyman Portal：Vienna handyman services showcase, transparent pricing, and instant quote calculation（写入：quote_request）\n- F05 Vienna Service Areas：Vienna postal districts 1010-1230 logistics zones, lead times, and coverage map\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F05"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.005.F01.HomeFrontend",
+      "alias": "evidence:flow.005.F01.HomeFrontend",
+      "kind": "core_flow",
+      "title": "Browse FAQs and Company Information",
+      "text": "## Browse FAQs and Company Information\nRead categorized frequently asked questions addressing pricing structure, materials procurement, scheduling windows, and Austrian regulatory compliance.\n参与角色：Guest Visitor、Registered Customer。\n- F01 Handyman Portal：Vienna handyman services showcase, transparent pricing, and instant quote calculation（写入：quote_request）\n- F04 Pricing and Legal Scope：Transparent pricing breakdown from 15 EUR/h and Austrian GewO trade compliance boundaries\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F04"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.006.F08.CustomerLogin",
+      "alias": "evidence:flow.006.F08.CustomerLogin",
+      "kind": "core_flow",
+      "title": "Customer Account Authentication",
+      "text": "## Customer Account Authentication\nRegister a personal customer account and sign in using credentials to access personalized quote request tracking and inquiry history.\n- F08 Customer Login：Customer authentication to inspect submitted quote requests\n- F09 Customer Registration：Customer self-service account registration（写入：account_user）\n\n- 状态口径 `account_user.role` (enum(CUSTOMER,ADMIN)): Authorization role",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F08",
+        "page:F09"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.007.B05.AdminLogin",
+      "alias": "evidence:flow.007.B05.AdminLogin",
+      "kind": "core_flow",
+      "title": "Admin Account Authentication",
+      "text": "## Admin Account Authentication\nRegister an administrator account and log in to the backend operations dashboard to supervise leads, baseline rates, and Austrian business compliance items.\n- B05 Admin Login：Administrator credential authentication to operations dashboard\n- B06 Admin Registration：Administrator initial registration and account onboarding（写入：account_user）\n\n- 状态口径同前：`account_user.role`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B05",
+        "page:B06"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.008.F01.HomeFrontend",
+      "alias": "evidence:flow.008.F01.HomeFrontend",
+      "kind": "core_flow",
+      "title": "Submit Quote Request",
+      "text": "## Submit Quote Request\nSubmit comprehensive quote requests specifying service category, Vienna district code, task description, scope notes, estimated hours, preferred date, time slot, material availability, and client contact information.\n参与角色：Guest Visitor、Registered Customer。\n- F01 Handyman Portal：Vienna handyman services showcase, transparent pricing, and instant quote calculation（写入：quote_request）\n- F03 Service Category Detail：Specific trade scope, pricing examples, permitted Austrian tasks, and direct booking\n- F06 Dedicated Quote Request：Detailed quote submission form with task details, date preferences, and materials toggle（写入：quote_request）\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F01",
+        "page:F03",
+        "page:F06"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.009.F07.CustomerInquiryTracker",
+      "alias": "evidence:flow.009.F07.CustomerInquiryTracker",
+      "kind": "core_flow",
+      "title": "Track Customer Quotes",
+      "text": "## Track Customer Quotes\nView personal submitted quote requests, inspection estimates, and status transitions from initial inquiry through completion.\n参与角色：Registered Customer。\n- F07 Customer Quotes Tracking：Personal tracking dashboard for submitted quote inquiries and estimate statuses",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:F07"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.010.B01.AdminOperationsDashboard",
+      "alias": "evidence:flow.010.B01.AdminOperationsDashboard",
+      "kind": "core_flow",
+      "title": "Manage and Process Quote Requests",
+      "text": "## Manage and Process Quote Requests\nReview, filter, search, and advance quote requests through lifecycle stages from new lead to contacted, estimate sent, quoted, scheduled, and completed.\n参与角色：Operations Administrator。\n- B01 Admin Operations Dashboard：Manage quote leads pipeline, hourly rates, setup checklist, and operational metrics（写入：quote_request, service_category, setup_checklist_item）\n- B02 Admin Quote Request Detail：Detailed inspection and workflow processing for specific quote inquiry（写入：quote_request）\n\n- 状态口径 `service_category.key` (enum(ASSEMBLY,DEMOLITION,FLOORING,PAINTING,DRYWALL,PLUMBING_MINOR,BATHROOM_KITCHEN,DOORS_WINDOWS,OUTDOOR,MOVING,COMMERCIAL)): Unique business category key\n\n- 状态口径 `service_category.craft_classification` (enum(FREIES_HANDWERK,MEISTER_KOOPERATION)): Austrian trade classification under GewO 1994\n\n- 状态口径 `setup_checklist_item.item_key` (enum(VAT_UID,OFFICIAL_CONTACT,REGISTERED_ADDRESS,OPERATING_HOURS)): Austrian statutory compliance requirement key\n\n- 状态口径 `setup_checklist_item.status` (enum(PENDING,IN_REVIEW,COMPLETED)): Verification progress status\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B02"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.011.B01.AdminOperationsDashboard",
+      "alias": "evidence:flow.011.B01.AdminOperationsDashboard",
+      "kind": "core_flow",
+      "title": "Manage Service Categories and Rates",
+      "text": "## Manage Service Categories and Rates\nManage handyman trade categories, baseline hourly rates, typical price ranges, lead artisan team assignments, and craft classifications between Freies Handwerk and Meister-Kooperation.\n参与角色：Operations Administrator。\n- B03 Admin Categories and Rates：Configure baseline hourly rates, trade classifications, and assigned lead artisans（写入：service_category）\n- B01 Admin Operations Dashboard：Manage quote leads pipeline, hourly rates, setup checklist, and operational metrics（写入：quote_request, service_category, setup_checklist_item）\n\n- 状态口径同前：`service_category.key`。\n\n- 状态口径同前：`service_category.craft_classification`。\n\n- 状态口径同前：`setup_checklist_item.item_key`。\n\n- 状态口径同前：`setup_checklist_item.status`。\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B03"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.012.B01.AdminOperationsDashboard",
+      "alias": "evidence:flow.012.B01.AdminOperationsDashboard",
+      "kind": "core_flow",
+      "title": "Manage Business Compliance Checklist",
+      "text": "## Manage Business Compliance Checklist\nSupervise business setup checklist items including VAT UID validation, official contact verification, registered address confirmation, and operating hours compliance under Austrian commercial law.\n参与角色：Operations Administrator。\n- B04 Admin Compliance Checklist：Austrian GewO, VAT UID, and commercial register compliance management（写入：setup_checklist_item）\n- B01 Admin Operations Dashboard：Manage quote leads pipeline, hourly rates, setup checklist, and operational metrics（写入：quote_request, service_category, setup_checklist_item）\n\n- 状态口径同前：`service_category.key`。\n\n- 状态口径同前：`service_category.craft_classification`。\n\n- 状态口径同前：`setup_checklist_item.item_key`。\n\n- 状态口径同前：`setup_checklist_item.status`。\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01",
+        "page:B04"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:flow.013.B01.AdminOperationsDashboard",
+      "alias": "evidence:flow.013.B01.AdminOperationsDashboard",
+      "kind": "core_flow",
+      "title": "View Operations Metrics",
+      "text": "## View Operations Metrics\nInspect real-time operational dashboard metrics including 24-hour inquiry inflow, pending urgent estimates, active trade categories, and response SLA fulfillment percentages.\n参与角色：Operations Administrator。\n- B01 Admin Operations Dashboard：Manage quote leads pipeline, hourly rates, setup checklist, and operational metrics（写入：quote_request, service_category, setup_checklist_item）\n\n- 状态口径同前：`service_category.key`。\n\n- 状态口径同前：`service_category.craft_classification`。\n\n- 状态口径同前：`setup_checklist_item.item_key`。\n\n- 状态口径同前：`setup_checklist_item.status`。\n\n- 状态口径同前：`quote_request.preferred_time_slot`。\n\n- 状态口径同前：`quote_request.submission_lang`。\n\n- 状态口径同前：`quote_request.status`。",
+      "source_field": "core_flows",
+      "page_refs": [
+        "page:B01"
+      ],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.001",
+      "alias": "evidence:rule.001",
+      "kind": "domain_constraint",
+      "title": "领域业务规则（按实体）",
+      "text": "## 领域业务规则（按实体）",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.002",
+      "alias": "evidence:rule.002",
+      "kind": "domain_constraint",
+      "title": "Account User（account_user）",
+      "text": "### Account User（account_user）\n- Email must be unique across all registered accounts.\n- Admins have full access to backend operations; customers can track their own submitted quotes.\n- email: Primary login identifier\n- password_hash: Hashed security credential\n- role: Authorization role\n- full_name: Display name of the user\n- phone: Contact phone number",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.003",
+      "alias": "evidence:rule.003",
+      "kind": "domain_constraint",
+      "title": "Service Category（service_category）",
+      "text": "### Service Category（service_category）\n- Baseline hourly rate must be at least 15 EUR per hour.\n- Only administrators may update service categories and hourly rate configurations.\n- key: Unique business category key\n- title_de: Official German category title\n- title_en: English category title\n- title_ru: Russian category title\n- baseline_hourly_rate: Starting hourly rate in EUR according to Austrian trade guidelines\n- typical_range_eur: Typical pricing range representation e.g. 15 to 25 EUR/h\n- craft_classification: Austrian trade classification under GewO 1994\n- lead_artisan: Designated foreman or partner trade company\n- is_featured: Display in featured services showcase",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.004",
+      "alias": "evidence:rule.004",
+      "kind": "domain_constraint",
+      "title": "Vienna District（vienna_district）",
+      "text": "### Vienna District（vienna_district）\n- Vienna districts cover official postal districts 1010 through 1230 from pre-seeded municipal master data.\n- district_code: Austrian postal code between 1010 and 1230 from pre-seeded master catalog\n- district_name: Standard Vienna district designation name from pre-seeded master catalog\n- district_number: District index from 1 to 23 from pre-seeded master catalog\n- zone: Urban logistics zoning classification from pre-seeded master catalog\n- lead_time_hours: Standard dispatch response window in hours from pre-seeded master catalog",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.005",
+      "alias": "evidence:rule.005",
+      "kind": "domain_constraint",
+      "title": "Setup Checklist Item（setup_checklist_item）",
+      "text": "### Setup Checklist Item（setup_checklist_item）\n- Only administrators can review and update Austrian business compliance status.\n- item_key: Austrian statutory compliance requirement key\n- title: Checklist headline description\n- subtitle: Detailed Austrian compliance explanation\n- status: Verification progress status\n- field_value: Official verified business value or registration number\n- legal_ref: Applicable Austrian legal basis citation e.g. Section 27 UStG\n- last_updated: Timestamp or formatted date of last compliance review",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.006",
+      "alias": "evidence:rule.006",
+      "kind": "domain_constraint",
+      "title": "FAQ Item（faq_item）",
+      "text": "### FAQ Item（faq_item）\n- Pre-seeded FAQ entries clarify transparent pricing, material policies, and trade boundaries from pre-seeded master data.\n- category: Categorization of customer question from pre-seeded master catalog\n- question_de: German localized FAQ question from pre-seeded master catalog\n- question_en: English localized FAQ question from pre-seeded master catalog\n- question_ru: Russian localized FAQ question from pre-seeded master catalog\n- answer_de: German localized answer explanation from pre-seeded master catalog\n- answer_en: English localized answer explanation from pre-seeded master catalog\n- answer_ru: Russian localized answer explanation from pre-seeded master catalog\n- display_order: Sorting order index from pre-seeded master catalog",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:rule.007",
+      "alias": "evidence:rule.007",
+      "kind": "domain_constraint",
+      "title": "Quote Request（quote_request）",
+      "text": "### Quote Request（quote_request）\n- A quote request must specify valid client contact information, category, district, and task description.\n- Customers can only inspect quote requests linked to their user account.\n- Administrators can review all requests and transition statuses through the full lifecycle.\n- Once status reaches COMPLETED, the quote and work record is locked against further edits.\n- tracking_code: Unique human-readable tracking identifier such as VIE-2025-0841\n- customer: Registered customer owning this request if authenticated\n- client_name: Name of the requesting client or business\n- client_phone: Contact phone number for scheduling and callbacks\n- client_email: Contact email for formal estimate transmission\n- service_category: Selected handyman service category\n- district: Target Vienna district for the job\n- address_snippet: Street address and stair/door details in Vienna\n- task_title: Concise headline of the repair or assembly task\n- task_description: Detailed job requirements, Altbau conditions, floor, wall type\n- estimated_hours: Calculated estimated working hours\n- estimated_budget_eur: Estimated total budget based on hourly baseline and labor scope\n- preferred_date: Customer requested execution date\n- preferred_time_slot: Customer requested time window\n- has_materials: Whether client already purchased fixtures, paint, or IKEA kits\n- agreed_to_terms: Customer consent to privacy notice and trade terms\n- submission_lang: Language in which client submitted the inquiry\n- is_urgent: Flag for urgent repair requests requiring rapid dispatch\n- status: Current processing phase of quote request",
+      "source_field": "domain_constraints",
+      "page_refs": [],
+      "model_refs": []
+    },
+    {
+      "id": "evidence:state.001.F01.HomeFrontend",
+      "alias": "evidence:state.001.F01.HomeFrontend",
+      "kind": "status_transition",
+      "title": "[{\"entity\": \"quote_request\", \"transitions\": [{\"field\": \"status\", \"from\": \"__create__\", \"to\": \"NEW\", \"action\": \"Client su",
+      "text": "[{\"entity\": \"quote_request\", \"transitions\": [{\"field\": \"status\", \"from\": \"__create__\", \"to\": \"NEW\", \"action\": \"Client submits quote inquiry from home landing page\", \"at\": \"F01\", \"page\": \"HomeFrontend\"}, {\"field\": \"status\", \"from\": \"__create__\", \"to\": \"NEW\", \"action\": \"Client submits quote inquiry from dedicated quote request form\", \"at\": \"F06\", \"page\": \"QuoteRequestForm\"}, {\"field\": \"status\", \"from\": \"NEW\", \"to\": \"CONTACTED\", \"action\": \"Administrator logs client callback and initial consultation\", \"at\": \"B01\", \"page\": \"AdminOperationsDashboard\"}, {\"field\": \"status\", \"from\": \"CONTACTED\", \"to\": \"ESTIMATE_SENT\", \"action\": \"Administrator transmits formal binding estimate via email\", \"at\": \"B01\", \"page\": \"AdminOperationsDashboard\"}, {\"field\": \"status\", \"from\": \"ESTIMATE_SENT\", \"to\": \"QUOTED\", \"action\": \"Client accepts binding quote rate\", \"at\": \"B01\", \"page\": \"AdminOperationsDashboard\"}, {\"field\": \"status\", \"from\": \"QUOTED\", \"to\": \"SCHEDULED\", \"action\": \"Administrator schedules artisan team on calendar\", \"at\": \"B01\", \"page\": \"AdminOperationsDashboard\"}, {\"field\": \"status\", \"from\": \"SCHEDULED\", \"to\": \"COMPLETED\", \"action\": \"Handyman completes on-site assembly and invoices work\", \"at\": \"B01\", \"page\": \"AdminOperationsDashboard\"}]}]",
+      "source_field": "status_transition",
+      "page_refs": [
+        "page:F01",
+        "page:F06",
+        "page:B01"
+      ],
+      "model_refs": []
+    }
+  ],
+  "files": [
+    {
+      "path": "app/(backend)/admincategoriesrates/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/admincompliancechecklist/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminlogin/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminoperationsdashboard/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminquotedetail/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(backend)/adminregister/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerinquirytracker/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerlogin/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/customerregister/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/pricingscope/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/quoterequestform/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/serviceareas/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/servicecategorydetail/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "app/(frontend)/servicescatalog/page.tsx",
+      "kind": "page_entry",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminCategoriesRates.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminComplianceChecklist.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminLogin.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminOperationsDashboard.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminQuoteDetail.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/backend/actions/AdminRegister.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerInquiryTracker.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerLogin.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/CustomerRegister.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/HomeFrontend.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/PricingScope.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/QuoteRequestForm.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServiceAreas.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServiceCategoryDetail.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "lib/rpc-generated/src/frontend/actions/ServicesCatalog.ts",
+      "kind": "rpc_stub",
+      "exists": true
+    },
+    {
+      "path": "src/@base/BaseActionFun.ts",
+      "kind": "component_import",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminCategoriesRates.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminComplianceChecklist.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminLogin.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminOperationsDashboard.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminQuoteDetail.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/actions/AdminRegister.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminCategoriesRatesView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminComplianceChecklistView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminLoginView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminOperationsDashboardView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminQuoteDetailView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/components/AdminRegisterView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminCategoriesRates.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminComplianceChecklist.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminLogin.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminOperationsDashboard.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminQuoteDetail.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/hooks/useAdminRegister.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/backend/route-params.ts",
+      "kind": "route_params",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminCategoriesRates.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminComplianceChecklist.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminLogin.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminOperationsDashboard.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminQuoteDetail.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/backend/types/AdminRegister.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerInquiryTracker.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerLogin.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/CustomerRegister.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/HomeFrontend.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/PricingScope.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/QuoteRequestForm.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServiceAreas.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServiceCategoryDetail.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/actions/ServicesCatalog.ts",
+      "kind": "source_action",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerInquiryTrackerView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerLoginView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/CustomerRegisterView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/HomeFrontendView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/PricingScopeView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/QuoteRequestFormView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServiceAreasView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServiceCategoryDetailView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/components/ServicesCatalogView.tsx",
+      "kind": "view",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerInquiryTracker.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerLogin.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useCustomerRegister.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useHomeFrontend.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/usePricingScope.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useQuoteRequestForm.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServiceAreas.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServiceCategoryDetail.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/hooks/useServicesCatalog.ts",
+      "kind": "hook",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/route-params.ts",
+      "kind": "route_params",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerInquiryTracker.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerLogin.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/CustomerRegister.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/HomeFrontend.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/PricingScope.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/QuoteRequestForm.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServiceAreas.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServiceCategoryDetail.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/frontend/types/ServicesCatalog.ts",
+      "kind": "types",
+      "exists": true
+    },
+    {
+      "path": "src/tools/BackendSession.tsx",
+      "kind": "shared_import",
+      "exists": true
+    },
+    {
+      "path": "src/tools/FrontendSession.tsx",
+      "kind": "shared_import",
+      "exists": true
+    }
+  ],
+  "infrastructure": [
+    {
+      "capability": "auth-guard-action",
+      "path": "src/backend/action_utils.ts",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-action",
+      "path": "src/frontend/action_utils.ts",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/AppAuthGuard.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/BackendAuthGuard.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-guard-route",
+      "path": "src/tools/FrontendAuthGuard.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/app/auth/rpc-auth.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/backend/auth/rpc-auth.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "auth-ui",
+      "path": "src/frontend/auth/rpc-auth.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/backend/Sidebar.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/frontend/Footer.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "navigation-shell",
+      "path": "src/components/layout/frontend/Navigation.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "route-registry",
+      "path": "src/backend/route-params.ts",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "route-registry",
+      "path": "src/frontend/route-params.ts",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/AppSession.tsx",
+      "platform": "app",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/BackendSession.tsx",
+      "platform": "backend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "session",
+      "path": "src/tools/FrontendSession.tsx",
+      "platform": "frontend",
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/ai-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/ai/openai-compat.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/AuthState.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/google.route.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/google.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/auth/index.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/common.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/context.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/index.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment-definitions.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/alipay.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/amount.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/clink.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/nowpayments.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/payment/stripe.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-infra",
+      "path": "server/thirdparty/secret-resolver.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    },
+    {
+      "capability": "thirdparty-types",
+      "path": "src/types/thirdparty.d.ts",
+      "platform": null,
+      "read_only": false,
+      "note": ""
+    }
+  ],
+  "payment": {
+    "profile": {
+      "target_markets": {
+        "values": [
+          "AT"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.95,
+        "evidence_refs": [
+          "page:F01",
+          "page:F04",
+          "page:F05",
+          "page:B04"
+        ],
+        "confirmed": false
+      },
+      "product_types": {
+        "values": [
+          "physical"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.9,
+        "evidence_refs": [
+          "page:F01",
+          "page:F02",
+          "page:F04"
+        ],
+        "confirmed": false
+      },
+      "billing_modes": {
+        "values": [
+          "one_time"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.9,
+        "evidence_refs": [
+          "page:F01",
+          "page:F06",
+          "page:B01"
+        ],
+        "confirmed": false
+      },
+      "payment_rails": {
+        "values": [
+          "fiat"
+        ],
+        "source": "ai_inferred",
+        "confidence": 0.85,
+        "evidence_refs": [
+          "page:F01",
+          "page:F04",
+          "page:B01"
+        ],
+        "confirmed": false
+      }
+    },
+    "nowpayments_pricing": null,
+    "selected_providers": [],
+    "recommended_providers": [
+      "stripe",
+      "clink"
+    ],
+    "recommendation_notes": [],
+    "implemented_providers": [],
+    "page_refs": [],
+    "interface_refs": [],
+    "order_model_refs": [],
+    "status_field_refs": [],
+    "callback_pages": [],
+    "infrastructure_paths": [
+      "server/thirdparty/payment-definitions.ts",
+      "server/thirdparty/payment/alipay.ts",
+      "server/thirdparty/payment/amount.ts",
+      "server/thirdparty/payment/clink.ts",
+      "server/thirdparty/payment/nowpayments.ts",
+      "server/thirdparty/payment/stripe.ts"
+    ],
+    "warnings": []
+  },
+  "warnings": []
+}
