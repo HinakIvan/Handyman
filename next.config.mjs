@@ -102,12 +102,6 @@ const nextConfig = {
         enforce: 'pre',
         use: [{ loader: path.resolve(__dirname, './src/default/source-attributes-loader.js') }]
       },
-      // rpc-loader for actions
-      {
-        test: /[\\/]actions[\\/].+\.ts$|[\\/]app[\\/].+[\\/]actions\.ts$/,
-        exclude: /node_modules/,
-        use: [{ loader: path.resolve(__dirname, 'scripts/rpc-loader.js') }]
-      }
     )
     return config
   },
