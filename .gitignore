@@ -25,3 +25,8 @@ dist-ssr
 *.sw?
 .history
 .yarn
+# Generated files and local caches
+.next/
+out/
+node_modules/
+prisma-generated/
