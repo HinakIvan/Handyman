@@ -30,8 +30,8 @@ const nextConfig = {
     async rewrites() {
       return [
         {
-          source: "/flow-engine/PROJ_b0c2dac0/v2/run_flow",
-          destination: "https://pztest.koudingvip.com/flow-engine/PROJ_b0c2dac0/v2/run_flow",
+          source: "/flow-engine/Career/v2/run_flow",
+          destination: "https://pztest.koudingvip.com/flow-engine/Career/v2/run_flow",
         },
         {
           source: '/api/project_pz/getimage',

@@ -53,7 +53,13 @@ const getToken = () => {
 }
 
 const getProjectId = () => {
-  return window.location.pathname.split('/').find(part => part.startsWith('PROJ_')) || '';
+  const projectIdFromPath = window.location.pathname.split("/").find(part => part.startsWith("PROJ_"));
+  if (projectIdFromPath) return projectIdFromPath;
+  const hostname = window.location.hostname;
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return "Career";
+  }
+  return "Career";
 }
 
 export interface ApiResponse<T> {

@@ -2,7 +2,7 @@ import '../src/index.css';
 import { Providers } from './providers';
 import { Toaster } from 'sonner';
 import { Suspense } from 'react';
-import { header, body } from './font';
+import { display, header, body } from './font';
 
 const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Vienna Handyman & Renovation Services Website";
 
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${header.variable} ${body.variable}`} style={{
+    <html lang="en" className={`${display.variable} ${header.variable} ${body.variable}`} style={{
       backgroundColor: '#fff',
       color: 'rgba(0, 0, 0, 0.85)'
     }}>
@@ -58,7 +58,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
-      <body className={`${header.className} ${body.className} antialiased`}>
+      <body className={`${body.className} antialiased`}>
         <Providers>
           <Toaster position="top-center" richColors offset="100px" />
           <Suspense fallback={<div>Loading...</div>}>

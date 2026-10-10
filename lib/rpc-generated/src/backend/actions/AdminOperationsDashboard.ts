@@ -1,9 +1,7 @@
 /* Auto-generated */
 import { rpcCall } from '@/tools/rpc-client';
-import type * as Types from '../../../../../src/backend/types/AdminOperationsDashboard';
-export type * from '../../../../../src/backend/types/AdminOperationsDashboard';
-
 type Actions = typeof import('../../../../../src/backend/actions/AdminOperationsDashboard');
+
 export const getDashboardOverview = (...args: Parameters<Actions["getDashboardOverview"]>) => 
   rpcCall<Awaited<ReturnType<Actions["getDashboardOverview"]>>>("src.backend.actions.AdminOperationsDashboard.getDashboardOverview", ...args);
 export const updateQuoteStatus = (...args: Parameters<Actions["updateQuoteStatus"]>) => 

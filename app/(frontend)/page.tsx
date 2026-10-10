@@ -41,6 +41,24 @@ const SERVICE_ID_TO_KEY: Record<string, ServiceCategoryKey> = {
 export default function HomeFrontendPage() {
   const router = useRouter();
   const [lang, setLang] = useState<Language>("en");
+  useEffect(() => {
+    const valid = (value: string | null): value is Language => value === "de" || value === "en" || value === "ru";
+    try {
+      const saved = window.localStorage.getItem("handyman-language");
+      if (valid(saved)) setLang(saved);
+    } catch { /* localStorage may be unavailable in private contexts */ }
+    const onLanguageChange = (event: Event) => {
+      const value = (event as CustomEvent<string>).detail;
+      if (valid(value)) setLang(value);
+    };
+    window.addEventListener("handyman-language-change", onLanguageChange);
+    return () => window.removeEventListener("handyman-language-change", onLanguageChange);
+  }, []);
+  const changeLanguage = (value: Language) => {
+    setLang(value);
+    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
+    window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
+  };
   const [preselectedService, setPreselectedService] = useState<ServiceId | "">("");
   const [_serviceCategoryKey, setServiceCategoryKey] = useState<ServiceCategoryKey | "">("");
   const [services, setServices] = useState<ServiceCategoryDTO[]>([]);
@@ -154,7 +172,7 @@ export default function HomeFrontendPage() {
             {/* Language Selector (DE / EN / RU) */}
             <div className="flex items-center gap-1 border-l border-border pl-2">
               <Globe className="h-3.5 w-3.5 text-muted-foreground" />
-              {(["de", "en", "ru"] as Language[]).map((l, index) => <button key={l} type="button" onClick={() => setLang(l)} className={`rounded px-1.5 py-0.5 text-xs font-semibold uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}>
+              {(["de", "en", "ru"] as Language[]).map((l, index) => <button key={l} type="button" onClick={() => changeLanguage(l)} className={`rounded px-1.5 py-0.5 text-xs font-semibold uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}>
                   {l}
                 </button>)}
             </div>

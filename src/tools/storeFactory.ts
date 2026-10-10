@@ -8,9 +8,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
  * 根据 URL 中的 PROJ_xxx 前缀生成唯一 key，防止多项目冲突
  */
 const getTenantKey = (name: string): string => {
-  if (typeof window === 'undefined') return name;
-  const proj = window.location.pathname.split('/').find(part => part.startsWith('PROJ_'));
-  return proj ? `${proj}_${name}` : name;
+  return "Career_" + name;
 };
 
 /**

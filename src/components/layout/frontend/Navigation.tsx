@@ -19,7 +19,32 @@ export function Navigation() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("DE");
+  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("EN");
+  useEffect(() => {
+    const valid = (value: string | null): value is "de" | "en" | "ru" => value === "de" || value === "en" || value === "ru";
+    try {
+      const saved = window.localStorage.getItem("handyman-language");
+      if (valid(saved)) setActiveLang(saved.toUpperCase() as "DE" | "EN" | "RU");
+    } catch { /* ignore unavailable storage */ }
+    const onLanguageChange = (event: Event) => {
+      const value = (event as CustomEvent<string>).detail;
+      if (valid(value)) setActiveLang(value.toUpperCase() as "DE" | "EN" | "RU");
+    };
+    window.addEventListener("handyman-language-change", onLanguageChange);
+    return () => window.removeEventListener("handyman-language-change", onLanguageChange);
+  }, []);
+  const translations = {
+    EN: { services: "All Services Catalog", pricing: "Pricing & Legal Scope", areas: "Vienna Service Areas", tracking: "Quotes Tracking", more: "More", signIn: "Sign In", signUp: "Sign Up", quote: "Request a Quote" },
+    DE: { services: "Alle Leistungen", pricing: "Preise & rechtlicher Umfang", areas: "Einsatzgebiete Wien", tracking: "Angebotsstatus", more: "Mehr", signIn: "Anmelden", signUp: "Registrieren", quote: "Angebot anfordern" },
+    RU: { services: "Все услуги", pricing: "Цены и правовые условия", areas: "Районы обслуживания Вены", tracking: "Статус заявок", more: "Ещё", signIn: "Войти", signUp: "Регистрация", quote: "Запросить смету" },
+  };
+  const t = translations[activeLang];
+  const applyLanguage = (code: "DE" | "EN" | "RU") => {
+    setActiveLang(code);
+    const value = code.toLowerCase();
+    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
+    window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
+  };
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -28,19 +53,19 @@ export function Navigation() {
   const isAuthenticated = Boolean(session.token && session.user_id);
   const allNavItems: NavItemDef[] = [{
     id: "services",
-    label: "All Services Catalog",
+    label: t.services,
     href: "/servicescatalog"
   }, {
     id: "pricing",
-    label: "Pricing & Legal Scope",
+    label: t.pricing,
     href: "/pricingscope"
   }, {
     id: "areas",
-    label: "Vienna Service Areas",
+    label: t.areas,
     href: "/serviceareas"
   }, ...(isAuthenticated ? [{
     id: "tracking",
-    label: "Quotes Tracking",
+    label: t.tracking,
     href: "/customerinquirytracker",
     authOnly: true
   }] : [])];
@@ -150,7 +175,7 @@ export function Navigation() {
           {/* Un-clipped More Dropdown */}
           {moreItems.length > 0 && <div ref={moreMenuRef} className="relative shrink-0">
               <button type="button" onClick={() => setMoreDropdownOpen(!moreDropdownOpen)} aria-expanded={moreDropdownOpen} aria-haspopup="true" className={`h-8 px-2.5 rounded-md border text-xs font-medium flex items-center gap-1 transition-colors whitespace-nowrap ${isMoreActive ? "border-primary text-primary font-semibold bg-muted/50" : "border-border bg-card text-foreground hover:bg-muted"}`}>
-                <span>More</span>
+                <span>{t.more}</span>
                 <ChevronDown className="w-3.5 h-3.5" />
               </button>
 
@@ -177,7 +202,7 @@ export function Navigation() {
 
             {langDropdownOpen && <div className="absolute right-0 top-full mt-1.5 w-36 rounded-md border border-border bg-popover text-popover-foreground shadow-elevated py-1 z-50">
                 {languages.map((lang, index) => <button key={lang.code} type="button" onClick={() => {
-              setActiveLang(lang.code);
+              applyLanguage(lang.code);
               setLangDropdownOpen(false);
             }} className={`w-full text-left px-3 py-1.5 text-xs flex items-center justify-between hover:bg-muted transition-colors ${activeLang === lang.code ? "font-semibold text-primary bg-muted/40" : "text-foreground"}`}>
                     <span>{lang.label}</span>
@@ -220,16 +245,16 @@ export function Navigation() {
                 </div>}
             </div> : <div className="flex items-center gap-1.5">
               <Link href="/customerlogin" className="h-9 px-3 rounded-md text-xs font-medium text-foreground hover:text-primary transition-colors flex items-center justify-center whitespace-nowrap">
-                Sign In
+                {t.signIn}
               </Link>
               <Link href="/customerregister" className="h-9 px-3 rounded-md border border-border bg-card hover:bg-muted text-foreground text-xs font-medium transition-colors flex items-center justify-center whitespace-nowrap">
-                Sign Up
+                {t.signUp}
               </Link>
             </div>}
 
           {/* Primary CTA: Dedicated Quote Request */}
           <Link href="/quoterequestform" className="h-9 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-semibold shadow-primary flex items-center justify-center transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ml-1">
-            Request a Quote
+            {t.quote}
           </Link>
         </div>
 
@@ -279,23 +304,23 @@ export function Navigation() {
                 </button>
               </div> : <div className="grid grid-cols-2 gap-2">
                 <Link href="/customerlogin" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  Sign In
+                  {t.signIn}
                 </Link>
                 <Link href="/customerregister" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  Sign Up
+                  {t.signUp}
                 </Link>
               </div>}
 
             {/* Mobile Language Switcher & Quote CTA */}
             <div className="flex items-center justify-between pt-2">
               <div className="flex items-center gap-1">
-                {languages.map((lang, index) => <button key={lang.code} type="button" onClick={() => setActiveLang(lang.code)} className={`px-2.5 py-1 text-xs rounded border transition-colors ${activeLang === lang.code ? "border-primary bg-primary text-primary-foreground font-semibold" : "border-border bg-card text-foreground hover:bg-muted"}`}>
+                {languages.map((lang, index) => <button key={lang.code} type="button" onClick={() => applyLanguage(lang.code)} className={`px-2.5 py-1 text-xs rounded border transition-colors ${activeLang === lang.code ? "border-primary bg-primary text-primary-foreground font-semibold" : "border-border bg-card text-foreground hover:bg-muted"}`}>
                     {lang.code}
                   </button>)}
               </div>
 
               <Link href="/quoterequestform" onClick={() => setMobileMenuOpen(false)} className="h-9 px-4 rounded-md bg-primary text-primary-foreground text-xs font-semibold shadow-primary flex items-center justify-center whitespace-nowrap">
-                Request a Quote
+                {t.quote}
               </Link>
             </div>
           </div>

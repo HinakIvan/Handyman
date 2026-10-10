@@ -1,9 +1,7 @@
 /* Auto-generated */
 import { rpcCall } from '@/tools/rpc-client';
-import type * as Types from '../../../../../src/backend/types/AdminQuoteDetail';
-export type * from '../../../../../src/backend/types/AdminQuoteDetail';
-
 type Actions = typeof import('../../../../../src/backend/actions/AdminQuoteDetail');
+
 export const getQuoteRequestDetail = (...args: Parameters<Actions["getQuoteRequestDetail"]>) => 
   rpcCall<Awaited<ReturnType<Actions["getQuoteRequestDetail"]>>>("src.backend.actions.AdminQuoteDetail.getQuoteRequestDetail", ...args);
 export const updateLaborAndBudget = (...args: Parameters<Actions["updateLaborAndBudget"]>) => 

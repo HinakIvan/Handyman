@@ -1,9 +1,7 @@
 /* Auto-generated */
 import { rpcCall } from '@/tools/rpc-client';
-import type * as Types from '../../../../../src/backend/types/AdminCategoriesRates';
-export type * from '../../../../../src/backend/types/AdminCategoriesRates';
-
 type Actions = typeof import('../../../../../src/backend/actions/AdminCategoriesRates');
+
 export const getServiceCategories = (...args: Parameters<Actions["getServiceCategories"]>) => 
   rpcCall<Awaited<ReturnType<Actions["getServiceCategories"]>>>("src.backend.actions.AdminCategoriesRates.getServiceCategories", ...args);
 export const getPortfolioMetrics = (...args: Parameters<Actions["getPortfolioMetrics"]>) => 
