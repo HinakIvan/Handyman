@@ -4,11 +4,11 @@ import { Toaster } from 'sonner';
 import { Suspense } from 'react';
 import { display, header, body } from './font';
 
-const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Vienna Handyman & Renovation Services Website";
+const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Wiener Bauhandwerk | Handwerker in Wien";
 
 export const metadata = {
   title: siteTitle,
-  description: 'E-commerce shop demo',
+  description: 'Handwerker- und Montageservice in Wien. Anfrage für Möbelmontage, Reparaturen und Renovierungsarbeiten stellen.',\n  applicationName: 'Wiener Bauhandwerk',
   icons: {
     icon: [
       {

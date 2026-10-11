@@ -213,7 +213,7 @@ export async function createQuoteRequest(
           `Urgent: ${created.isUrgent ? 'Yes' : 'No'}`,
           `Materials provided: ${created.hasMaterials ? 'Yes' : 'No'}`,
           `Submitted: ${created.createdAtFormatted}`,
-        ].join('\\n');
+        ].join('\n');
 
         const emailResponse = await fetch('https://api.resend.com/emails', {
           method: 'POST',
@@ -230,11 +230,17 @@ export async function createQuoteRequest(
           }),
         });
 
+        const responseBody = await emailResponse.text();
         if (!emailResponse.ok) {
-          console.error('Resend email notification failed:', await emailResponse.text());
+          console.error('Resend email notification failed:', emailResponse.status, responseBody);
+        } else {
+          console.info(`Resend email notification sent for ${created.trackingCode}: ${responseBody}`);
         }
       } else {
-        console.warn('Email notification skipped: RESEND_API_KEY or CONTACT_EMAIL is not configured.');
+        console.warn('Email notification skipped: RESEND_API_KEY or CONTACT_EMAIL is not configured.', {
+          hasApiKey: Boolean(apiKey),
+          hasContactEmail: Boolean(notificationEmail),
+        });
       }
     } catch (emailError) {
       console.error('Failed to send quote request notification email:', emailError);

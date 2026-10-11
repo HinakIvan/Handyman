@@ -207,6 +207,62 @@ async function createQuoteRequest(input) {
         createdAtFormatted
       }
     });
+    // Notify the site owner after the request has been persisted.
+    // A mail delivery failure must not undo the saved quote request.
+    try {
+      const apiKey = process.env.RESEND_API_KEY;
+      const notificationEmail = process.env.CONTACT_EMAIL;
+      const fromEmail = process.env.EMAIL_FROM || "Handyman Website <onboarding@resend.dev>";
+      if (!apiKey || !notificationEmail) {
+        console.warn("Email notification skipped: RESEND_API_KEY or CONTACT_EMAIL is not configured.", {
+          hasApiKey: Boolean(apiKey),
+          hasContactEmail: Boolean(notificationEmail)
+        });
+      } else {
+        const emailText = [
+          "A new Handyman quote request was submitted.",
+          "",
+          `Tracking code: ${created.trackingCode}`,
+          `Name: ${created.clientName}`,
+          `Phone: ${created.clientPhone}`,
+          `Email: ${created.clientEmail || "Not provided"}`,
+          `Service: ${category.titleEn}`,
+          `District: ${district.districtCode} - ${district.districtName}`,
+          `Address: ${created.addressSnippet || "Not provided"}`,
+          `Task: ${created.taskTitle}`,
+          `Description: ${created.taskDescription || "Not provided"}`,
+          `Estimated hours: ${created.estimatedHours}`,
+          `Estimated budget: €${created.estimatedBudgetEur.toNumber().toFixed(2)}`,
+          `Preferred date: ${created.preferredDate}`,
+          `Preferred time: ${created.preferredTimeSlot}`,
+          `Urgent: ${created.isUrgent ? "Yes" : "No"}`,
+          `Materials provided: ${created.hasMaterials ? "Yes" : "No"}`,
+          `Submitted: ${created.createdAtFormatted}`
+        ].join("\\n");
+        const emailResponse = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            from: fromEmail,
+            to: [notificationEmail],
+            subject: `New Handyman request: ${created.trackingCode}`,
+            text: emailText,
+            reply_to: created.clientEmail || void 0
+          })
+        });
+        const responseBody = await emailResponse.text();
+        if (!emailResponse.ok) {
+          console.error("Resend email notification failed:", emailResponse.status, responseBody);
+        } else {
+          console.info(`Resend email notification sent for ${created.trackingCode}: ${responseBody}`);
+        }
+      }
+    } catch (emailError) {
+      console.error("Failed to send quote request notification email:", emailError);
+    }
     const receipt = {
       id: created.id,
       // data-from: QuoteRequest-id

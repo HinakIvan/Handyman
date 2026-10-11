@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList } from "lucide-react";
+import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList, Phone, Mail } from "lucide-react";
 import { useUserSession } from "@/tools/FrontendSession";
 interface NavItemDef {
   id: string;
@@ -154,6 +154,18 @@ export function Navigation() {
               </span>
             </div>
           </Link>
+        </div>
+
+        {/* Direct contact links: compact icons on mobile, full details on desktop */}
+        <div className="flex items-center gap-2 shrink-0">
+          <a href="tel:+431234567890" aria-label="Call Wiener Bauhandwerk" className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors">
+            <Phone className="h-4 w-4 text-primary" />
+            <span className="hidden xl:inline">+43 1 234 567 890</span>
+          </a>
+          <a href="mailto:ginakvania@gmail.com" aria-label="Email Wiener Bauhandwerk" className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors">
+            <Mail className="h-4 w-4 text-primary" />
+            <span className="hidden xl:inline">ginakvania@gmail.com</span>
+          </a>
         </div>
 
         {/* Desktop Dynamic Page Navigation */}
