@@ -156,18 +156,6 @@ export function Navigation() {
           </Link>
         </div>
 
-        {/* Direct contact links: compact icons on mobile, full details on desktop */}
-        <div className="flex items-center gap-2 shrink-0">
-          <a href="tel:+431234567890" aria-label="Call Wiener Bauhandwerk" className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors">
-            <Phone className="h-4 w-4 text-primary" />
-            <span className="hidden xl:inline">+43 1 234 567 890</span>
-          </a>
-          <a href="mailto:ginakvania@gmail.com" aria-label="Email Wiener Bauhandwerk" className="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors">
-            <Mail className="h-4 w-4 text-primary" />
-            <span className="hidden xl:inline">ginakvania@gmail.com</span>
-          </a>
-        </div>
-
         {/* Desktop Dynamic Page Navigation */}
         <div ref={navContainerRef} className="hidden lg:flex items-center gap-5 flex-1 min-w-0 justify-center overflow-visible">
           {visibleItems.map((item, index) => {
@@ -308,12 +296,14 @@ export function Navigation() {
                   Sign Out
                 </button>
               </div> : <div className="grid grid-cols-2 gap-2">
-                <Link href="/customerlogin" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  {t.signIn}
-                </Link>
-                <Link href="/customerregister" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  {t.signUp}
-                </Link>
+                <a href="tel:+431234567890" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                  <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="truncate">+43 1 234 567 890</span>
+                </a>
+                <a href="mailto:ginakvania@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                  <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="truncate">ginakvania@gmail.com</span>
+                </a>
               </div>}
 
             {/* Mobile Language Switcher & Quote CTA */}
