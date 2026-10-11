@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList, Phone, Mail } from "lucide-react";
+import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList, MessageCircle } from "lucide-react";
 import { useUserSession } from "@/tools/FrontendSession";
 interface NavItemDef {
   id: string;
@@ -206,6 +206,11 @@ export function Navigation() {
               </div>}
           </div>
 
+          {/* WhatsApp contact beside language selector */}
+          <a href="https://wa.me/431234567890" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="h-9 w-9 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <MessageCircle className="w-4 h-4" />
+          </a>
+
           {/* User Profile / Auth Links */}
           {isAuthenticated ? <div ref={userMenuRef} className="relative">
               <button type="button" onClick={() => setUserDropdownOpen(!userDropdownOpen)} className="h-9 px-3 rounded-md border border-border bg-card hover:bg-muted text-foreground text-xs font-medium flex items-center gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-expanded={userDropdownOpen}>
@@ -296,14 +301,12 @@ export function Navigation() {
                   Sign Out
                 </button>
               </div> : <div className="grid grid-cols-2 gap-2">
-                <a href="tel:+431234567890" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
-                  <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">+43 1 234 567 890</span>
-                </a>
-                <a href="mailto:ginakvania@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
-                  <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">ginakvania@gmail.com</span>
-                </a>
+                <Link href="/customerlogin" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
+                  {t.signIn}
+                </Link>
+                <Link href="/customerregister" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
+                  {t.signUp}
+                </Link>
               </div>}
 
             {/* Mobile Language Switcher & Quote CTA */}
@@ -312,6 +315,9 @@ export function Navigation() {
                 {languages.map((lang, index) => <button key={lang.code} type="button" onClick={() => applyLanguage(lang.code)} className={`px-2.5 py-1 text-xs rounded border transition-colors ${activeLang === lang.code ? "border-primary bg-primary text-primary-foreground font-semibold" : "border-border bg-card text-foreground hover:bg-muted"}`}>
                     {lang.code}
                   </button>)}
+                <a href="https://wa.me/431234567890" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="ml-1 h-8 w-8 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center">
+                  <MessageCircle className="w-4 h-4" />
+                </a>
               </div>
 
               <Link href="/quoterequestform" onClick={() => setMobileMenuOpen(false)} className="h-9 px-4 rounded-md bg-primary text-primary-foreground text-xs font-semibold shadow-primary flex items-center justify-center whitespace-nowrap">
