@@ -196,6 +196,56 @@ async function createQuoteRequest(input) {
         district: true
       }
     });
+    try {
+      const apiKey = process.env.RESEND_API_KEY;
+      const notificationEmail = process.env.CONTACT_EMAIL;
+      const fromEmail = process.env.EMAIL_FROM || "Handyman Website <onboarding@resend.dev>";
+      if (!apiKey || !notificationEmail) {
+        console.warn("Email notification skipped: RESEND_API_KEY or CONTACT_EMAIL is not configured.");
+      } else {
+        const emailText = [
+          "A new Handyman quote request was submitted.",
+          "",
+          `Tracking code: ${quote.trackingCode}`,
+          `Name: ${quote.clientName}`,
+          `Phone: ${quote.clientPhone}`,
+          `Email: ${quote.clientEmail || "Not provided"}`,
+          `Service: ${service.titleEn}`,
+          `District: ${district.districtCode} - ${district.districtName}`,
+          `Address: ${quote.addressSnippet || "Not provided"}`,
+          `Task: ${quote.taskTitle}`,
+          `Description: ${quote.taskDescription || "Not provided"}`,
+          `Estimated hours: ${quote.estimatedHours}`,
+          `Estimated budget: €${quote.estimatedBudgetEur.toNumber().toFixed(2)}`,
+          `Preferred date: ${quote.preferredDate}`,
+          `Preferred time: ${quote.preferredTimeSlot}`,
+          `Urgent: ${quote.isUrgent ? "Yes" : "No"}`,
+          `Materials provided: ${quote.hasMaterials ? "Yes" : "No"}`,
+          `Submitted: ${quote.createdAtFormatted}`
+        ].join("\n");
+        const emailResponse = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            from: fromEmail,
+            to: [notificationEmail],
+            subject: `New Handyman request: ${quote.trackingCode}`,
+            text: emailText,
+            reply_to: quote.clientEmail || void 0
+          })
+        });
+        if (!emailResponse.ok) {
+          console.error("Resend email notification failed:", await emailResponse.text());
+        } else {
+          console.info(`Resend email notification sent for ${quote.trackingCode}.`);
+        }
+      }
+    } catch (emailError) {
+      console.error("Failed to send quote request notification email:", emailError);
+    }
     return {
       id: quote.id,
       // data-from: QuoteRequest-id
