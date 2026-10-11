@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList, MessageCircle } from "lucide-react";
+import { Globe, ChevronDown, Menu, X, Wrench, User, LogOut, ClipboardList, MessageCircle, Phone, Mail } from "lucide-react";
 import { useUserSession } from "@/tools/FrontendSession";
 interface NavItemDef {
   id: string;
@@ -301,12 +301,14 @@ export function Navigation() {
                   Sign Out
                 </button>
               </div> : <div className="grid grid-cols-2 gap-2">
-                <Link href="/customerlogin" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  {t.signIn}
-                </Link>
-                <Link href="/customerregister" onClick={() => setMobileMenuOpen(false)} className="py-2 text-center text-xs font-medium border border-border rounded-md bg-card text-foreground">
-                  {t.signUp}
-                </Link>
+                <a href="tel:+431234567890" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                  <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="truncate">+43 1 234 567 890</span>
+                </a>
+                <a href="mailto:ginakvania@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                  <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="truncate">ginakvania@gmail.com</span>
+                </a>
               </div>}
 
             {/* Mobile Language Switcher & Quote CTA */}
