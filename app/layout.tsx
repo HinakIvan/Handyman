@@ -8,7 +8,8 @@ const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Wiener Bauhandwerk | Ha
 
 export const metadata = {
   title: siteTitle,
-  description: 'Handwerker- und Montageservice in Wien. Anfrage für Möbelmontage, Reparaturen und Renovierungsarbeiten stellen.',\n  applicationName: 'Wiener Bauhandwerk',
+  description: 'Handwerker- und Montageservice in Wien. Anfrage für Möbelmontage, Reparaturen und Renovierungsarbeiten stellen.',
+  applicationName: 'Wiener Bauhandwerk',
   icons: {
     icon: [
       {
