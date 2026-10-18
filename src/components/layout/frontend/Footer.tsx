@@ -65,7 +65,7 @@ export function Footer() {
 
             <div className="rounded-xl border border-border bg-background p-4 space-y-3">
               <h3 className="text-sm font-semibold text-foreground">Contact us</h3>
-              <a href="tel:+431234567890" className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <a href="tel:+43 66 567 284 985" className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary"><Phone className="h-4 w-4" /></span>
                 <span><span className="block text-xs text-muted-foreground">Phone</span>+43 66 567 284 985</span>
               </a>

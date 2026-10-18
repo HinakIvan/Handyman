@@ -472,7 +472,7 @@ export default function QuoteRequestForm({
                 Direct Contact Channels
               </span>
 
-              <a href="tel:+431234567890" className="flex items-center justify-between rounded-md border border-border bg-card text-card-foreground p-3 transition-colors hover:bg-muted" data-api-unique-id='quoterequestform-r0b3a759585c28e5e-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
+              <a href="tel:+43 66 567 284 985" className="flex items-center justify-between rounded-md border border-border bg-card text-card-foreground p-3 transition-colors hover:bg-muted" data-api-unique-id='quoterequestform-r0b3a759585c28e5e-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                 <div className="flex items-center gap-3" data-api-unique-id='quoterequestform-r6bc45277d31efbf6-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                   <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-muted text-primary" data-api-unique-id='quoterequestform-rc687f2284ed522fa-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                     <Phone className="h-4 w-4" data-api-unique-id='quoterequestform-ra241ea18d4826293-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm' />
@@ -489,7 +489,7 @@ export default function QuoteRequestForm({
                 <span className="text-[11px] font-medium text-primary" data-api-unique-id='quoterequestform-ree9fb9e0a17b8449-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>Call</span>
               </a>
 
-              <a href="https://wa.me/431234567890" target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-md border border-border bg-card text-card-foreground p-3 transition-colors hover:bg-muted" data-api-unique-id='quoterequestform-r67196df79ab0de9b-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
+              <a href="https://wa.me/43 66 567 284 985" target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-md border border-border bg-card text-card-foreground p-3 transition-colors hover:bg-muted" data-api-unique-id='quoterequestform-r67196df79ab0de9b-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                 <div className="flex items-center gap-3" data-api-unique-id='quoterequestform-r7071c0f8d7a7cc1d-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                   <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-muted text-success" data-api-unique-id='quoterequestform-r38a3dd8ffac61f63-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
                     <MessageCircle className="h-4 w-4" data-api-unique-id='quoterequestform-r7debaa8665ecaa52-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm' />

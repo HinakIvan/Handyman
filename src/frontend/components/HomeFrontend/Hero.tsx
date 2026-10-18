@@ -96,7 +96,7 @@ export default function Hero({
               <span data-api-unique-id='hero-r2e06e1283d423e65-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>{t.btnServices}</span>
             </button>
 
-            <a href="tel:+431234567890" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-3 text-sm font-medium text-card-foreground transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background" data-api-unique-id='hero-r6db51e9560e8281d-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
+            <a href="tel:+43 66 567 284 985" className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-3 text-sm font-medium text-card-foreground transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background" data-api-unique-id='hero-r6db51e9560e8281d-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>
               <Phone className="h-4 w-4 text-primary" data-api-unique-id='hero-r59449f1f4c920108-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero' />
               <span data-api-unique-id='hero-r0c98a559958665f9-s955500324' data-api-unique-page-name='src/frontend/components/HomeFrontend/Hero'>{t.btnCall}</span>
             </a>
