@@ -142,8 +142,21 @@ export function Navigation() {
     setUserDropdownOpen(false);
     router.push("/");
   };
-  return <header className="sticky top-0 z-50 h-16 w-full bg-background border-b border-border select-none">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4">
+  return <header className="sticky top-0 z-50 w-full bg-background border-b border-border select-none">
+      {/* Desktop contact strip */}
+      <div className="hidden lg:block border-b border-border/70 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-end gap-5 text-xs text-muted-foreground">
+          <a href="tel:+4366567284985" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors whitespace-nowrap">
+            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>+43 66 567 284 985</span>
+          </a>
+          <a href="mailto:handwerk.vienna@gmail.com" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors whitespace-nowrap">
+            <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>handwerk.vienna@gmail.com</span>
+          </a>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand identity */}
         <div className="flex items-center gap-3 shrink-0">
           <Link href="/" className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md">

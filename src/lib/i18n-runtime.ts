@@ -6,6 +6,7 @@
  */
 let activeDictionary: Record<string, string> | null = null;
 let observer: MutationObserver | null = null;
+let localeRequestId = 0;
 const ORIGINAL_TEXT = new WeakMap<Text, string>();
 const ORIGINAL_ATTR = new WeakMap<Element, Record<string, string>>();
 
@@ -67,11 +68,16 @@ async function loadDictionary(locale: string): Promise<Record<string, string>> {
 }
 
 export async function initI18n(locale?: string) {
+  const requestId = ++localeRequestId;
+  const selected = (locale || localStorage.getItem('handyman-language') || 'de').toLowerCase().split('-')[0];
+  const safeLocale = ['de', 'en', 'ru'].includes(selected) ? selected : 'de';
+  const dict = await loadDictionary(safeLocale);
+  // Ignore stale requests: a slower German/Russian dictionary must never
+  // overwrite a more recent explicit English selection.
+  if (requestId !== localeRequestId) return;
   if (observer) { observer.disconnect(); observer = null; }
-  const selected = (locale || localStorage.getItem('handyman-language') || 'de').toLowerCase();
-  const dict = await loadDictionary(selected);
   activeDictionary = Object.keys(dict).length ? dict : null;
-  document.documentElement.setAttribute('lang', selected === 'de' ? 'de-AT' : selected);
+  document.documentElement.setAttribute('lang', safeLocale === 'de' ? 'de-AT' : safeLocale);
   translateTree(document.documentElement, dict);
   observer = new MutationObserver(records => {
     const current = activeDictionary || {};
