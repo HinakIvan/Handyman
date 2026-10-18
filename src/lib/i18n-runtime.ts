@@ -56,7 +56,6 @@ function translateTree(root: Node, dict: Record<string, string>) {
 }
 
 async function loadDictionary(locale: string): Promise<Record<string, string>> {
-  if (locale === 'en') return {};
   try {
     const base = (window as any).__dynamic_base__ || '';
     const response = await fetch(`${base}/i18n/${locale}.json`, { cache: 'no-cache' });
