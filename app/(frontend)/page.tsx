@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Language, ServiceId, ServiceCategoryKey, ServiceCategoryDTO, ViennaDistrictDTO, FaqItemDTO } from "@/frontend/types/HomeFrontend";
 import { getHomeData } from "@/frontend/actions/HomeFrontend";
@@ -59,6 +58,8 @@ export default function HomeFrontendPage() {
     setLang(value);
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
+    const runtime = (window as any).__i18n;
+    if (typeof runtime === "function") void runtime(value);
   };
   const [preselectedService, setPreselectedService] = useState<ServiceId | "">("");
   const [_serviceCategoryKey, setServiceCategoryKey] = useState<ServiceCategoryKey | "">("");
@@ -163,7 +164,7 @@ export default function HomeFrontendPage() {
             {/* Direct Quick Triggers * /}
             <a href="tel:+431234567890" className="hidden sm:inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="h-3 w-3 text-primary" />
-              <span>+43 66 567 284 985</span>
+              <span>+43 1 234 567 890</span>
             </a>
 
             <a href="https://wa.me/431234567890" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded bg-muted text-success px-2 py-1 hover:bg-secondary transition-colors">
@@ -225,28 +226,6 @@ export default function HomeFrontendPage() {
         </div>
 
 */}
-
-        {/* SEO service landing pages with useful internal links */}
-        <section aria-labelledby="popular-services-heading" className="w-full border-y border-border bg-card py-10 md:py-14">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="popular-services-heading" className="text-2xl font-bold md:text-3xl">Beliebte Handwerkerleistungen in Wien</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">Details zu häufig angefragten Arbeiten, möglichen Leistungen und der Vorbereitung einer Anfrage.</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { href: "/moebelmontage-wien/", title: "Möbelmontage Wien", description: "Schränke, Betten, Regale und Möbel aufbauen lassen." },
-                { href: "/montageservice-wien/", title: "Montageservice Wien", description: "Geeignete Montagearbeiten für Wohnung und Geschäft anfragen." },
-                { href: "/demontage-wien/", title: "Demontage Wien", description: "Möbel vor Umzug, Austausch oder Umbau abbauen lassen." },
-                { href: "/reparaturen-wien/", title: "Kleinreparaturen Wien", description: "Kleinere Arbeiten beschreiben und Machbarkeit prüfen lassen." },
-                { href: "/bodenverlegung-wien/", title: "Bodenverlegung Wien", description: "Bodenart, Fläche und Untergrund für eine Anfrage angeben." },
-              ].map((service) => (
-                <Link key={service.href} href={service.href} className="rounded-xl border border-border p-5 transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  <span className="font-semibold text-foreground">{service.title}</span>
-                  <span className="mt-2 block text-sm leading-6 text-muted-foreground">{service.description}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* 4. Legal Trade Scope Notice (Austrian GewO compliance) */}
         <LegalTradeScope lang={lang} />

@@ -44,12 +44,8 @@ export function Navigation() {
     const value = code.toLowerCase();
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
-    // Apply the selected language immediately without a full reload. This prevents
-    // the default locale from racing with the user's explicit choice.
     const runtime = (window as any).__i18n;
-    if (typeof runtime === "function") {
-      void runtime(value);
-    }
+    if (typeof runtime === "function") void runtime(value);
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -190,17 +186,6 @@ export function Navigation() {
 
         {/* Account & Actions Zone */}
         <div className="hidden sm:flex items-center gap-2.5 shrink-0">
-          {/* Desktop contact links stay inside the main header row */}
-          <div className="hidden xl:flex items-center gap-3 mr-1 text-xs whitespace-nowrap">
-            <a href="tel:+4366567284985" className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors" aria-label="Call us">
-              <Phone className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-              <span>+43 66 567 284 985</span>
-            </a>
-            <a href="mailto:handwerk.vienna@gmail.com" className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors" aria-label="Email us">
-              <Mail className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-              <span>handwerk.vienna@gmail.com</span>
-            </a>
-          </div>
           {/* Language Switcher */}
           <div ref={langMenuRef} className="relative">
             <button type="button" onClick={() => setLangDropdownOpen(!langDropdownOpen)} className="h-9 px-2.5 rounded-md border border-border bg-card hover:bg-muted text-foreground text-xs font-medium flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring whitespace-nowrap" aria-expanded={langDropdownOpen} aria-label="Select language">
@@ -223,7 +208,7 @@ export function Navigation() {
           </div>
 
           {/* WhatsApp contact beside language selector */}
-          <a href="https://wa.me/4366567284985" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="h-9 w-9 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <a href="https://wa.me/431234567890" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="h-9 w-9 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <MessageCircle className="w-4 h-4" />
           </a>
 
@@ -317,13 +302,13 @@ export function Navigation() {
                   Sign Out
                 </button>
               </div> : <div className="grid grid-cols-2 gap-2">
-                <a href="tel:+4366567284985" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                <a href="tel:+431234567890" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">+43 66 567 284 985</span>
+                  <span className="truncate">+43 1 234 567 890</span>
                 </a>
-                <a href="mailto:handwerk.vienna@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                <a href="mailto:ginakvania@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">handwerk.vienna@gmail.com</span>
+                  <span className="truncate">ginakvania@gmail.com</span>
                 </a>
               </div>}
 
@@ -333,7 +318,7 @@ export function Navigation() {
                 {languages.map((lang, index) => <button key={lang.code} type="button" onClick={() => applyLanguage(lang.code)} className={`px-2.5 py-1 text-xs rounded border transition-colors ${activeLang === lang.code ? "border-primary bg-primary text-primary-foreground font-semibold" : "border-border bg-card text-foreground hover:bg-muted"}`}>
                     {lang.code}
                   </button>)}
-                <a href="https://wa.me/4366567284985" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="ml-1 h-8 w-8 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center">
+                <a href="https://wa.me/431234567890" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="WhatsApp" className="ml-1 h-8 w-8 rounded-md border border-border bg-card text-[#25D366] hover:bg-muted flex items-center justify-center">
                   <MessageCircle className="w-4 h-4" />
                 </a>
               </div>
