@@ -40,10 +40,9 @@ export function Navigation() {
   };
   const t = translations[activeLang];
   const applyLanguage = (code: "DE" | "EN" | "RU") => {
-    setActiveLang(code);
     const value = code.toLowerCase();
-    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
-    window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
+    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore unavailable storage */ }
+    setActiveLang(code);
     window.location.reload();
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
@@ -185,6 +184,17 @@ export function Navigation() {
 
         {/* Account & Actions Zone */}
         <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+          {/* Desktop contact details stay inside the main header */}
+          <div className="hidden xl:flex items-center gap-3 mr-1 text-xs text-foreground whitespace-nowrap">
+            <a href="tel:+4366567284985" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors" aria-label="Call us">
+              <Phone className="w-3.5 h-3.5 text-primary" />
+              <span>+43 66 567 284 985</span>
+            </a>
+            <a href="mailto:handwerk.vienna@gmail.com" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors" aria-label="Email us">
+              <Mail className="w-3.5 h-3.5 text-primary" />
+              <span>handwerk.vienna@gmail.com</span>
+            </a>
+          </div>
           {/* Language Switcher */}
           <div ref={langMenuRef} className="relative">
             <button type="button" onClick={() => setLangDropdownOpen(!langDropdownOpen)} className="h-9 px-2.5 rounded-md border border-border bg-card hover:bg-muted text-foreground text-xs font-medium flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring whitespace-nowrap" aria-expanded={langDropdownOpen} aria-label="Select language">

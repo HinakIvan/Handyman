@@ -1,24 +1,25 @@
-import { Inter, Orbitron, Jost } from 'next/font/google';
+import { Jost, JetBrains_Mono } from 'next/font/google';
 
-// Display font: geometric headings and brand elements.
-export const display = Orbitron({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+// Use the same readable sans-serif family for all user-facing text and headings.
+// The Cyrillic subset keeps Russian glyphs visually consistent with Latin text.
+const jostSubsets = ['latin', 'cyrillic'] as const;
+
+export const display = Jost({
+  subsets: [...jostSubsets],
+  weight: ['500', '600', '700', '800'],
   variable: '--font-display',
   display: 'swap',
 });
 
-// UI / headings: clean sans-serif, not a decorative serif.
-export const header = Inter({
-  subsets: ['latin'],
+export const header = Jost({
+  subsets: [...jostSubsets],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-header',
   display: 'swap',
 });
 
-// Body: readable rounded sans-serif.
 export const body = Jost({
-  subsets: ['latin'],
+  subsets: [...jostSubsets],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-body',
   display: 'swap',
