@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useHandymanLocale, localizedCategory } from "@/lib/use-handyman-locale";
+import { useHandymanLocale, localizedCategory, catalogText } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { ArrowRight, CheckCircle2, ShieldCheck, User, SearchX } from "lucide-react";
@@ -23,13 +23,13 @@ export default function TradesCatalogGrid({
             <SearchX className="h-6 w-6" data-api-unique-id='tradescataloggrid-r36f14bf504df080e-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' />
           </div>
           <h3 className="font-header text-xl font-bold text-card-foreground" data-api-unique-id='tradescataloggrid-r035bbb4777fdf1ad-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
-            No matching craft categories found
+            {catalogText("noMatches", locale)}
           </h3>
           <p className="text-sm text-muted-foreground max-w-md mx-auto" data-api-unique-id='tradescataloggrid-re6a4f94b6d125da0-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
-            We could not find any handyman trade matching your keyword or Austrian craft classification filter.
+            {catalogText("noMatchesHelp", locale)}
           </p>
           <button type="button" onClick={onResetFilters} className="inline-flex items-center justify-center px-4 py-2 bg-primary text-primary-foreground text-xs font-semibold rounded-md shadow-sm hover:bg-primary/90 transition-colors" data-api-unique-id='tradescataloggrid-r28f16101f5299c4c-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
-            Reset All Filters
+            {catalogText("resetFilters", locale)}
           </button>
         </div>
       </section>;
@@ -39,10 +39,10 @@ export default function TradesCatalogGrid({
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-3" data-api-unique-id='tradescataloggrid-rc33dfe5ae67def51-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
           <div data-api-unique-id='tradescataloggrid-r75a72584ba1087ad-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
             <h2 className="font-header text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground" data-api-unique-id='tradescataloggrid-re6000f1e45f46ca7-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
-              All Trade Categories (Austrian GewO 1994 Standards)
+              {catalogText("catalogTitle", locale)}
             </h2>
             <p className="text-sm text-muted-foreground mt-1" data-api-unique-id='tradescataloggrid-r2b661030255758ad-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
-              Transparent baseline hourly wages starting from €15/h with assigned master and certified craftsmen.
+              {catalogText("catalogDescription", locale)}
             </p>
           </div>
           <span className="text-xs font-mono text-muted-foreground" data-api-unique-id='tradescataloggrid-r7c0739758eda54c3-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
@@ -90,7 +90,7 @@ export default function TradesCatalogGrid({
                     <div className="bg-card p-3 rounded border border-border flex items-baseline justify-between" data-api-unique-id='tradescataloggrid-r72dd1d0cc87c88e9-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
                       <div data-api-unique-id='tradescataloggrid-r537884aedaa1e132-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
                         <span className="text-[10px] font-mono uppercase text-muted-foreground block" data-api-unique-id='tradescataloggrid-r234691dfe3907b9e-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
-                          Starting Base Rate
+                          {catalogText("startingRate", locale)}
                         </span>
                         <span className="font-display text-xl font-bold text-primary" data-api-unique-id='tradescataloggrid-rceb8cb6749764be6-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-baselineHourlyRate`} data-api-map-var-name='category'>
                           Ab {category.baselineHourlyRate} €/h
@@ -98,7 +98,7 @@ export default function TradesCatalogGrid({
                       </div>
                       <div className="text-right" data-api-unique-id='tradescataloggrid-r5a93832daf45fa83-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
                         <span className="text-[10px] font-mono uppercase text-muted-foreground block" data-api-unique-id='tradescataloggrid-rfa101285b4e05f0e-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
-                          Typical Range
+                          {catalogText("typicalRange", locale)}
                         </span>
                         <span className="text-xs font-semibold text-foreground font-mono" data-api-unique-id='tradescataloggrid-r5aba118910f2e0dd-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-typicalRangeEur`} data-api-map-var-name='category'>
                           {category.typicalRangeEur}
@@ -128,7 +128,7 @@ export default function TradesCatalogGrid({
                   e.stopPropagation();
                   onSelectCategory(category);
                 }} className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground rounded-md text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" data-api-unique-id='tradescataloggrid-r48dc804e8aa96423-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
-                      <span data-api-unique-id='tradescataloggrid-r492c21d1406212c0-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>View Scope & Estimate</span>
+                      <span data-api-unique-id='tradescataloggrid-r492c21d1406212c0-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>{catalogText("viewEstimate", locale)}</span>
                       <ArrowRight className="h-3.5 w-3.5" data-api-unique-id='tradescataloggrid-r040b3d72222cf653-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' />
                     </button>
                   </div>

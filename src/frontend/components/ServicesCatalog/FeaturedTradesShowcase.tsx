@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useHandymanLocale, localizedCategory } from "@/lib/use-handyman-locale";
+import { useHandymanLocale, localizedCategory, catalogText } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { ArrowRight, CheckCircle2, ShieldCheck, Clock, User, Wrench } from "lucide-react";
@@ -23,7 +23,7 @@ export default function FeaturedTradesShowcase({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-6" data-api-unique-id='featuredtradesshowcase-rbe5f36c3b9c94560-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-3" data-api-unique-id='featuredtradesshowcase-rce0481bfd0500304-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
           <h2 className="font-header text-xl sm:text-2xl font-bold tracking-tight text-foreground" data-api-unique-id='featuredtradesshowcase-r786a91ba891bf0f7-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-            Flagship Trade Spotlight (Altbau & Precision Installations)
+            {catalogText("flagship", locale)}
           </h2>
           <span className="text-xs font-mono text-muted-foreground" data-api-unique-id='featuredtradesshowcase-rd9bb95cb69ee6ad0-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
             FOCAL POINT · HANDWERKER-GÜTE
@@ -60,13 +60,13 @@ export default function FeaturedTradesShowcase({
                   </div>
                   <div className="shrink-0 text-left sm:text-right" data-api-unique-id='featuredtradesshowcase-r0547576f1c2dea4d-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                     <span className="text-xs uppercase font-mono text-muted-foreground block" data-api-unique-id='featuredtradesshowcase-r0d1072157fdb91f4-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                      Starting Hourly Rate
+                      {catalogText("startingHourly", locale)}
                     </span>
                     <span className="font-display text-2xl sm:text-3xl font-bold text-primary" data-api-unique-id='featuredtradesshowcase-r2675bc495c534aa8-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                       Ab {mainFeature.baselineHourlyRate} €/h
                     </span>
                     <span className="text-xs text-muted-foreground block" data-api-unique-id='featuredtradesshowcase-r5cab721c4529dd50-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                      Typical range: {mainFeature.typicalRangeEur}
+                      {catalogText("typical", locale)}: {mainFeature.typicalRangeEur}
                     </span>
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function FeaturedTradesShowcase({
                 {/* Permitted Task Step Checklist */}
                 {mainFeature.permittedTasksUnderGewO && mainFeature.permittedTasksUnderGewO.length > 0 && <div className="space-y-2.5 bg-background p-4 rounded-md border border-border" data-api-unique-id='featuredtradesshowcase-r5ddc91957a3cab33-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                     <span className="text-xs font-semibold uppercase tracking-wider text-foreground block" data-api-unique-id='featuredtradesshowcase-r41d9ac7f6f7cb4a8-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                      Permitted Trade Scope (GewO 1994 Standards):
+                      {catalogText("permittedScope", locale)}:
                     </span>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-muted-foreground" data-api-unique-id='featuredtradesshowcase-r96e026ec554eb4b4-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                       {mainFeature.permittedTasksUnderGewO.slice(0, 4).map((task, index) => <li key={index} className="flex items-start gap-2" data-api-unique-id='featuredtradesshowcase-rbc5401c6575d04f7-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>
@@ -99,7 +99,7 @@ export default function FeaturedTradesShowcase({
                 </div>
 
                 <button type="button" onClick={() => onSelectCategory(mainFeature)} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md shadow-primary hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-sm" data-api-unique-id='featuredtradesshowcase-re83457c03dcf99ce-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                  <span data-api-unique-id='featuredtradesshowcase-r9e01b5d6efd38588-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>Inspect Trade Scope & Price Estimate</span>
+                  <span data-api-unique-id='featuredtradesshowcase-r9e01b5d6efd38588-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>{catalogText("viewEstimate", locale)}</span>
                   <ArrowRight className="h-4 w-4" data-api-unique-id='featuredtradesshowcase-r7926c10364272a10-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' />
                 </button>
               </div>
@@ -161,7 +161,7 @@ export default function FeaturedTradesShowcase({
                     Artisan: <strong className="text-foreground" data-api-unique-id='featuredtradesshowcase-re8728df5be73c4d8-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>{item.leadArtisan || "Vienna Team"}</strong>
                   </span>
                   <button type="button" onClick={() => onSelectCategory(item)} className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors" data-api-unique-id='featuredtradesshowcase-r602ca47939f5c20a-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>
-                    <span data-api-unique-id='featuredtradesshowcase-r9b838f09ee95d685-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>View Specifications</span>
+                    <span data-api-unique-id='featuredtradesshowcase-r9b838f09ee95d685-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>{catalogText("viewSpecs", locale)}</span>
                     <ArrowRight className="h-3.5 w-3.5" data-api-unique-id='featuredtradesshowcase-r4bdf4e9914d71c3a-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1' />
                   </button>
                 </div>

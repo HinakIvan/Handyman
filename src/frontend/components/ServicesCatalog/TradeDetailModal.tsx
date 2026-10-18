@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useHandymanLocale, localizedCategory } from "@/lib/use-handyman-locale";
+import { useHandymanLocale, localizedCategory, catalogText } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
@@ -63,20 +63,20 @@ export default function TradeDetailModal({
             <div className="sm:col-span-7 space-y-3 bg-background p-4 rounded-md border border-border" data-api-unique-id='tradedetailmodal-r570ae8ba1b8a0536-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
               <div className="flex items-baseline justify-between border-b border-border pb-2" data-api-unique-id='tradedetailmodal-r6314274f99a6463b-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                 <span className="text-xs font-mono uppercase text-muted-foreground" data-api-unique-id='tradedetailmodal-rd9e15f48fcc6abb5-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-                  Baseline Hourly Rate:
+                  {catalogText("baselineRate", locale)}:
                 </span>
                 <span className="font-display text-2xl font-bold text-primary" data-api-unique-id='tradedetailmodal-r199b2d4c1eab168f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                   Ab {category.baselineHourlyRate} €/h
                 </span>
               </div>
               <div className="flex items-baseline justify-between text-xs" data-api-unique-id='tradedetailmodal-rd51bbf21f27afc81-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-                <span className="text-muted-foreground" data-api-unique-id='tradedetailmodal-r8c9e023c2354f0be-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Typical Rate Range:</span>
+                <span className="text-muted-foreground" data-api-unique-id='tradedetailmodal-r8c9e023c2354f0be-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("rateRange", locale)}</span>
                 <span className="font-mono font-semibold text-foreground" data-api-unique-id='tradedetailmodal-r3eaca9f44556ba51-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                   {category.typicalRangeEur}
                 </span>
               </div>
               <div className="flex items-baseline justify-between text-xs" data-api-unique-id='tradedetailmodal-rce0b24a624d0f749-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-                <span className="text-muted-foreground" data-api-unique-id='tradedetailmodal-r29fa6e8eaf2d73ac-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Lead Artisan Assigned:</span>
+                <span className="text-muted-foreground" data-api-unique-id='tradedetailmodal-r29fa6e8eaf2d73ac-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("leadArtisan", locale)}</span>
                 <span className="font-medium text-foreground" data-api-unique-id='tradedetailmodal-r21d3378d2613aae0-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                   {category.leadArtisan || "Vienna Certified Artisan"}
                 </span>
@@ -91,7 +91,7 @@ export default function TradeDetailModal({
           {/* Description */}
           <div className="space-y-2" data-api-unique-id='tradedetailmodal-rf4c08aa0415df916-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground" data-api-unique-id='tradedetailmodal-r13c98baa5136fa2b-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-              Trade Overview & Specifications
+              {catalogText("overview", locale)}
             </h4>
             <p className="text-sm leading-relaxed text-card-foreground font-body" data-api-unique-id='tradedetailmodal-re96cbbd6266938dc-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
               {localized.description}
@@ -103,7 +103,7 @@ export default function TradeDetailModal({
             <div className="space-y-2" data-api-unique-id='tradedetailmodal-re64065d41a0c6ff6-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
               <div className="flex items-center gap-1.5 text-xs font-semibold text-success uppercase tracking-wider" data-api-unique-id='tradedetailmodal-rfc0626cba059a385-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                 <CheckCircle2 className="h-4 w-4 shrink-0" data-api-unique-id='tradedetailmodal-r62b4db8d8730b31f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
-                <span data-api-unique-id='tradedetailmodal-rcb9b474160901c4a-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Gesetzlich zulässige Arbeiten (GewO 1994)</span>
+                <span data-api-unique-id='tradedetailmodal-rcb9b474160901c4a-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("permittedTasks", locale)}</span>
               </div>
               <ul className="space-y-1.5 text-xs text-muted-foreground pl-5 list-disc" data-api-unique-id='tradedetailmodal-ra7669cf416f518ff-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                 {category.permittedTasksUnderGewO?.map((task, i) => <li key={i} data-api-unique-id='tradedetailmodal-rec8d8e2066767a04-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{task}</li>) || <li data-api-unique-id='tradedetailmodal-r7a9144d9853c8b37-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Ausführung aller reglementierungsfreien Montage- und Instandhaltungsleistungen.</li>}
@@ -113,7 +113,7 @@ export default function TradeDetailModal({
             {category.restrictedMeisterTasks && category.restrictedMeisterTasks.length > 0 && <div className="space-y-2 pt-2 border-t border-border" data-api-unique-id='tradedetailmodal-r61419e55ca6da26f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-destructive uppercase tracking-wider" data-api-unique-id='tradedetailmodal-r0281407dd9a9ba09-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                   <AlertOctagon className="h-4 w-4 shrink-0" data-api-unique-id='tradedetailmodal-rf587315cf0a4be23-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
-                  <span data-api-unique-id='tradedetailmodal-r29f88a7f11e7c1dc-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Konzessionspflichtige Meister-Vorbehaltsbereiche</span>
+                  <span data-api-unique-id='tradedetailmodal-r29f88a7f11e7c1dc-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("restrictedTasks", locale)}</span>
                 </div>
                 <ul className="space-y-1 text-xs text-muted-foreground pl-5 list-disc" data-api-unique-id='tradedetailmodal-r5543531f1309fba9-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                   {category.restrictedMeisterTasks.map((task, index) => <li key={index} data-api-unique-id='tradedetailmodal-r1bb3c8b80f389b41-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' data-api-in-loop='1' data-api-bind-info={`category.restrictedMeisterTasks-${index}-$item`} data-api-map-var-name='task'>{task}</li>)}
@@ -127,7 +127,7 @@ export default function TradeDetailModal({
               <div className="flex items-center gap-2" data-api-unique-id='tradedetailmodal-rddc53ec3ddd141d9-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
                 <Calculator className="h-4 w-4 text-primary" data-api-unique-id='tradedetailmodal-rec4c72620414cb02-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
                 <span className="text-xs font-semibold uppercase tracking-wider text-foreground" data-api-unique-id='tradedetailmodal-r2d29a79eb7ebaded-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-                  Instant Cost Calculation (Richtwert)
+                  {catalogText("instantCost", locale)}
                 </span>
               </div>
               <span className="font-display text-lg font-bold text-primary" data-api-unique-id='tradedetailmodal-r619a5eea57938668-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
@@ -137,7 +137,7 @@ export default function TradeDetailModal({
 
             <div className="flex items-center gap-3" data-api-unique-id='tradedetailmodal-r31c94bb48c31e187-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
               <label htmlFor="hour-range" className="text-xs text-muted-foreground shrink-0" data-api-unique-id='tradedetailmodal-rf8e4bd384ee4184d-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-                Estimated Hours: <strong className="text-foreground" data-api-unique-id='tradedetailmodal-r6dd1d9482abd6635-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{estimatedHours} h</strong>
+                {catalogText("estimatedHours", locale)} <strong className="text-foreground" data-api-unique-id='tradedetailmodal-r6dd1d9482abd6635-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{estimatedHours} h</strong>
               </label>
               <input id="hour-range" type="range" min="1" max="12" step="1" value={estimatedHours} onChange={e => setEstimatedHours(parseInt(e.target.value, 10))} className="w-full accent-primary" data-api-unique-id='tradedetailmodal-r73542b718358acbb-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
             </div>
@@ -151,11 +151,11 @@ export default function TradeDetailModal({
         <DialogFooter className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-border pt-4" data-api-unique-id='tradedetailmodal-r2a7940f8dd1db5b3-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
           <button type="button" onClick={() => onNavigateDetail(category.key)} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-card text-foreground border border-border font-semibold px-4 py-2.5 rounded-md hover:bg-muted text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" data-api-unique-id='tradedetailmodal-ree0800ba5b242bcf-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
             <FileText className="h-4 w-4 text-muted-foreground" data-api-unique-id='tradedetailmodal-rd57bce376db8139f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
-            <span data-api-unique-id='tradedetailmodal-raf2d174289009184-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Open Dedicated Detail Page</span>
+            <span data-api-unique-id='tradedetailmodal-raf2d174289009184-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("detailPage", locale)}</span>
           </button>
 
           <button type="button" onClick={() => onRequestQuote(category)} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-md shadow-primary hover:bg-primary/90 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" data-api-unique-id='tradedetailmodal-r7f1497eba738fcb6-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-            <span data-api-unique-id='tradedetailmodal-r1ddcf57b66cc181f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>Request Quote for this Craft</span>
+            <span data-api-unique-id='tradedetailmodal-r1ddcf57b66cc181f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>{catalogText("requestQuote", locale)}</span>
             <ArrowRight className="h-4 w-4" data-api-unique-id='tradedetailmodal-r4c1f7ccc0111803f-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
           </button>
         </DialogFooter>

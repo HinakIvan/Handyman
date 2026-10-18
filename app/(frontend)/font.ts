@@ -1,33 +1,7 @@
+import { Jost, JetBrains_Mono } from 'next/font/google';
 
-import { Playfair_Display, Jost,Orbitron, JetBrains_Mono } from 'next/font/google';
-
-export const display = Orbitron({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-// 标题字体 
-export const header = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-header',
-  display: 'swap'
-});
-
-// 正文字体 - 映射到 Tailwind 的 font-sans 和 font-serif
-export const body = Jost({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-body',
-  display: 'swap'
-});
-
-// 代码字体 - 映射到 Tailwind 的 font-mono
-export const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-mono',
-  display: 'swap'
-});
+// Clear, highly readable typography for a practical local-services website.
+export const display = Jost({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-display', display: 'swap' });
+export const header = Jost({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-header', display: 'swap' });
+export const body = Jost({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-body', display: 'swap' });
+export const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-mono', display: 'swap' });
