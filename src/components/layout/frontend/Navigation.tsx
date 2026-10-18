@@ -44,7 +44,12 @@ export function Navigation() {
     const value = code.toLowerCase();
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
-    window.location.reload();
+    // Apply the selected language immediately without a full reload. This prevents
+    // the default locale from racing with the user's explicit choice.
+    const runtime = (window as any).__i18n;
+    if (typeof runtime === "function") {
+      void runtime(value);
+    }
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const navContainerRef = useRef<HTMLDivElement>(null);

@@ -90,9 +90,10 @@ if (typeof window !== 'undefined') {
   (window as any).__i18n = initI18n;
   (window as any).__switchLocale = (locale: string) => {
     const code = (locale || 'de').toLowerCase().split('-')[0];
-    if (code === 'en') localStorage.setItem('handyman-language', 'en');
-    else localStorage.setItem('handyman-language', code);
-    location.reload();
+    if (!['de', 'en', 'ru'].includes(code)) return;
+    try { localStorage.setItem('handyman-language', code); } catch { /* ignore */ }
+    window.dispatchEvent(new CustomEvent('handyman-language-change', { detail: code }));
+    void initI18n(code);
   };
   const boot = () => { void initI18n(); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
