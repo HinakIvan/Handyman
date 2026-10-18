@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useHandymanLocale, localizedCategory } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
@@ -20,7 +21,9 @@ export default function TradeDetailModal({
   onRequestQuote
 }: TradeDetailModalProps) {
   const [estimatedHours, setEstimatedHours] = useState<number>(3);
+  const locale = useHandymanLocale();
   if (!category) return null;
+  const localized = localizedCategory(category, locale);
   const isMeister = category.craftClassification === "MEISTER_KOOPERATION";
   const estimatedCost = estimatedHours * category.baselineHourlyRate;
   return <Dialog open={isOpen} onOpenChange={open => !open && onClose()} data-api-unique-id='tradedetailmodal-r6a43bb456a61cbc2-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
@@ -42,11 +45,10 @@ export default function TradeDetailModal({
           </div>
 
           <DialogTitle className="font-header text-2xl font-bold text-card-foreground" data-api-unique-id='tradedetailmodal-r2245541238d5b92b-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-            {category.titleEn}
+            {localized.title}
           </DialogTitle>
 
           <DialogDescription className="text-xs sm:text-sm text-muted-foreground font-body" data-api-unique-id='tradedetailmodal-r2e3e5f03223d2142-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-            DE: {category.titleDe} | RU: {category.titleRu}
           </DialogDescription>
         </DialogHeader>
 
@@ -55,7 +57,7 @@ export default function TradeDetailModal({
           {/* Cover & Rates Strip */}
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" data-api-unique-id='tradedetailmodal-r1fde7b99a0d47bbd-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
             <div className="sm:col-span-5 aspect-[4/3] rounded-md overflow-hidden bg-muted" data-api-unique-id='tradedetailmodal-raeeee2989c856165-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-              <EditableImg propKey={`modal-cat-${category.id}`} src={category.imageUrl || undefined} className="w-full h-full object-cover" alt={category.titleEn} data-api-unique-id='tradedetailmodal-r5192d69caaf2cc59-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
+              <EditableImg propKey={`modal-cat-${category.id}`} src={category.imageUrl || undefined} className="w-full h-full object-cover" alt={localized.title} data-api-unique-id='tradedetailmodal-r5192d69caaf2cc59-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal' />
             </div>
 
             <div className="sm:col-span-7 space-y-3 bg-background p-4 rounded-md border border-border" data-api-unique-id='tradedetailmodal-r570ae8ba1b8a0536-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
@@ -92,7 +94,7 @@ export default function TradeDetailModal({
               Trade Overview & Specifications
             </h4>
             <p className="text-sm leading-relaxed text-card-foreground font-body" data-api-unique-id='tradedetailmodal-re96cbbd6266938dc-s1297085974' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradeDetailModal'>
-              {category.descriptionEn}
+              {localized.description}
             </p>
           </div>
 

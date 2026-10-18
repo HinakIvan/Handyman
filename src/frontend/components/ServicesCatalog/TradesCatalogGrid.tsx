@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useHandymanLocale, localizedCategory } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { ArrowRight, CheckCircle2, ShieldCheck, User, SearchX } from "lucide-react";
@@ -14,6 +15,7 @@ export default function TradesCatalogGrid({
   onSelectCategory,
   onResetFilters
 }: TradesCatalogGridProps) {
+  const locale = useHandymanLocale();
   if (categories.length === 0) {
     return <section data-controller-name="Trades Catalog Grid" className="w-full bg-card border-b border-border py-16" data-api-unique-id='tradescataloggrid-rcf60cd0509f3ac5b-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4" data-api-unique-id='tradescataloggrid-r37bc61a7faa60cf9-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
@@ -51,6 +53,7 @@ export default function TradesCatalogGrid({
         {/* Modular Architectural 2x4 (and responsive) Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-api-unique-id='tradescataloggrid-r9ad8b5e6176cdb62-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid'>
           {categories.map((category, index) => {
+          const localized = localizedCategory(category, locale);
           const isMeister = category.craftClassification === "MEISTER_KOOPERATION";
           return <article key={category.id} onClick={() => onSelectCategory(category)} className="bg-background text-foreground border border-border rounded-lg shadow-soft overflow-hidden flex flex-col justify-between hover:shadow-elevated transition-shadow cursor-pointer" data-api-unique-id='tradescataloggrid-rf82f3be28ecb6b1d-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
                 {/* Visual Cover / Spec Header */}
@@ -80,15 +83,7 @@ export default function TradesCatalogGrid({
                   <div className="space-y-3" data-api-unique-id='tradescataloggrid-r76015af9b90968a6-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
                     {/* Trilingual Title Block */}
                     <div data-api-unique-id='tradescataloggrid-rfc650b70662bb1ff-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1'>
-                      <h3 className="font-header text-lg font-bold leading-tight text-foreground line-clamp-1" data-api-unique-id='tradescataloggrid-ra5704dd446d21abe-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-titleEn`} data-api-map-var-name='category'>
-                        {category.titleEn}
-                      </h3>
-                      <p className="text-xs font-medium text-muted-foreground mt-0.5 line-clamp-1" data-api-unique-id='tradescataloggrid-rc48793c6dd8a3389-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-titleDe`} data-api-map-var-name='category'>
-                        DE: {category.titleDe}
-                      </p>
-                      <p className="text-[11px] text-muted-foreground/80 line-clamp-1" data-api-unique-id='tradescataloggrid-rebfc2c430ff192f1-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-titleRu`} data-api-map-var-name='category'>
-                        RU: {category.titleRu}
-                      </p>
+                      <h3 className="font-header text-lg font-bold leading-tight text-foreground line-clamp-1">{localized.title}</h3>
                     </div>
 
                     {/* Hourly Pricing Bar */}
@@ -113,7 +108,7 @@ export default function TradesCatalogGrid({
 
                     {/* Brief Excerpt */}
                     <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed" data-api-unique-id='tradescataloggrid-r3ffd2a2d6019d09c-s3688347444' data-api-unique-page-name='src/frontend/components/ServicesCatalog/TradesCatalogGrid' data-api-in-loop='1' data-api-bind-info={`categories-${index}-descriptionEn`} data-api-map-var-name='category'>
-                      {category.descriptionEn}
+                      {localized.description}
                     </p>
                   </div>
 
