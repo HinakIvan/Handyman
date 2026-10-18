@@ -12,7 +12,7 @@ export const metadata = {
   title: { default: siteTitle, template: '%s | Handwerker Wien' },
   description: 'Handwerker in Wien für Möbelmontage, Aufbau, Demontage und kleinere Reparaturen. Transparente Preise ab 15 €/Std. Anfrage für Wien und Umgebung.',
   keywords: ['Handwerker Wien', 'Handwerkerservice Wien', 'Montageservice Wien', 'Möbelmontage Wien', 'Möbelaufbau Wien', 'Demontage Wien', 'Kleinreparaturen Wien', 'Bodenverlegung Wien'],
-  alternates: { canonical: siteUrl + '/' },
+  alternates: { canonical: siteUrl + '/', languages: { 'de-AT': siteUrl + '/', ru: siteUrl + '/ru/', en: siteUrl + '/en/', 'x-default': siteUrl + '/' } },
   openGraph: { type: 'website', locale: 'de_AT', url: siteUrl + '/', siteName: 'Wiener Bauhandwerk', title: siteTitle, description: 'Handwerker in Wien für Möbelmontage, Aufbau, Demontage und kleinere Reparaturen. Transparente Preise ab 15 €/Std.' },
   robots: { index: true, follow: true },
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
