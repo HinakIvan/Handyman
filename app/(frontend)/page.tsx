@@ -55,11 +55,14 @@ export default function HomeFrontendPage() {
     return () => window.removeEventListener("handyman-language-change", onLanguageChange);
   }, []);
   const changeLanguage = (value: Language) => {
-    setLang(value);
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
-    window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
-    const runtime = (window as any).__i18n;
-    if (typeof runtime === "function") void runtime(value);
+    setLang(value);
+    const switchLocale = (window as any).__switchLocale;
+    if (typeof switchLocale === "function") {
+      switchLocale(value);
+      return;
+    }
+    window.location.reload();
   };
   const [preselectedService, setPreselectedService] = useState<ServiceId | "">("");
   const [_serviceCategoryKey, setServiceCategoryKey] = useState<ServiceCategoryKey | "">("");

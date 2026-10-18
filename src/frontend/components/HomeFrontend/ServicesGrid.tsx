@@ -144,12 +144,7 @@ export default function ServicesGrid({
                           {desc}
                         </p>}
 
-                      {item.leadArtisan && <div className="mt-3 flex flex-wrap gap-1.5" data-api-unique-id='servicesgrid-rea0b6b3bd9c0587f-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
-                          <span className="inline-flex items-center rounded-sm bg-muted text-muted-foreground px-2 py-0.5 text-[11px] border border-border" data-api-unique-id='servicesgrid-ra3f05791e8313427-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1' data-api-bind-info={`featured-${index}-leadArtisan`} data-api-map-var-name='item'>
-                            {lang === "de" ? "Fachkraft: " : lang === "ru" ? "Мастер: " : "Artisan: "}
-                            {item.leadArtisan}
-                          </span>
-                        </div>}
+
                     </div>
 
                     <div className="mt-5 pt-4 border-t border-border flex items-center justify-between" data-api-unique-id='servicesgrid-ra2f15e988c3cfb80-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
@@ -216,11 +211,7 @@ export default function ServicesGrid({
                           {desc}
                         </p>}
 
-                      {item.leadArtisan && <div className="mt-2.5 flex flex-wrap gap-1" data-api-unique-id='servicesgrid-rc931cb7b1f92108f-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
-                          <span className="rounded-sm bg-muted text-muted-foreground px-1.5 py-0.5 text-[10px] border border-border" data-api-unique-id='servicesgrid-r5637b265dbf4f9bd-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1' data-api-bind-info={`others-${index}-leadArtisan`} data-api-map-var-name='item'>
-                            {item.leadArtisan}
-                          </span>
-                        </div>}
+
                     </div>
                   </div>
 
