@@ -1,0 +1,30 @@
+HANDYMAN WIEN — SEO PATCH INSTALLATION
+
+Patch contents:
+- 5 service landing pages with unique German copy, metadata, canonical URLs, FAQ and Service structured data.
+- Organization structured data in app/layout.tsx (no invented physical address or telephone number).
+- app/sitemap.ts -> /sitemap.xml
+- app/robots.ts -> /robots.txt
+- homepage internal links to the new landing pages.
+- German (de-AT) default metadata and UI language from the previous German-default patch.
+- Optional Google Search Console HTML-tag verification via GOOGLE_SITE_VERIFICATION environment variable.
+
+INSTALL:
+1. Unzip this archive at the repository root, preserving the Handyman-main/ paths, and allow files to merge/overwrite.
+2. Commit and push the changed files to the main branch. Railway should deploy automatically.
+3. Once deployed, check these URLs:
+   https://handwerker-wien.com/sitemap.xml
+   https://handwerker-wien.com/robots.txt
+   https://handwerker-wien.com/moebelmontage-wien/
+   https://handwerker-wien.com/montageservice-wien/
+   https://handwerker-wien.com/demontage-wien/
+   https://handwerker-wien.com/reparaturen-wien/
+   https://handwerker-wien.com/bodenverlegung-wien/
+4. Google Search Console: add https://handwerker-wien.com/ as a URL-prefix property or add the domain property. Verify ownership using the method Google provides. For HTML-tag verification, copy only the token value from Google's meta tag into Railway service Variables as GOOGLE_SITE_VERIFICATION, then redeploy. Alternatively, use DNS verification at Namecheap and no code variable is needed.
+5. In Search Console -> Sitemaps, submit sitemap.xml. Use URL Inspection on each new landing page and request indexing. Google decides when/if pages are indexed; submission is not a guarantee.
+
+IMPORTANT:
+- I cannot access the owner's Google Search Console account from this code archive. Actual verification, sitemap submission, and URL inspection must be completed inside that account.
+- The site currently lists an hourly price starting at 15 EUR; page copy explains that the final price depends on scope. Confirm that this price is current before deployment.
+- Organization structured data uses the existing site brand and email, and deliberately omits a physical address/phone because no verified business address or real phone was provided.
+- Review all listed services against your actual Austrian trade authorization and operational capacity before publishing. The pages avoid promising regulated work without prior scope checks.

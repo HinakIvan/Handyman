@@ -482,7 +482,7 @@ export default function QuoteRequestForm({
                       Direct Hotline
                     </div>
                     <div className="text-xs text-muted-foreground" data-api-unique-id='quoterequestform-r64713e19986094cb-s472664262' data-api-unique-page-name='src/frontend/components/HomeFrontend/QuoteRequestForm'>
-                      +43 1 234 567 890
+                      +43 66 567 284 985
                     </div>
                   </div>
                 </div>

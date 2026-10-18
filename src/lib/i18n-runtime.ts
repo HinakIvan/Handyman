@@ -68,7 +68,7 @@ async function loadDictionary(locale: string): Promise<Record<string, string>> {
 
 export async function initI18n(locale?: string) {
   if (observer) { observer.disconnect(); observer = null; }
-  const selected = (locale || localStorage.getItem('handyman-language') || 'en').toLowerCase();
+  const selected = (locale || localStorage.getItem('handyman-language') || 'de').toLowerCase();
   const dict = await loadDictionary(selected);
   activeDictionary = Object.keys(dict).length ? dict : null;
   document.documentElement.setAttribute('lang', selected === 'de' ? 'de-AT' : selected);
@@ -89,7 +89,7 @@ export async function initI18n(locale?: string) {
 if (typeof window !== 'undefined') {
   (window as any).__i18n = initI18n;
   (window as any).__switchLocale = (locale: string) => {
-    const code = (locale || 'en').toLowerCase().split('-')[0];
+    const code = (locale || 'de').toLowerCase().split('-')[0];
     if (code === 'en') localStorage.setItem('handyman-language', 'en');
     else localStorage.setItem('handyman-language', code);
     location.reload();

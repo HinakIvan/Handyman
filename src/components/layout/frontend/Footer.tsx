@@ -67,11 +67,11 @@ export function Footer() {
               <h3 className="text-sm font-semibold text-foreground">Contact us</h3>
               <a href="tel:+431234567890" className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary"><Phone className="h-4 w-4" /></span>
-                <span><span className="block text-xs text-muted-foreground">Phone</span>+43 1 234 567 890</span>
+                <span><span className="block text-xs text-muted-foreground">Phone</span>+43 66 567 284 985</span>
               </a>
-              <a href="mailto:ginakvania@gmail.com" className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors break-all">
+              <a href="mailto:handwerk.vienna@gmail.com" className="flex items-center gap-3 text-sm font-medium text-foreground hover:text-primary transition-colors break-all">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary"><Mail className="h-4 w-4" /></span>
-                <span><span className="block text-xs text-muted-foreground">Email</span>ginakvania@gmail.com</span>
+                <span><span className="block text-xs text-muted-foreground">Email</span>handwerk.vienna@gmail.com</span>
               </a>
             </div>
           </div>

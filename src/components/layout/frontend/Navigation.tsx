@@ -19,7 +19,7 @@ export function Navigation() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("EN");
+  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("DE");
   useEffect(() => {
     const valid = (value: string | null): value is "de" | "en" | "ru" => value === "de" || value === "en" || value === "ru";
     try {
@@ -303,11 +303,11 @@ export function Navigation() {
               </div> : <div className="grid grid-cols-2 gap-2">
                 <a href="tel:+431234567890" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">+43 1 234 567 890</span>
+                  <span className="truncate">+43 66 567 284 985</span>
                 </a>
-                <a href="mailto:ginakvania@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
+                <a href="mailto:handwerk.vienna@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">ginakvania@gmail.com</span>
+                  <span className="truncate">handwerk.vienna@gmail.com</span>
                 </a>
               </div>}
 

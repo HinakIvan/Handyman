@@ -4,11 +4,18 @@ import { Toaster } from 'sonner';
 import { Suspense } from 'react';
 import { display, header, body } from './font';
 
-const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Wiener Bauhandwerk | Handwerker in Wien";
+const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE ?? "Handwerker Wien | Montage, Reparatur & Möbelmontage";
+const siteUrl = 'https://handwerker-wien.com';
 
 export const metadata = {
-  title: siteTitle,
-  description: 'Handwerker- und Montageservice in Wien. Anfrage für Möbelmontage, Reparaturen und Renovierungsarbeiten stellen.',
+  metadataBase: new URL(siteUrl),
+  title: { default: siteTitle, template: '%s | Handwerker Wien' },
+  description: 'Handwerker in Wien für Möbelmontage, Aufbau, Demontage und kleinere Reparaturen. Transparente Preise ab 15 €/Std. Anfrage für Wien und Umgebung.',
+  keywords: ['Handwerker Wien', 'Handwerkerservice Wien', 'Montageservice Wien', 'Möbelmontage Wien', 'Möbelaufbau Wien', 'Demontage Wien', 'Kleinreparaturen Wien', 'Bodenverlegung Wien'],
+  alternates: { canonical: siteUrl + '/' },
+  openGraph: { type: 'website', locale: 'de_AT', url: siteUrl + '/', siteName: 'Wiener Bauhandwerk', title: siteTitle, description: 'Handwerker in Wien für Möbelmontage, Aufbau, Demontage und kleinere Reparaturen. Transparente Preise ab 15 €/Std.' },
+  robots: { index: true, follow: true },
+  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   applicationName: 'Wiener Bauhandwerk',
   icons: {
     icon: [
@@ -47,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${header.variable} ${body.variable}`} style={{
+    <html lang="de-AT" className={`${display.variable} ${header.variable} ${body.variable}`} style={{
       backgroundColor: '#fff',
       color: 'rgba(0, 0, 0, 0.85)'
     }}>
@@ -60,6 +67,22 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className={`${body.className} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Wiener Bauhandwerk',
+              url: siteUrl,
+              email: 'handwerk.vienna@gmail.com',
+              areaServed: [
+                { '@type': 'City', name: 'Wien' },
+                { '@type': 'AdministrativeArea', name: 'Wien und Umgebung' }
+              ]
+            }).replace(/</g, '\\u003c')
+          }}
+        />
         <Providers>
           <Toaster position="top-center" richColors offset="100px" />
           <Suspense fallback={<div>Loading...</div>}>

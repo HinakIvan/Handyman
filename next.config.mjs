@@ -67,7 +67,7 @@ const nextConfig = {
     NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || '',
     NEXT_PUBLIC_RUNTIME_API: process.env.NEXT_PUBLIC_RUNTIME_API || '/api/v1/proxy',
     NEXT_PUBLIC_SITE_TITLE:
-      process.env.NEXT_PUBLIC_SITE_TITLE || "Vienna Handyman & Renovation Services Website"
+      process.env.NEXT_PUBLIC_SITE_TITLE || "Handwerker Wien | Montage, Reparatur & Möbelmontage"
   },
 
   typescript: {
