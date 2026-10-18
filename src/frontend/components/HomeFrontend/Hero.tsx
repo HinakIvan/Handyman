@@ -11,7 +11,7 @@ interface HeroProps {
 }
 const copy = {
   en: {
-    title: "Wiener Handwerk mit Präzision",
+    title: "Viennese Craftsmanship with Precision",
     subtitle: "Reliable apartment repairs, assembly, and renovation assistance across Vienna.",
     badgeRate: "From €15/hour baseline",
     disclaimer: "Materials, VAT, and travel surcharge calculated transparently.",
@@ -33,7 +33,7 @@ const copy = {
     feature2: "1.–23. Bezirk & Umland Niederösterreich"
   },
   ru: {
-    title: "Wiener Handwerk mit Präzision",
+    title: "Венское мастерство с точностью до мелочей",
     subtitle: "Надёжный ремонт квартир, сборка и отделочные работы в Вене от €15/час.",
     badgeRate: "От €15/час базовая ставка",
     disclaimer: "Материалы, НДС и выезд рассчитываются прозрачно без скрытых комиссий.",
