@@ -44,8 +44,7 @@ export function Navigation() {
     const value = code.toLowerCase();
     try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
-    const runtime = (window as any).__i18n;
-    if (typeof runtime === "function") void runtime(value);
+    window.location.reload();
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
   const navContainerRef = useRef<HTMLDivElement>(null);

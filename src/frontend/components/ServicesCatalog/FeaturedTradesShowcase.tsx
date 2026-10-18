@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useHandymanLocale } from "@/lib/use-handyman-locale";
 import EditableImg from "@/@base/EditableImg";
 import { ServiceCategoryItem } from "@/frontend/types/ServicesCatalog";
 import { ArrowRight, CheckCircle2, ShieldCheck, Clock, User, Wrench } from "lucide-react";
@@ -13,9 +12,6 @@ export default function FeaturedTradesShowcase({
   categories,
   onSelectCategory
 }: FeaturedTradesShowcaseProps) {
-  const locale = useHandymanLocale();
-  const titleFor = (c: ServiceCategoryItem) => locale === "de" ? c.titleDe : locale === "ru" ? c.titleRu : c.titleEn;
-  const descriptionFor = (c: ServiceCategoryItem) => (locale === "de" ? c.descriptionDe : locale === "ru" ? c.descriptionRu : c.descriptionEn) || c.descriptionEn || c.descriptionDe || c.descriptionRu || "";
   // Find the primary Altbau Flooring trade as main feature (60% width), and two secondary trades
   const mainFeature = categories.find(c => c.key === "FLOORING") || categories[0];
   const sideFeatures = mainFeature ? categories.filter(c => c.id !== mainFeature.id && c.isFeatured).slice(0, 2) : [];
@@ -36,7 +32,7 @@ export default function FeaturedTradesShowcase({
           <article className="lg:col-span-7 bg-card text-card-foreground border border-border rounded-lg shadow-soft overflow-hidden flex flex-col justify-between" data-api-unique-id='featuredtradesshowcase-r5666f103f2049f8e-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
             {/* Visual Header with Trade Image */}
             <div className="relative aspect-[16/10] w-full bg-muted overflow-hidden" data-api-unique-id='featuredtradesshowcase-r66933b33260da177-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-              <EditableImg propKey={`featured-lead-${mainFeature.id}`} src={mainFeature.imageUrl || undefined} needLargeImage className="w-full h-full object-cover" alt={titleFor(mainFeature)} data-api-unique-id='featuredtradesshowcase-rd1b66d652d0a6c5d-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' />
+              <EditableImg propKey={`featured-lead-${mainFeature.id}`} src={mainFeature.imageUrl || undefined} needLargeImage className="w-full h-full object-cover" alt={mainFeature.titleEn} data-api-unique-id='featuredtradesshowcase-rd1b66d652d0a6c5d-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' />
               <div className="absolute top-3 left-3 flex flex-wrap gap-2" data-api-unique-id='featuredtradesshowcase-rd7b2f88ce2737d84-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-accent text-accent-foreground text-xs font-semibold tracking-wider uppercase font-display shadow-soft" data-api-unique-id='featuredtradesshowcase-rc9198286c559f48b-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                   <CheckCircle2 className="h-3.5 w-3.5" data-api-unique-id='featuredtradesshowcase-rc51e58a1a26e8a5a-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' />
@@ -54,9 +50,11 @@ export default function FeaturedTradesShowcase({
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-border pb-4" data-api-unique-id='featuredtradesshowcase-ra5b884d5c706d83a-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                   <div data-api-unique-id='featuredtradesshowcase-r9a58a9f53d7a2b9d-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                     <h3 className="font-header text-2xl sm:text-3xl font-bold text-card-foreground" data-api-unique-id='featuredtradesshowcase-r54421fde66b300f0-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                      {titleFor(mainFeature)}
+                      {mainFeature.titleEn}
                     </h3>
-
+                    <p className="text-sm font-medium text-muted-foreground mt-0.5" data-api-unique-id='featuredtradesshowcase-r4b6f73c32d24a9fc-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
+                      DE: {mainFeature.titleDe} | RU: {mainFeature.titleRu}
+                    </p>
                   </div>
                   <div className="shrink-0 text-left sm:text-right" data-api-unique-id='featuredtradesshowcase-r0547576f1c2dea4d-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
                     <span className="text-xs uppercase font-mono text-muted-foreground block" data-api-unique-id='featuredtradesshowcase-r0d1072157fdb91f4-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
@@ -72,7 +70,7 @@ export default function FeaturedTradesShowcase({
                 </div>
 
                 <p className="text-sm sm:text-base leading-relaxed text-muted-foreground font-body" data-api-unique-id='featuredtradesshowcase-rfbafe0568e90f298-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase'>
-                  {descriptionFor(mainFeature)}
+                  {mainFeature.descriptionEn}
                 </p>
 
                 {/* Permitted Task Step Checklist */}
@@ -125,8 +123,11 @@ export default function FeaturedTradesShowcase({
                         </span>
                       </div>
                       <h4 className="font-header text-lg sm:text-xl font-bold text-card-foreground" data-api-unique-id='featuredtradesshowcase-r51cd1edc4419d307-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1' data-api-bind-info={`sideFeatures-${index}-titleEn`} data-api-map-var-name='item'>
-                        {titleFor(item)}
+                        {item.titleEn}
                       </h4>
+                      <p className="text-xs text-muted-foreground" data-api-unique-id='featuredtradesshowcase-rc6fd581063ff8328-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1' data-api-bind-info={`sideFeatures-${index}-titleDe`} data-api-map-var-name='item'>
+                        DE: {item.titleDe}
+                      </p>
                     </div>
 
                     <div className="shrink-0 text-right" data-api-unique-id='featuredtradesshowcase-ra962727f31eadf74-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>
@@ -140,7 +141,7 @@ export default function FeaturedTradesShowcase({
                   </div>
 
                   <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2" data-api-unique-id='featuredtradesshowcase-r8331ff7610bfb5ec-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1' data-api-bind-info={`sideFeatures-${index}-descriptionEn`} data-api-map-var-name='item'>
-                    {descriptionFor(item)}
+                    {item.descriptionEn}
                   </p>
 
                   <div className="flex items-center gap-4 text-xs text-muted-foreground pt-1" data-api-unique-id='featuredtradesshowcase-r098b6b7ad80aa726-s3780957282' data-api-unique-page-name='src/frontend/components/ServicesCatalog/FeaturedTradesShowcase' data-api-in-loop='1'>
