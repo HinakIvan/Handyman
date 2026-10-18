@@ -185,9 +185,9 @@ export function Navigation() {
 
         {/* Account & Actions Zone */}
         <div className="hidden lg:flex items-center gap-3 shrink-0 mr-2">
-          <a href="tel:+43 66 567 284 985" className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary whitespace-nowrap" aria-label="Call +43 1 234 567 890">
+          <a href="tel:+43 66 567 284 985" className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary whitespace-nowrap" aria-label="Call +43 66 567 284 985">
             <Phone className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-            <span>+43 1 234 567 890</span>
+            <span>+43 66 567 284 985</span>
           </a>
           <a href="mailto:handwerk.vienna@gmail.com" className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary whitespace-nowrap" aria-label="Email handwerk.vienna@gmail.com">
             <Mail className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
@@ -313,7 +313,7 @@ export function Navigation() {
               </div> : <div className="grid grid-cols-2 gap-2">
                 <a href="tel:+43 66 567 284 985" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="truncate">+43 1 234 567 890</span>
+                  <span className="truncate">+43 66 567 284 985</span>
                 </a>
                 <a href="mailto:handwerk.vienna@gmail.com" className="flex min-w-0 items-center justify-center gap-2 py-2 px-2 text-center text-xs font-semibold border border-border rounded-md bg-card text-foreground hover:bg-muted">
                   <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />

@@ -167,7 +167,7 @@ export default function HomeFrontendPage() {
             {/* Direct Quick Triggers * /}
             <a href="tel:+43 66 567 284 985" className="hidden sm:inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="h-3 w-3 text-primary" />
-              <span>+43 1 234 567 890</span>
+              <span>+43 66 567 284 985</span>
             </a>
 
             <a href="https://wa.me/43 66 567 284 985" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded bg-muted text-success px-2 py-1 hover:bg-secondary transition-colors">
