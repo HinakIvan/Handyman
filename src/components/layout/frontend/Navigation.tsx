@@ -19,7 +19,7 @@ export function Navigation() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("DE");
+  const [activeLang, setActiveLang] = useState<"DE" | "EN" | "RU">("EN");
   useEffect(() => {
     const valid = (value: string | null): value is "de" | "en" | "ru" => value === "de" || value === "en" || value === "ru";
     try {
@@ -40,16 +40,10 @@ export function Navigation() {
   };
   const t = translations[activeLang];
   const applyLanguage = (code: "DE" | "EN" | "RU") => {
-    const value = code.toLowerCase();
-    // Reload from the original React-rendered source. This prevents the runtime
-    // DOM translator from fighting React and guarantees the whole page changes.
-    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
     setActiveLang(code);
-    const switchLocale = (window as any).__switchLocale;
-    if (typeof switchLocale === "function") {
-      switchLocale(value);
-      return;
-    }
+    const value = code.toLowerCase();
+    try { window.localStorage.setItem("handyman-language", value); } catch { /* ignore */ }
+    window.dispatchEvent(new CustomEvent("handyman-language-change", { detail: value }));
     window.location.reload();
   };
   const [visibleCount, setVisibleCount] = useState<number>(2);
@@ -190,6 +184,16 @@ export function Navigation() {
         </div>
 
         {/* Account & Actions Zone */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0 mr-2">
+          <a href="tel:+431234567890" className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary whitespace-nowrap" aria-label="Call +43 1 234 567 890">
+            <Phone className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+            <span>+43 1 234 567 890</span>
+          </a>
+          <a href="mailto:ginakvania@gmail.com" className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary whitespace-nowrap" aria-label="Email ginakvania@gmail.com">
+            <Mail className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+            <span>ginakvania@gmail.com</span>
+          </a>
+        </div>
         <div className="hidden sm:flex items-center gap-2.5 shrink-0">
           {/* Language Switcher */}
           <div ref={langMenuRef} className="relative">

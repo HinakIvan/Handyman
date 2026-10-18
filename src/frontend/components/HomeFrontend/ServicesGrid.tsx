@@ -143,8 +143,6 @@ export default function ServicesGrid({
                       {desc && <p className="mt-2 text-sm text-muted-foreground leading-relaxed" data-api-unique-id='servicesgrid-r283cc2198b77600a-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
                           {desc}
                         </p>}
-
-
                     </div>
 
                     <div className="mt-5 pt-4 border-t border-border flex items-center justify-between" data-api-unique-id='servicesgrid-ra2f15e988c3cfb80-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
@@ -210,8 +208,6 @@ export default function ServicesGrid({
                       {desc && <p className="mt-1.5 text-xs text-muted-foreground line-clamp-2 leading-relaxed" data-api-unique-id='servicesgrid-r815057b846c3cfd0-s1370428328' data-api-unique-page-name='src/frontend/components/HomeFrontend/ServicesGrid' data-api-in-loop='1'>
                           {desc}
                         </p>}
-
-
                     </div>
                   </div>
 
