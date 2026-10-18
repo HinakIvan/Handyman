@@ -1,34 +1,29 @@
 /**
- * Site-wide lightweight translation layer. The UI language is stored as
- * handyman-language (de/en/ru), which is also used by the navigation.
- * Exact text matching is intentional: dynamic values and user-submitted data
- * are not rewritten unless a complete matching translation exists.
+ * Lightweight runtime translations for the existing English source UI.
+ * Dictionaries in /public/i18n are keyed by the original English text.
+ * Language changes are serialized so a slow earlier request cannot override
+ * a later user selection.
  */
-let activeDictionary: Record<string, string> | null = null;
+let activeDictionary: Record<string, string> = {};
 let observer: MutationObserver | null = null;
-let localeRequestId = 0;
+let requestVersion = 0;
+let applyingTranslations = false;
 const ORIGINAL_TEXT = new WeakMap<Text, string>();
 const ORIGINAL_ATTR = new WeakMap<Element, Record<string, string>>();
 
+function originalText(node: Text): string {
+  if (!ORIGINAL_TEXT.has(node)) ORIGINAL_TEXT.set(node, node.textContent ?? '');
+  return ORIGINAL_TEXT.get(node) ?? '';
+}
+
 function translateTextNode(node: Text, dict: Record<string, string>) {
-  const current = node.textContent ?? '';
-  if (!ORIGINAL_TEXT.has(node)) ORIGINAL_TEXT.set(node, current);
-  const original = ORIGINAL_TEXT.get(node) ?? current;
+  const original = originalText(node);
   const trimmed = original.trim();
   if (!trimmed || trimmed.length < 2) return;
   const translated = dict[trimmed];
-  let nextText = original;
-  if (translated && translated !== trimmed) {
-    const leading = original.match(/^\s*/)?.[0] ?? '';
-    const trailing = original.match(/\s*$/)?.[0] ?? '';
-    nextText = `${leading}${translated}${trailing}`;
-  } else if (activeDictionary !== null) {
-    // No matching translation: preserve the original text without rewriting it.
-    return;
-  }
-
-  // Important: writing the same text still emits a MutationObserver event in
-  // some browsers. Avoid re-triggering this observer indefinitely.
+  const leading = original.match(/^\s*/)?.[0] ?? '';
+  const trailing = original.match(/\s*$/)?.[0] ?? '';
+  const nextText = translated ? `${leading}${translated}${trailing}` : original;
   if (node.textContent !== nextText) node.textContent = nextText;
 }
 
@@ -36,22 +31,30 @@ function translateTree(root: Node, dict: Record<string, string>) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let node: Node | null;
   while ((node = walker.nextNode())) translateTextNode(node as Text, dict);
+
   const element = root instanceof Element ? root : root === document ? document.documentElement : null;
   if (!element) return;
   const selector = '[placeholder], [aria-label], [title], [alt]';
-  const elements = [ ...(element.matches?.(selector) ? [element] : []), ...Array.from(element.querySelectorAll(selector)) ];
+  const elements = [
+    ...(element.matches?.(selector) ? [element] : []),
+    ...Array.from(element.querySelectorAll(selector)),
+  ];
   for (const el of elements) {
     if (!ORIGINAL_ATTR.has(el)) {
       const originals: Record<string, string> = {};
       for (const attr of ['placeholder', 'aria-label', 'title', 'alt']) {
-        const value = el.getAttribute(attr); if (value !== null) originals[attr] = value;
+        const value = el.getAttribute(attr);
+        if (value !== null) originals[attr] = value;
       }
       ORIGINAL_ATTR.set(el, originals);
     }
     const originals = ORIGINAL_ATTR.get(el)!;
     for (const attr of ['placeholder', 'aria-label', 'title', 'alt']) {
-      const original = originals[attr]; if (original === undefined) continue;
-      el.setAttribute(attr, dict[original] || original);
+      const original = originals[attr];
+      if (original === undefined) continue;
+      const translated = dict[original];
+      const nextValue = translated || original;
+      if (el.getAttribute(attr) !== nextValue) el.setAttribute(attr, nextValue);
     }
   }
 }
@@ -60,36 +63,56 @@ async function loadDictionary(locale: string): Promise<Record<string, string>> {
   if (locale === 'en') return {};
   try {
     const base = (window as any).__dynamic_base__ || '';
-    const response = await fetch(`${base}/i18n/${locale}.json`, { cache: 'no-cache' });
-    if (!response.ok) return {};
+    const response = await fetch(`${base}/i18n/${locale}.json`, { cache: 'no-store' });
+    if (!response.ok) {
+      console.error(`[i18n] Could not load ${locale} dictionary: HTTP ${response.status}`);
+      return {};
+    }
     const data = await response.json();
-    return data && typeof data === 'object' ? data as Record<string, string> : {};
-  } catch { return {}; }
+    return data && typeof data === 'object' && !Array.isArray(data)
+      ? data as Record<string, string>
+      : {};
+  } catch (error) {
+    console.error(`[i18n] Could not load ${locale} dictionary`, error);
+    return {};
+  }
 }
 
 export async function initI18n(locale?: string) {
-  const requestId = ++localeRequestId;
-  const selected = (locale || localStorage.getItem('handyman-language') || 'de').toLowerCase().split('-')[0];
-  const safeLocale = ['de', 'en', 'ru'].includes(selected) ? selected : 'de';
-  const dict = await loadDictionary(safeLocale);
-  // Ignore stale requests: a slower German/Russian dictionary must never
-  // overwrite a more recent explicit English selection.
-  if (requestId !== localeRequestId) return;
+  const selected = (locale || (() => {
+    try { return localStorage.getItem('handyman-language') || 'de'; }
+    catch { return 'de'; }
+  })()).toLowerCase().split('-')[0];
+  const normalized = ['de', 'en', 'ru'].includes(selected) ? selected : 'de';
+  const version = ++requestVersion;
+
+  // Do not let an older, slower fetch replace the most recently selected locale.
+  const dict = await loadDictionary(normalized);
+  if (version !== requestVersion) return;
+
   if (observer) { observer.disconnect(); observer = null; }
-  activeDictionary = Object.keys(dict).length ? dict : null;
-  document.documentElement.setAttribute('lang', safeLocale === 'de' ? 'de-AT' : safeLocale);
-  translateTree(document.documentElement, dict);
+  activeDictionary = dict;
+  applyingTranslations = true;
+  document.documentElement.setAttribute('lang', normalized === 'de' ? 'de-AT' : normalized);
+  translateTree(document.documentElement, activeDictionary);
+  applyingTranslations = false;
+
   observer = new MutationObserver(records => {
-    const current = activeDictionary || {};
+    if (applyingTranslations) return;
+    applyingTranslations = true;
     for (const record of records) {
-      if (record.type === 'childList') record.addedNodes.forEach(n => {
-        if (n.nodeType === Node.TEXT_NODE) translateTextNode(n as Text, current);
-        else if (n.nodeType === Node.ELEMENT_NODE) translateTree(n, current);
-      });
-      else if (record.type === 'characterData') translateTextNode(record.target as Text, current);
+      if (record.type === 'childList') {
+        record.addedNodes.forEach(added => {
+          if (added.nodeType === Node.TEXT_NODE) translateTextNode(added as Text, activeDictionary);
+          else if (added.nodeType === Node.ELEMENT_NODE) translateTree(added, activeDictionary);
+        });
+      } else if (record.type === 'characterData') {
+        translateTextNode(record.target as Text, activeDictionary);
+      }
     }
+    applyingTranslations = false;
   });
-  observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  if (document.body) observer.observe(document.body, { childList: true, subtree: true, characterData: true });
 }
 
 if (typeof window !== 'undefined') {
